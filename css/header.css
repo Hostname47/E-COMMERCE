@@ -1,0 +1,229 @@
+.top-strip {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 45px;
+    background-color: black;
+    flex-wrap: nowrap;
+}
+
+.s-m-icon {
+    height: 24px;
+    width: 24px;
+    background-repeat: no-repeat;
+    background-position: 0 center;
+    background-size: 24px 24px;
+    margin-left: 4px;
+}
+
+#fb-icon {
+    background-image: url("../images/social-media-icons/fbW.webp");
+}
+
+#reddit-icon {
+    background-image: url("../images/social-media-icons/redditW.png");
+}
+
+#li-icon {
+    background-image: url("../images/social-media-icons/linkedinA.png");
+}
+
+.follow-me {
+    position: absolute;
+    display: flex;
+
+    right: 18px;
+    margin-left: 8px;
+}
+
+.top-strip h3 {
+    text-align: center;
+    margin: 0;
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    font-family: 'Karla', sans-serif;
+    background-color: rgb(248, 248, 248);
+}
+
+#top-menu-strip {
+    height: 65px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: 25px;
+    width: 210px;
+    margin-left: 15px;
+}
+
+#top-nav {
+    margin-left: auto;
+    margin-right: 15px;
+}
+
+#top-nav ul {
+    margin-left: 20px;
+    padding: 0;
+    padding-left: 10px;
+    list-style-type: none;
+    border-left: 1px solid gray;
+    max-height: 50px;
+}
+
+#top-nav ul a {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 8px 0;
+    text-decoration: none;
+    color: rgb(53, 53, 53);
+    transition: box-shadow 0.2s ease;
+}
+
+#account-button {
+    text-decoration: none;
+    color: rgb(53, 53, 53);
+
+    background-image: url("../images/");
+    background-size: 25px 25px;
+    background-repeat: no-repeat;
+    background-position: 0 center;
+    border-radius: 50%;
+    padding: 8px 0 8px 28px;
+    margin-left: 15px;
+}
+
+#my-account {
+    flex-grow: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-left: 15px;
+}
+
+#account-picture {
+    height: 25px;
+    width: 25px;
+    position: relative;
+    top: 2px;
+    border-radius: 50%;
+}
+
+#account-name {
+    text-decoration: none;
+    color: rgb(53, 53, 53);
+    padding-left: 8px;
+}
+#top-nav ul a:hover {
+    color: black;
+    box-shadow: inset 0 -4px 0 #000000;
+}
+
+#top-nav ul a:last-child {
+    box-shadow: none;
+}
+
+#top-nav ul a:last-child:hover {
+    background-image: url("../images/fast-cart.png");
+}
+
+#menu-cart-button {
+    background-image: url("../images/cart.png");
+    background-position: 0 center;
+    background-repeat: no-repeat;
+    background-size: 35px 35px;
+}
+
+#menu-cart-button li {
+    padding-left: 35px;
+}
+
+#product-search-form {
+    display: flex;
+    align-items: center;
+}
+
+#top-logo {
+    flex-grow: 0;
+}
+
+#search-container {
+    margin-left: 10px;
+    flex-grow: 8;
+}
+
+#top-nav {
+    flex-grow: 0;
+}
+
+#categories-dropdownlist {
+    background-color:rgb(238, 238, 238) !important;
+    border: none;
+    height: 34px;
+    padding-left: 8px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+
+    /* remove default arrow */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+
+    border: 1px solid gray;
+
+    width: 50px;
+}
+
+#search-field {
+    height: 30px;
+    width: 50%;
+    border: none;
+    background-color: rgb(207, 207, 207);
+    padding-left: 8px;
+    border: 1px solid gray;
+    border-left: none;
+
+    width: 100%;
+}
+
+#search-button {
+    height: 34px;
+    width: 60px;
+    border: none;
+    background-image: url("../images/graySearch.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    background-color: rgb(242, 242, 242);
+
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+
+    border: 1px solid gray;
+    border-left: none;
+
+    cursor: pointer;
+}
+
+#search-button:hover {
+    background-color: rgb(250, 250, 250);
+}
+
+#featured-product {
+    height: 300px;
+    background-color: black
+}
+
+@media screen and (max-width: 800px) {
+    .follow-me {
+        display: none;
+    }
+}
