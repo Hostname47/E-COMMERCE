@@ -1,0 +1,119 @@
+#new-to-our-product {
+    width: 100%; 
+   text-align: center; 
+   border-bottom: 1px solid rgb(177, 177, 177); 
+   line-height: 0.1em;
+   margin: 10px 0 20px;
+}
+
+#new-user-hint-container {
+    margin-top: 38px;
+    padding: 6px;
+}
+
+#new-to-us-phrase {
+    background-color: rgb(248, 248, 248);
+    padding:0 10px;
+}
+
+#login {
+    border-radius: 5px;
+    border: 1px solid rgb(184, 184, 184);
+    margin-top: 25px;
+    padding: 25px;
+
+}
+
+#reg-logo-container {
+    display: flex;
+}
+
+#login-title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    font-weight: 500;
+    margin: 0;
+    margin-bottom: 15px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+}
+
+input {
+    display: block;
+}
+
+#email-or-phone, #user-password {
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 5px auto 12px 0;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid rgb(206, 206, 206);
+}
+
+#pass-label-with-forgot {
+    display: flex;
+    justify-content: space-between;
+}
+
+#login-button {
+    background-color: rgb(85, 85, 85);
+    border: none;
+    border-radius: 4px;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all 0.4s ease;
+}
+
+#login-button:hover {
+    background-color: rgb(58, 58, 58);
+}
+
+#remember-me-container {
+    display: flex;
+    margin-top: 12px;
+    margin-bottom: 15px;
+}
+
+#create-an-account-button {
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 4px;
+    text-align: center;
+    padding: 12px;
+    display: block;
+    width: 100%;
+    transition: all 0.4s ease;
+}
+
+#create-an-account-button:hover {
+    background-color: rgb(85, 85, 85);
+    border: 1px solid rgb(85, 85, 85);
+    color: white;
+}
+
+@media screen and (min-width: 800px) {
+    #login-container {
+        width: 30%;
+        margin: 0 auto;
+        margin-top: 28px;
+    }
+
+
+}
+
+@media screen and (max-width: 800px) {
+    #login-container {
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 20px;
+        padding: 15px;
+    }
+}
+

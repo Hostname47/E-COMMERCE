@@ -6,6 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Welcome to my e-commerce website</h1>
+    
 </body>
 </html>
