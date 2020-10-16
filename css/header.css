@@ -9,24 +9,32 @@
 }
 
 .s-m-icon {
-    height: 24px;
-    width: 24px;
+    height: 28px;
+    width: 28px;
     background-repeat: no-repeat;
     background-position: 0 center;
-    background-size: 24px 24px;
-    margin-left: 4px;
+    background-size: 28px 28px;
+    margin-right: 6px;
 }
 
 #fb-icon {
-    background-image: url("../images/social-media-icons/fbW.webp");
+    background-image: url("../images/social-media-icons/fb-icon.png");
 }
 
-#reddit-icon {
-    background-image: url("../images/social-media-icons/redditW.png");
+#tw-icon {
+    background-image: url("../images/social-media-icons/twitter-icon.png");
 }
 
 #li-icon {
-    background-image: url("../images/social-media-icons/linkedinA.png");
+    background-image: url("../images/social-media-icons/linkedin-icon.png");
+}
+
+#sk-icon {
+    background-image: url("../images/social-media-icons/skype-icon.png");
+}
+
+#gh-icon {
+    background-image: url("../images/social-media-icons/github-icon.png");
 }
 
 .follow-me {

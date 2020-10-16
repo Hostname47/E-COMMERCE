@@ -2,9 +2,11 @@
     <div class="top-strip">
         <h3>Time will show who's the hardest worker in the room .. MOUAD NASSRI</h3>
         <div class="follow-me">
-            <a href="#" id="fb-icon" class="s-m-icon"></a>
-            <a href="#" id="reddit-icon" class="s-m-icon"></a>
+            <a href="https://www.facebook.com/HelplessMiind/" id="fb-icon" class="s-m-icon"></a>
+            <a href="#" id="tw-icon" class="s-m-icon"></a>
             <a href="#" id="li-icon" class="s-m-icon"></a>
+            <a href="#" id="sk-icon" class="s-m-icon"></a>
+            <a href="#" id="gh-icon" class="s-m-icon"></a>
         </div>
     </div>
     
