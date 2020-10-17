@@ -1,6 +1,6 @@
 <?php
 
-    $submitted_username = $submitted_email = $submitted_password = $submitted_repassword = "";
+    $submitted_username = $submitted_email = $submitted_password = $submitted_repassword = $user_created= "";
 
     $error = ["generalErr"=>"", "usernameErr"=>"", "emailErr"=>"", "passwordErr"=>"", "repasswordErr"=>""];
 
@@ -125,7 +125,7 @@
                 else if($eml_numrows > 0) {
                     $error["generalErr"] = "* User already existed with this email";
                 } else {
-                    $stmt = $conn->prepare("INSERT INTO user_info (user_name, email, password) VALUES (:u_name, :u_email, :u_password)");
+                    $stmt = $conn->prepare("INSERT INTO user_info (user_name, email, password) VALUES (:u_name, :u_email, md5(:u_password))");
                     $stmt->bindParam(':u_name', $submitted_username);
                     $stmt->bindParam(':u_email', $submitted_email);
                     $stmt->bindParam(':u_password', $submitted_password);
@@ -134,7 +134,7 @@
     
                     $conn = null;
 
-                    header("location: login.php");
+                    $user_created = "User created successfully";
                 }
             } catch (PDOException $ex) {
                 echo $ex->getMessage();

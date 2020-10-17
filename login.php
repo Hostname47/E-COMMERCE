@@ -41,7 +41,7 @@
             <input type="text" name="log-emailorusername" id="email-or-phone" class="styled-form-input" value="<?php if(isset($_POST["log"])) echo $submitted_usernameoremail; ?>">
             <div id="pass-label-with-forgot">
                 <label for="user-password" style="font-weight: bold; margin-left: 3px;">Password</label>
-                <a href="#" class="its-a-link">Forgot Password</a>
+                <a href="login-forgot-password.php" class="its-a-link">Forgot Password</a>
             </div>
             <input type="password" name="log-password" id="user-password" class="styled-form-input">
             <input type="submit" name="log" id="login-button" value="Login">

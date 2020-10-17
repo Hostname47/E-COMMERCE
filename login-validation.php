@@ -17,9 +17,6 @@ if(isset($_POST["log"])) {
             if(strlen($submitted_usernameoremail) > 300) {
                 $error["usernameOrEmailErr"] = "* username is too long";
             }
-            if(strlen($submitted_usernameoremail) < 8) {
-                $error["usernameOrEmailErr"] = "* Invalid username";
-            }
             
             //  -------------- NOTICE --------------
             /* This validation match only string which contain upper and lower case usernames you 
@@ -80,6 +77,8 @@ if(isset($_POST["log"])) {
             }
 
             if($num > 0) {
+                // CHECK REMEMBER ME FEATURE
+
                 header("location: index.php");
             } else {
                 $error["usernameOrEmailErr"] = "Invalid credentials";

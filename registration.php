@@ -28,12 +28,20 @@
         </div>    
 
         <div id="login">
-            <p id="login-title">Create account</p>
+            <div style="display: flex;">
+                <p id="login-title">Create account</p>
+                <a href="login.php" style="margin-left: auto; margin-top: 8px; text-decoration: none; color: rgb(31, 128, 255);"><- login</a>
+            </div>
+            
             
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" id="registration-form">
 
                 <div style="display: flex">
                     <div class="invalid-credential" style="margin-bottom: 6px; margin-left: 2px"><?php echo $error["generalErr"]; ?></div>
+                </div>
+
+                <div style="display: flex">
+                <div  style="margin-bottom: 6px; margin-left: 2px; color: rgb(19, 184, 55);"><?php echo $user_created ?></div>
                 </div>
 
                 <!-- USERNAME -->
