@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 $submitted_usernameoremail = $submitted_password = "";
 
 $error = ["generalErr"=>"", "usernameOrEmailErr"=>""];
@@ -19,7 +21,7 @@ if(isset($_POST["log"])) {
             }
             
             //  -------------- NOTICE --------------
-            /* This validation match only string which contain upper and lower case usernames you 
+            /* This validation match only string which contain upper and lower case usernames (maybe you should use some other technique than regex) you 
                should fix this as soon as you can - MOUAD NASSRI
             */
 
@@ -48,13 +50,6 @@ if(isset($_POST["log"])) {
             if(strlen($submitted_password) > 300) {
                 $error["usernameOrEmailErr"] = "* Password is too long";
             }
-
-            // Pattern for email match
-            $pattern = "/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/";
-
-            if(!preg_match($pattern, $submitted_password)) {
-                $error["usernameOrEmailErr"] = "* Password should contains one upper,lower and digit";
-            }
         }
     }
 
@@ -63,23 +58,29 @@ if(isset($_POST["log"])) {
 
         try {
             if(strpos($submitted_usernameoremail, "@") !== false) {
-                $stmt = $conn->prepare("SELECT * FROM user_info WHERE email = :email");
+                $stmt = $conn->prepare("SELECT * FROM user_info WHERE email = :email and password = md5(:password)");
                 $stmt->bindParam(":email", $submitted_usernameoremail);
+                $stmt->bindParam(":password", $submitted_password);
                 $stmt->execute();
-
+                
                 $num = $stmt->numCount();
             } else {
-                $stmt = $conn->prepare("SELECT * FROM user_info WHERE user_name = :username");
+                $stmt = $conn->prepare("SELECT * FROM user_info WHERE user_name = :username and password = md5(:password)");
                 $stmt->bindParam(":username", $submitted_usernameoremail);
+                $stmt->bindParam(":password", $submitted_password);
                 $stmt->execute();
-
+                
                 $num = $stmt->rowCount();
             }
 
             if($num > 0) {
+                $user_data = $stmt->fetchAll();
                 // CHECK REMEMBER ME FEATURE
 
-                header("location: index.php");
+                // Preserve user_id in a session variable for remember me feature use later
+                $_SESSION["user_id"] = $user_data[0]['user_id'];
+
+
             } else {
                 $error["usernameOrEmailErr"] = "Invalid credentials";
             }

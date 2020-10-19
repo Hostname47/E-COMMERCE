@@ -1,3 +1,15 @@
+<?php
+
+    session_start();
+    echo $_SESSION["user_id"];
+    if(isset($_POST["logout"])) {
+        unset($_SESSION['user_id']);
+    }
+
+    
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,5 +22,9 @@
 </head>
 <body>
     <?php include "header.php"; ?>
+
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+        <input type="submit" name="logout" id="logout">
+    </form>
 </body>
 </html>
