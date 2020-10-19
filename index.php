@@ -1,10 +1,13 @@
 <?php
 
     session_start();
-    echo $_SESSION["user_id"];
+
     if(isset($_POST["logout"])) {
         unset($_SESSION['user_id']);
+
+        header("location: login.php");
     }
+    session_destroy();
 
     
 
