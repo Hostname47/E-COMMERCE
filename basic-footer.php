@@ -1,4 +1,4 @@
-<footer>
+<footer id="basic-footer">
     <div id="basic-footer-container">
         <div id="basic-footer-links-container">
             <a href="more-details/conditions.php" target="_blank" class="its-a-link">Conditions of Use</a>

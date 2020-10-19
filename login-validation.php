@@ -81,6 +81,7 @@ if(isset($_POST["log"])) {
                 $_SESSION["user_id"] = $user_data[0]['user_id'];
                 if(isset($_POST["remember-me"])) {
                     
+                    // Here you have to encrypt password, don't try to send it directly to cookie
                     setcookie("username_or_email", $submitted_usernameoremail, time()+3600*24*30);  /* expire in 30 days */
                     setcookie("user_password", $submitted_password, time()+3600*24*30);  /* expire in 30 days */
                 } else{

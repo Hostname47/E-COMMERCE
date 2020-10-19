@@ -70,7 +70,7 @@ input[type="text"], input[type="password"] {
     justify-content: space-between;
 }
 
-#login-button {
+.styled-button {
     background-color: rgb(85, 85, 85);
     border: none;
     border-radius: 4px;
@@ -80,7 +80,7 @@ input[type="text"], input[type="password"] {
     transition: all 0.4s ease;
 }
 
-#login-button:hover {
+.styled-button:hover {
     background-color: rgb(58, 58, 58);
 }
 
