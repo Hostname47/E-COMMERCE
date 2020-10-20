@@ -1,53 +1,44 @@
 <?php
 
     session_start();
-
-    $submitted_emailorusername = "";
+    
+    $submitted_email = "";
     $emailErr = "";
 
     require "check-credentials.php";
 
     if(isset($_POST["next"])) {
-        $submitted_emailorusername = cleanData($_POST["username-or-email"]);
+        $submitted_email = cleanData($_POST["username-or-email"]);
         
-        if(empty($submitted_emailorusername)) {
+        if(empty($submitted_email)) {
             $emailErr = "* This field is required";
         }
-        else if(strpos($submitted_emailorusername, "@") !== false) {
-            if(strlen($submitted_emailorusername) > 300) {
+        else if(strpos($submitted_email, "@") !== false) {
+            if(strlen($submitted_email) > 300) {
                 $emailErr = "* Email is too long";
             }
 
             // Pattern for email match
             $pattern = "/^[_a-zA-Z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[a-zA-Z]{2,})$/";
 
-            if(!preg_match($pattern, $submitted_emailorusername)) {
+            if(!preg_match($pattern, $submitted_email)) {
                 $emailErr = "* Invalid email format";
-            }
-        } else {
-            if(strlen($submitted_emailorusername) > 300) {
-                $emailErr = "* Username is too long";
-            }
-
-            if(!preg_match("/^[a-zA-Z][a-zA-Z0-9_]+$/", $submitted_emailorusername)) {
-                $emailErr = "* Username should be alphanumeric(underscore is allowed)";
             }
         }
 
         if($emailErr === "") {
-            $stmt = check_username_email($submitted_emailorusername);
+            $stmt = check_username_email($submitted_email);
             $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
             $user = $stmt->fetchAll();
 
             if($stmt->rowCount() > 0) {
                 $_SESSION["user_id"] = $user[0]["user_id"];
-                $_SESSION["conf_message"] = sha1(md5(generateRandomString()));
+                $_SESSION["conf_message"] = generateRandomString();
                 $random = $_SESSION["conf_message"];
-
-                ini_set("SMTP","ssl://smtp.gmail.com");
-                ini_set("smtp_port","465");
-
-                mail("mouadstev1@gmail.com", "Reset your password", $random);
+                
+                // Send this random string to user's email to let him confirm his account
+                
+                header("location: login-forgot-password-confirm.php");
             } else {
                 
             }
@@ -55,12 +46,39 @@
 
     }
 
-    function generateRandomString($length = 10) {
+    function spamcheck($field)
+    {
+        //filter_var() sanitizes the e-mail
+        //address using FILTER_SANITIZE_EMAIL
+        $field=filter_var($field, FILTER_SANITIZE_EMAIL);
+    
+        //filter_var() validates the e-mail
+        //address using FILTER_VALIDATE_EMAIL
+        if(filter_var($field, FILTER_VALIDATE_EMAIL))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    
+    function sendMail($toEmail, $fromEmail, $subject, $message)
+    {
+        $validFromEmail = spamcheck($fromEmail);
+        if($validFromEmail)
+        {
+            mail($toEmail, $subject, $message, "From: $fromEmail");
+        }
+    }
+
+    function generateRandomString($length = 8) {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
         for ($i = 0; $i < $length; $i++) {
-            $randomString .= $characters[rand(0, $charactersLength - 1)];
+            $randomString .= md5($characters[rand(0, $charactersLength - 1)]);
         }
         return $randomString;
     }
@@ -76,7 +94,6 @@
     <title>EASY-ECOM Login</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/header.css"/>
     <link rel="stylesheet" href="css/login.css"/>
     <link rel="stylesheet" href="css/footer.css"/>
 
@@ -111,7 +128,7 @@
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" id="forgot-form">
 
             <div style="display: flex">
-                <label style="font-weight: bold; margin-left: 3px;" for="email-or-username">Email or username</label>
+                <label style="font-weight: bold; margin-left: 3px;" for="email-or-username">Email</label>
                 <div class="invalid-credential"><?php echo $emailErr; ?></div>
             </div>
             
@@ -133,6 +150,7 @@
 </div>
 <?php require "basic-footer.php"; ?>
 <style>
+
     #basic-footer {
         position: absolute;
         bottom: 0;

@@ -1,6 +1,6 @@
 <?php
 
-    session_start();
+    /*session_start();
 
     if(!isset($_SESSION["user_id"])) {
         header("location: login.php");
@@ -11,7 +11,8 @@
 
         header("location: login.php");
     }
-    session_destroy();
+    session_destroy();*/
+
 
     
 
@@ -22,6 +23,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-control" content="no-cache">
     <title>Document</title>
     <link rel="stylesheet" href="css/header.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -30,8 +32,8 @@
 <body>
     <?php include "header.php"; ?>
 
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-        <input type="submit" name="logout" id="logout">
-    </form>
+    <!--<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+        <input type="submit" name="logout" id="logout" value="logout">
+    </form>-->
 </body>
 </html>

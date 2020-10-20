@@ -12,7 +12,6 @@
     <title>EASY-ECOM Registration</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/header.css"/>
     <link rel="stylesheet" href="css/login.css"/>
     <link rel="stylesheet" href="css/footer.css"/>
 
@@ -74,7 +73,7 @@
                 <input type="password" name="reg-re-password" class="styled-form-input" id="re-pass">
 
                 <!-- CREATE BUTTON -->
-                <input type="submit" name="create" id="create-button" value="Create your account" class="styled-form-button">
+                <input type="submit" name="create" id="create-button" value="Create your account" class="styled-button">
             </form>
             <p style="font-size: 14px;">By creating an account, you agree to ECOM-EASY's <a href="#" class="its-a-link">Conditions of Use</a> and <a href="#" class="its-a-link">Privacy Notice</a></p>
         </div>

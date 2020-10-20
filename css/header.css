@@ -45,6 +45,12 @@
     margin-left: 8px;
 }
 
+.logo {
+    height: 25px;
+    width: 210px;
+    margin-left: 15px;
+}
+
 .top-strip h3 {
     text-align: center;
     margin: 0;
@@ -75,12 +81,7 @@ body {
     background-color: white;
     display: flex;
     align-items: center;
-}
 
-.logo {
-    height: 25px;
-    width: 210px;
-    margin-left: 15px;
 }
 
 #top-nav {
@@ -216,7 +217,7 @@ body {
 
 #search-button {
     height: 34px;
-    width: 60px;
+    width: 70px;
     border: none;
     background-image: url("../images/graySearch.png");
     background-position: center center;
@@ -242,8 +243,87 @@ body {
     background-color: black
 }
 
+#search-and-menu-container {
+    display: none;
+}
+
 @media screen and (max-width: 800px) {
     .follow-me {
         display: none;
+    }
+
+    #search-container {
+        display: none;
+    }
+    
+
+    .top-strip h3 {
+        font-size: 15px;
+    }
+
+    #top-menu-strip {
+        height: 55px;
+        width: 100%;
+    }
+
+    #top-nav {
+        display: none;
+    }
+
+    #search-and-menu-container {
+        display: flex;
+        margin-left: auto;
+        background-color: gray;
+    }
+
+    .mobile-menu-top {
+        background-image: url(../images/menu.png);
+        padding: 2px;
+        margin: 4px;
+        height: 22px;
+        width: 22px;
+        background-size: 22px 22px;
+        border-left: 1px solid gray;
+    }
+
+    .mobile-search-top {
+        background-image: url(../images/darkgraysearch.png);
+        height: 22px;
+        width: 22px;
+        padding: 2px;
+        margin: 4px;
+        background-size: 22px 22px;
+    }
+
+    .logo {
+        margin-top: 5px;
+        height: 20px;
+        width: 170px;
+        margin-left: 15px;
+    }
+
+    /* responsive menu */
+
+    #top-nav {
+        margin-left: auto;
+        margin-right: 15px;
+    }
+
+    #top-nav ul {
+        margin-left: 20px;
+        padding: 0;
+        padding-left: 10px;
+        list-style-type: none;
+        border-left: 1px solid gray;
+        max-height: 50px;
+    }
+
+    #top-nav ul a {
+        display: inline-block;
+        margin-left: 10px;
+        padding: 8px 0;
+        text-decoration: none;
+        color: rgb(53, 53, 53);
+        transition: box-shadow 0.2s ease;
     }
 }

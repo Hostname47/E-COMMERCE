@@ -30,6 +30,11 @@
             <a href="#" id="account-name">My-account</a>
         </div>
 
+        <div id="search-and-menu-container">
+        <a href="#" class="mobile-search-top s-m-icon"></a>
+            <a href="#" class="mobile-menu-top s-m-icon"></a>
+        </div>
+
         <nav id="top-nav">
             <ul>
                 <a href="#"><li>Home</li></a>
@@ -40,6 +45,15 @@
             </ul>
         </nav>
     </div>
+    <nav id="top-mobile-nav">
+            <ul>
+                <a href="#"><li>Home</li></a>
+                <a href="#"><li>Products</li></a>
+                <a href="#"><li>About</li></a>
+                <a href="#"><li>Account</li></a>
+                <a href="#" id="menu-cart-button"><li>Cart</li></a>
+            </ul>
+        </nav>
 </header>
 
     

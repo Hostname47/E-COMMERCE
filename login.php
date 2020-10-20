@@ -12,7 +12,6 @@
     <title>EASY-ECOM Login</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/header.css"/>
     <link rel="stylesheet" href="css/login.css"/>
     <link rel="stylesheet" href="css/footer.css"/>
 
@@ -61,4 +60,10 @@
 </main>
 <!-- Include footer  -->
 <?php require "basic-footer.php"; ?>
+<style>
+    #basic-footer {
+        
+    }
+</style>
+</body>
 </html>
