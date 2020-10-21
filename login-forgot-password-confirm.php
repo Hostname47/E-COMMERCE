@@ -6,12 +6,12 @@
 
     require "check-credentials.php";
 
+    echo $_SESSION["conf_message"];
     if(isset($_POST["check"])) {
         $submitted_confirmation_code = cleanData($_POST["conf-code"]);
 
-        
-
-        if(/*$_SESSION["conf_message"] == $submitted_confirmation_code*/true) {
+        echo $_SESSION["conf_message"] . ", " . $submitted_confirmation_code;
+        if($_SESSION["conf_message"] == $submitted_confirmation_code) {
             header("location: login-forgot-password-confirm-change-pass.php");
         } else {
             $confirmationErr = "Invalid confirmation code";

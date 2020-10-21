@@ -29,7 +29,7 @@
                 try {
                     $stmt = $conn->prepare("UPDATE user_info SET password = :pass WHERE user_id = :id");
                     $stmt->bindParam(":pass", $submitted_password);
-                    $stmt->bindParam(":id", $_SESSION["user_id"]);
+                    $stmt->bindParam(":id", $_SESSION["u_id"]);
                     $stmt->execute();
 
                     $updated = "Password updated successfully";

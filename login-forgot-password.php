@@ -32,11 +32,61 @@
             $user = $stmt->fetchAll();
 
             if($stmt->rowCount() > 0) {
-                $_SESSION["user_id"] = $user[0]["user_id"];
-                $_SESSION["conf_message"] = generateRandomString();
-                $random = $_SESSION["conf_message"];
+                $_SESSION["u_id"] = $user[0]["user_id"];
+                $random = generateRandomString();
+                $_SESSION["conf_message"] = $random;
                 
+                // I created a c# program and i compiled it and use its exe as a medium to send confirmation code to clients
+
+                echo $user[0]["email"];
+
+                $from = "mouadstev1@gmail.com";
+                $username = "mouadstev1@gmail.com";
+                $password = "vervouier";
+                $to = $user[0]["email"];
+                $body = "your confirmation code : " . $random;
+                $subject = "Password recovery";
+
+                $result = shell_exec('mail\sendmail.exe "'.$from.'" "'.$username.'" "'.$password.'" "'.$to.'" "'.$body.'" "'.$subject.'"');
+                
+                /*     ------ HERE TRY TO USE SOME WAY TO SEND CONFIRMATION CODE TO THE USERS'S EMAIL ------
                 // Send this random string to user's email to let him confirm his account
+                use PHPMailer\PHPMailer\PHPMailer;
+                use PHPMailer\PHPMailer\SMTP;
+                use PHPMailer\PHPMailer\Exception;
+
+                // Load Composer's autoloader
+                require 'vendor/autoload.php';
+
+                // Instantiation and passing `true` enables exceptions
+                $mail = new PHPMailer(true);
+
+                try {
+                    $mail = new PHPMailer; 
+                    $mail->SMTPDebug = 3;                              // Enable verbose debug output
+                    $mail->isSMTP();                                      // Set mailer to use SMTP
+                    $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+                    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+                    $mail->Username = 'mouadstev1@gmail.com';                 // SMTP username
+                    $mail->Password = 'vervouer';                           // SMTP password
+                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;                            // Enable TLS encryption, `ssl` also accepted
+                    $mail->Port = 465;                                    // TCP port to connect to
+                    $mail->setFrom('mouadstev1@gmail.com');
+                    $mail->isHTML(true); // Set email format to HTML                                  // TCP port to connect to, use 465 for `PHPMailer::ENCRYPTION_SMTPS` above
+
+                    $mail->addAddress('mouadstev1@gmail.com');     // Add a recipient
+
+                    // Content
+                    $mail->isHTML(true);                                  // Set email format to HTML
+                    $mail->Subject = 'Here is the subject';
+                    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+                    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+                    $mail->send();
+                    echo 'Message has been sent';
+                } catch (Exception $e) {
+                    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+                }*/
                 
                 header("location: login-forgot-password-confirm.php");
             } else {
@@ -46,39 +96,12 @@
 
     }
 
-    function spamcheck($field)
-    {
-        //filter_var() sanitizes the e-mail
-        //address using FILTER_SANITIZE_EMAIL
-        $field=filter_var($field, FILTER_SANITIZE_EMAIL);
-    
-        //filter_var() validates the e-mail
-        //address using FILTER_VALIDATE_EMAIL
-        if(filter_var($field, FILTER_VALIDATE_EMAIL))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-    
-    function sendMail($toEmail, $fromEmail, $subject, $message)
-    {
-        $validFromEmail = spamcheck($fromEmail);
-        if($validFromEmail)
-        {
-            mail($toEmail, $subject, $message, "From: $fromEmail");
-        }
-    }
-
     function generateRandomString($length = 8) {
         $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
         for ($i = 0; $i < $length; $i++) {
-            $randomString .= md5($characters[rand(0, $charactersLength - 1)]);
+            $randomString .= $characters[rand(0, $charactersLength - 1)];
         }
         return $randomString;
     }

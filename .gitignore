@@ -1,3 +1,7 @@
 # this is a folder of list of tasks I should complete
 todo
-PHPMailer
+PHPMailer-master
+vendor
+composer.json
+composer.lock
+crash.txt
