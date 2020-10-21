@@ -1,6 +1,6 @@
 <?php
 
-    /*session_start();
+    session_start();
 
     if(!isset($_SESSION["user_id"])) {
         header("location: login.php");
@@ -11,7 +11,7 @@
 
         header("location: login.php");
     }
-    session_destroy();*/
+
 
 
     
@@ -32,8 +32,8 @@
 <body>
     <?php include "header.php"; ?>
 
-    <!--<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
         <input type="submit" name="logout" id="logout" value="logout">
-    </form>-->
+    </form>-
 </body>
 </html>

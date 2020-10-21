@@ -6,7 +6,6 @@
 
     require "check-credentials.php";
 
-    echo $_SESSION["conf_message"];
     if(isset($_POST["check"])) {
         $submitted_confirmation_code = cleanData($_POST["conf-code"]);
 

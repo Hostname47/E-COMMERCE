@@ -1,30 +1,28 @@
 <?php 
 
 // Check both email/username and password
-function check_credentials($username_or_email, $pass) : boolean {
+function check_credentials($username_or_email, $pass) {
     require "config/dbconnect.php";
     try {
         if(strpos($username_or_email, "@") !== false) {
-            $stmt = $conn->prepare("SELECT * FROM user_info WHERE email = :email and password = md5(:password)");
+            $stmt = $conn->prepare("SELECT * FROM user_info WHERE email = :email and password = :psword");
             $stmt->bindParam(":email", $username_or_email);
-            $stmt->bindParam(":password", $pass);
+            $stmt->bindParam(":psword", $pass);
             $stmt->execute();
             
             $num = $stmt->numCount();
         } else {
-            $stmt = $conn->prepare("SELECT * FROM user_info WHERE user_name = :username and password = md5(:password)");
+            echo "verify username";
+            $stmt = $conn->prepare("SELECT * FROM user_info WHERE user_name = :username and password = :psword");
             $stmt->bindParam(":username", $username_or_email);
-            $stmt->bindParam(":password", $pass);
+            $stmt->bindParam(":psword", $pass);
             $stmt->execute();
             
             $num = $stmt->rowCount();
         }
 
-        if($num > 0) {
-            return $stmt;
-        } else {
-            return $stmt;
-        }
+        return $stmt;
+
     } catch(PDOException $ex) {
         echo $ex->getMessage();
     } 

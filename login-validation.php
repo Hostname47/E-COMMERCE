@@ -73,6 +73,7 @@ if(isset($_POST["log"])) {
 
         try {
             $stmt = check_credentials($submitted_usernameoremail, $submitted_password);
+
             if($stmt->rowCount() > 0) {
                 $user_data = $stmt->fetchAll();
                 // CHECK REMEMBER ME FEATURE
@@ -105,14 +106,14 @@ function check_credentials($username_or_email, $pass) {
     require "config/dbconnect.php";
     try {
         if(strpos($username_or_email, "@") !== false) {
-            $stmt = $conn->prepare("SELECT * FROM user_info WHERE email = :email and password = md5(:password)");
+            $stmt = $conn->prepare("SELECT * FROM user_info WHERE email = :email and password = :password");
             $stmt->bindParam(":email", $username_or_email);
             $stmt->bindParam(":password", $pass);
             $stmt->execute();
             
-            $num = $stmt->numCount();
+            $num = $stmt->rowCount();
         } else {
-            $stmt = $conn->prepare("SELECT * FROM user_info WHERE user_name = :username and password = md5(:password)");
+            $stmt = $conn->prepare("SELECT * FROM user_info WHERE user_name = :username and password = :password");
             $stmt->bindParam(":username", $username_or_email);
             $stmt->bindParam(":password", $pass);
             $stmt->execute();
