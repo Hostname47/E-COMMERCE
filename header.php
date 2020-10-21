@@ -12,17 +12,17 @@
     
     <div id="top-menu-strip">
         <a href="#" id="top-logo"><img src="images/logo.png" class="logo"></a>
-        <div id="search-container">
-            <form action="" id="product-search-form">
-                <select name="container-dropdownlist" id="categories-dropdownlist">
+        <div class="search-container">
+            <form action="" class="product-search-form">
+                <select name="container-dropdownlist" class="categories-dropdownlist">
                     <!-- normally w got the categories from database but for symplicity we need to fill some options -->
                     <option value="All" selected>All</option>
                     <option value="arts-and-crafts">Arts & Crafts</option>
                     <option value="computers">Computers</option>
                     <option value="electronics">Electronics</option>
                 </select>
-                <input type="text" name="search-field" id="search-field" placeholder="Search">
-                <input type="submit" value="" name="search" id="search-button">
+                <input type="text" name="search-field" class="search-field" placeholder="Search">
+                <input type="submit" value="" name="search" class="search-button">
             </form>
         </div>
         <div id="my-account">
@@ -41,20 +41,34 @@
                 <a href="#"><li>Products</li></a>
                 <a href="#"><li>About</li></a>
                 <a href="#"><li>Account</li></a>
-                <a href="#" id="menu-cart-button"><li>Cart</li></a>
+                <a href="#" class="menu-cart-button"><li>Cart</li></a>
             </ul>
         </nav>
     </div>
     <nav id="top-mobile-nav">
-            <ul>
-                <a href="#" id="menu-cart-button"><li>Cart</li></a>    
-                <a href="#"><li>Home</li></a>
-                <a href="#"><li>Products</li></a>
-                <a href="#"><li>About</li></a>
-                <a href="#"><li>Account</li></a>
-                
-            </ul>
-        </nav>
+        <ul>
+            <a href="#" class="menu-cart-button"><li>Cart</li></a>    
+            <a href="#"><li>Home</li></a>
+            <a href="#"><li>Products</li></a>
+            <a href="#"><li>About</li></a>
+            <a href="#"><li>Account</li></a>
+            
+        </ul>
+    </nav>
+
+    <div class="search-mobile-container">
+        <form action="" class="product-search-form">
+            <select name="container-dropdownlist" class="categories-dropdownlist">
+                <!-- normally w got the categories from database but for symplicity we need to fill some options -->
+                <option value="All">All</option>
+                <option value="Arts & Crafts">Arts & Crafts</option>
+                <option value="computers">Computers</option>
+                <option value="Electronics">Electronics</option>
+            </select>
+            <input type="text" name="search-field" class="search-field" placeholder="Search">
+            <input type="submit" value="" name="search" class="search-button">
+        </form>
+    </div>
 </header>
 
     

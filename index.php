@@ -13,9 +13,6 @@
     }
 
 
-
-    
-
 ?>
 
 <!DOCTYPE html>
@@ -26,14 +23,18 @@
     <meta http-equiv="Cache-control" content="no-cache">
     <title>Document</title>
     <link rel="stylesheet" href="css/header.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
     <script src="javascript/dynamics.js" defer></script>
+    <script src="javascript/index.js" defer></script>
 </head>
 <body>
     <?php include "header.php"; ?>
 
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-        <input type="submit" name="logout" id="logout" value="logout">
-    </form>-
+    <main>
+        <!--<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+            <input type="submit" name="logout" id="logout" value="logout">
+        </form>-->
+    </main>
+    
 </body>
 </html>
