@@ -26,9 +26,9 @@
     <title>EASY-ECOM Login</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/header.css"/>
-    <link rel="stylesheet" href="css/login.css"/>
-    <link rel="stylesheet" href="css/footer.css"/>
+    <link rel="stylesheet" href="../css/header.css"/>
+    <link rel="stylesheet" href="../css/login.css"/>
+    <link rel="stylesheet" href="../css/footer.css"/>
 
     <style>
         .styled-paragraph {
@@ -38,24 +38,22 @@
     </style>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <script src="javascript/dynamics.js" defer></script>
 </head>
 <body>
 
 <main>
 <div id="login-container">
     <div id="login-logo-container">
-        <a href="#" style="margin: 0 auto"><img src="images/logo.png" alt="logo" class="logo"></a>
+        <a href="#" style="margin: 0 auto"><img src="../images/logo.png" alt="logo" class="logo"></a>
     </div>    
 
     <div id="login">
-            <div style="display: flex; ">
-                <p id="login-title">Confirmation Code</p>
-                <a href="login.php" style="margin-left: auto; margin-top: 8px; text-decoration: none; color: rgb(31, 128, 255);"><- login</a>
-            </div>
+        <div style="display: flex; ">
+            <p id="login-title">Confirmation Code</p>
+            <a href="login.php" style="margin-left: auto; margin-top: 8px; text-decoration: none; color: rgb(31, 128, 255);"><- login</a>
+        </div>
         
-        <div class="styled-paragraph" style="display: flex; margin-bottom: 8px"><img src="images/i.png" style="height: 18px; width: 18px;">We'll send a confirmation code to your email</div>
+        <div class="styled-paragraph" style="display: flex; margin-bottom: 8px"><img src="../images/i.png" style="height: 18px; width: 18px;">We'll send a confirmation code to your email</div>
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" id="forgot-form">
 
@@ -74,7 +72,7 @@
 </main>
 <!-- Include footer  -->
 </div>
-<?php require "basic-footer.php"; ?>
+<?php require "../entities/basic-footer.php"; ?>
 <style>
     
     #basic-footer {

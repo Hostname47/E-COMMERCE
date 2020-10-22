@@ -12,19 +12,17 @@
     <title>EASY-ECOM Login</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/login.css"/>
-    <link rel="stylesheet" href="css/footer.css"/>
+    <link rel="stylesheet" href="../css/login.css"/>
+    <link rel="stylesheet" href="../css/footer.css"/>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <script src="javascript/dynamics.js" defer></script>
 </head>
 <body>
 
 <main>
 <div id="login-container">
     <div id="login-logo-container">
-        <a href="#" style="margin: 0 auto"><img src="images/logo.png" alt="logo" class="logo"></a>
+        <a href="#" style="margin: 0 auto"><img src="../images/logo.png" alt="logo" class="logo"></a>
     </div>    
 
     <div id="login">
@@ -59,7 +57,7 @@
 </div>
 </main>
 <!-- Include footer  -->
-<?php require "basic-footer.php"; ?>
+<?php require "../entities/basic-footer.php"; ?>
 <style>
     #basic-footer {
         

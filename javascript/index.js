@@ -1,12 +1,11 @@
 $('.mobile-menu-top').click(function() {
-    let right = $("#top-mobile-nav").css("right");
+    let height = $("#top-mobile-nav").css("height");
 
-    if(right != "0px") {
-        $("#top-mobile-nav").css("right", "0%");
-        $('.mobile-menu-top').css(`background-image`, `url(http://localhost/E-COMMERCE/images/x.png)`);
+    if(height != "0px") {
+        closeMobileMenu();
     } else {
-        $("#top-mobile-nav").css("right", "-100%");
-        $('.mobile-menu-top').css(`background-image`, `url(http://localhost/E-COMMERCE/images/menu.png)`);
+        openMobileMenu();
+        closeMobileSearch();
     }
 });
 
@@ -14,8 +13,35 @@ $('.mobile-search-top').click(function() {
     let container = $(".search-mobile-container");
 
     if(container.css("display") == "none") {
-        container.css("display", "block");
+        openMobileSearch();
+        closeMobileMenu();
     } else {
-        container.css("display", "none");
+        closeMobileSearch();
     }
 });
+
+function openMobileSearch() {
+    let container = $(".search-mobile-container");
+    container.css("display", "block");
+    closeMobileMenu();
+}
+
+function closeMobileSearch() {
+    let container = $(".search-mobile-container");
+    container.css("display", "none");
+}
+
+
+function openMobileMenu() {
+    $("#top-mobile-nav").css("height", "auto");
+    $("#top-mobile-nav").css("transition", "all 0.4s ease");
+
+    $('.mobile-menu-top').css(`background-image`, `url(http://localhost/E-COMMERCE/images/x.png)`);
+}
+
+function closeMobileMenu() {
+    $("#top-mobile-nav").css("height", "0px");
+
+    $('.mobile-menu-top').css(`background-image`, `url(http://localhost/E-COMMERCE/images/menu.png)`);
+}
+

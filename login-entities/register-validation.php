@@ -99,7 +99,7 @@
 
         // IF EVERYTHING IS RIGHT
         if($isEmpty) {
-            require "config/dbconnect.php";
+            require "../config/dbconnect.php";
             
             // Varify username and email if they already exist
             try {

@@ -48,7 +48,7 @@
                 $body = "your confirmation code : " . $random;
                 $subject = "Password recovery";
 
-                $result = shell_exec('mail\sendmail.exe "'.$from.'" "'.$username.'" "'.$password.'" "'.$to.'" "'.$body.'" "'.$subject.'"');
+                $result = shell_exec('..\mail\sendmail.exe "'.$from.'" "'.$username.'" "'.$password.'" "'.$to.'" "'.$body.'" "'.$subject.'"');
                 
                 header("location: login-forgot-password-confirm.php");
             } else {
@@ -79,8 +79,8 @@
     <title>EASY-ECOM Login</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/login.css"/>
-    <link rel="stylesheet" href="css/footer.css"/>
+    <link rel="stylesheet" href="../css/login.css"/>
+    <link rel="stylesheet" href="../css/footer.css"/>
 
     <style>
         .styled-paragraph {
@@ -91,14 +91,14 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <script src="javascript/dynamics.js" defer></script>
+    <script src="../javascript/dynamics.js" defer></script>
 </head>
 <body>
 
 <main>
 <div id="login-container">
     <div id="login-logo-container">
-        <a href="#" style="margin: 0 auto"><img src="images/logo.png" alt="logo" class="logo"></a>
+        <a href="#" style="margin: 0 auto"><img src="../images/logo.png" alt="logo" class="logo"></a>
     </div>    
 
     <div id="login">
@@ -107,7 +107,7 @@
                 <a href="login.php" style="margin-left: auto; margin-top: 8px; text-decoration: none; color: rgb(31, 128, 255);"><- login</a>
             </div>
         
-        <div class="styled-paragraph" style="display: flex;"><img src="images/i.png" style="height: 18px; width: 18px;">Here you can reset your forgotten password and/or</div>
+        <div class="styled-paragraph" style="display: flex;"><img src="../images/i.png" style="height: 18px; width: 18px;">Here you can reset your forgotten password and/or</div>
         <div class="styled-paragraph" style="margin-bottom: 8px">unlock your account. Enter your username/or email and click Next</div>
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" id="forgot-form">
@@ -133,7 +133,7 @@
 </main>
 <!-- Include footer  -->
 </div>
-<?php require "basic-footer.php"; ?>
+<?php require "../entities/basic-footer.php"; ?>
 <style>
 
     #basic-footer {

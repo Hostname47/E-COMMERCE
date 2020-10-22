@@ -2,7 +2,7 @@
 
 // Check both email/username and password
 function check_credentials($username_or_email, $pass) {
-    require "config/dbconnect.php";
+    require "../config/dbconnect.php";
     try {
         if(strpos($username_or_email, "@") !== false) {
             $stmt = $conn->prepare("SELECT * FROM user_info WHERE email = :email and password = :psword");
@@ -30,7 +30,7 @@ function check_credentials($username_or_email, $pass) {
 
 // Check only email/username existence
 function check_username_email($username_email) {
-    require "config/dbconnect.php";
+    require "../config/dbconnect.php";
     try {
         if(strpos($username_email, "@") !== false) {
             $stmt = $conn->prepare("SELECT * FROM user_info WHERE email = :email");

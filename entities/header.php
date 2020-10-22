@@ -26,7 +26,7 @@
             </form>
         </div>
         <div id="my-account">
-            <a href=""><img src="images/mine.png" alt="" id="account-picture"></a>
+            <a href=""><img src="http:localhost/E-COMMERCE/images/mine.png" alt="NOT FOUND" id="account-picture"></a>
             <a href="#" id="account-name">My-account</a>
         </div>
 

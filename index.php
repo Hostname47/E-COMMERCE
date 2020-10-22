@@ -3,13 +3,13 @@
     session_start();
 
     if(!isset($_SESSION["user_id"])) {
-        header("location: login.php");
+        header("location: login-entities/login.php");
     }
 
     if(isset($_POST["logout"])) {
         unset($_SESSION['user_id']);
-
-        header("location: login.php");
+        session_destroy();
+        header("location: login-entities/login.php");
     }
 
 
@@ -24,16 +24,17 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/header.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
-    <script src="javascript/dynamics.js" defer></script>
     <script src="javascript/index.js" defer></script>
 </head>
 <body>
-    <?php include "header.php"; ?>
-
+    <?php include "entities/header.php"; ?>
     <main>
-        <!--<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+
+
+
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
             <input type="submit" name="logout" id="logout" value="logout">
-        </form>-->
+        </form>
     </main>
     
 </body>

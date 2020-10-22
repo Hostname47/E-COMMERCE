@@ -4,7 +4,7 @@ session_start();
 
 // First check whether the user is already connected witout logging out if so redirect him directly to dashboard
 if(isset($_SESSION["user_id"])) {
-    header("location: index.php");
+    header("location: ../index.php");
 }
 // Else verify cookies, if user click remember me before and cookies are valid and he press login then redirect him to dashboard
 else {
@@ -12,7 +12,7 @@ else {
         $count = check_credentials($_COOKIE["username_or_email"], $_COOKIE["user_password"])->rowCount();
         echo $count;
         if($count > 0) {
-            header("location: index.php");
+            header("location: ../index.php");
         }
     }
 }
@@ -69,7 +69,7 @@ if(isset($_POST["log"])) {
     }
 
     if($error["usernameOrEmailErr"] === "") {
-        require "config/dbconnect.php";
+        require "../config/dbconnect.php";
 
         try {
             $stmt = check_credentials($submitted_usernameoremail, $submitted_password);
@@ -90,7 +90,7 @@ if(isset($_POST["log"])) {
                     setcookie("user_password", "", time() - 3600);  /* expire in 30 days */
                 }
 
-                header("location: index.php");
+                header("location: ../index.php");
             } else {
                 $error["usernameOrEmailErr"] = "Invalid credentials";
             }
@@ -103,7 +103,7 @@ if(isset($_POST["log"])) {
 }
 
 function check_credentials($username_or_email, $pass) {
-    require "config/dbconnect.php";
+    require "../config/dbconnect.php";
     try {
         if(strpos($username_or_email, "@") !== false) {
             $stmt = $conn->prepare("SELECT * FROM user_info WHERE email = :email and password = :password");

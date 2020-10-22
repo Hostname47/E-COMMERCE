@@ -24,7 +24,7 @@
         if($error === "") {
             if($submitted_password == $submitted_repass) {
                 // Chnage passowrd
-                require "config/dbConnect.php";
+                require "../config/dbConnect.php";
 
                 try {
                     $stmt = $conn->prepare("UPDATE user_info SET password = :pass WHERE user_id = :id");
@@ -51,18 +51,17 @@
     <title>EASY-ECOM Registration</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Karla&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/login.css"/>
-    <link rel="stylesheet" href="css/footer.css"/>
+    <link rel="stylesheet" href="../css/login.css"/>
+    <link rel="stylesheet" href="../css/footer.css"/>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <script src="javascript/forms.js" defer></script>
 </head>
 <body>
 <main>
     <div id="login-container">
         <div id="login-logo-container">
-            <a href="#" style="margin: 0 auto"><img src="images/logo.png" alt="logo" class="logo"></a>
+            <a href="#" style="margin: 0 auto"><img src="../images/logo.png" alt="logo" class="logo"></a>
         </div>    
 
         <div id="login">
@@ -104,7 +103,7 @@
     </div>
 </main>
 <!-- Include footer  -->
-<?php require "basic-footer.php"; ?>
+<?php require "../entities/basic-footer.php"; ?>
 <style>
     #basic-footer {
         position: absolute;
