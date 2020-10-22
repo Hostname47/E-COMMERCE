@@ -21,16 +21,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-control" content="no-cache">
-    <title>Document</title>
+    <title>Dashboard</title>
+    
+    <link rel="icon" href="images/favicon.ico">
     <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/featured-product.css">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
     <script src="javascript/index.js" defer></script>
 </head>
 <body>
     <?php include "entities/header.php"; ?>
     <main>
-
-
+        <?php include "entities/featured-product.php"; ?>
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
             <input type="submit" name="logout" id="logout" value="logout">
