@@ -45,3 +45,7 @@ function closeMobileMenu() {
     $('.mobile-menu-top').css(`background-image`, `url(http://localhost/E-COMMERCE/images/menu.png)`);
 }
 
+$('#go-to-ftr').click(function(){
+    $('html, body').animate({scrollTop:540}, 'slow');
+});
+

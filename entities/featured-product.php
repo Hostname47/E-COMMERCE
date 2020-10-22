@@ -13,6 +13,8 @@
         <img src="images/featured-product-assets/ice-watch.jpg" alt="featured product image not found" class="featured-product-background-image">
     </div>
     <div style="display: flex;">
-        <a href="#" class="arrow" style="margin: 0 auto">T</a>
+        <div class="arrow-container">
+            <a href="#" id="go-to-ftr">▾</a>
+        </div>
     </div>
 </div>

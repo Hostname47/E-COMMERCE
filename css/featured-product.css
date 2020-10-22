@@ -1,110 +1,135 @@
+.fatured-product-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 40%;
+    padding: 55px 0 55px 0px;
+}
+
+.fatured-product-global-container {
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fatured-product-container p {
+    color: rgb(245, 245, 245);
+}
+
+.featured-first-title-sentence {
+    font-size: 14px;
+    font-weight: 600;
+    padding: 0;
+    margin: 4px;
+}
+
+.featured-title {
+    font-size: 35px;
+    font-weight: bold;
+    margin: 4px;
+}
+
+.featured-desc {
+    opacity: 0.85;
+    margin-top: 4px;
+}
+
+.featured-price {
+    font-size: 25px;
+    font-weight: bold;
+    margin: 4px;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.featured-product-background-image {
+    height: 400px;
+    width: 30%;
+}
+
+.featured-buy-now {
+    font-size: 14px;
+    font-weight: bold;
+
+    color: white;
+    text-decoration: none;
+    padding: 10px 0px 10px 0px;
+    border: 2px solid white;
+    border-radius: 5px;
+    margin-right: 8px;
+
+    text-align: center;
+    width: 120px;
+
+    padding-left: 22px;
+
+    background-image: url(../images/whitecart.png);
+    background-position: 18px center;
+    background-size: 34px 34px;
+    background-repeat: no-repeat;
+
+    transition: all 0.4s ease;
+}
+
+.featured-buy-now:hover {
+    color: black;
+    background-color: white;
+    background-image: url(../images/fast-cart.png);
+}
+
+.featured-more-info {
+    font-size: 14px;
+    font-weight: bold;
+
+    color: black;
+    background-color: rgb(248, 248, 248);
+    text-decoration: none;
+    padding: 10px;
+
+    border: 2px solid white;
+    border-radius: 5px;
+
+    text-align: center;
+    width: 120px;
+
+    transition: all 0.4s ease;
+}
+
+.featured-more-info:hover {
+    background-color: rgb(199, 199, 199);
+    border-color: rgb(199, 199, 199);
+}
+
+.arrow-container {
+    width: 45px; 
+    height: 45px; 
+    background-color: white; 
+    border: 3px solid black; 
+    border-radius: 50%; 
+    margin: 0 auto;
+    margin-top: -30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: all 0.4s ease;
+}
+
+.arrow-container:hover {
+    background-color: rgb(212, 212, 212);
+}
+
+.arrow-container a {
+    text-decoration: none;
+    color: black;
+    font-size: 24px;
+    width: 100%;
+    text-align: center;
+
+}
+
 
 @media screen and (min-width: 800px) {
-    .fatured-product-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 40%;
-        padding: 55px 0 55px 0px;
-    }
 
-    .fatured-product-global-container {
-        background-color: black;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .fatured-product-container p {
-        color: rgb(245, 245, 245);
-    }
-
-    .featured-first-title-sentence {
-        font-size: 14px;
-        font-weight: 600;
-        padding: 0;
-        margin: 4px;
-    }
-
-    .featured-title {
-        font-size: 35px;
-        font-weight: bold;
-        margin: 4px;
-    }
-
-    .featured-desc {
-        opacity: 0.85;
-        margin-top: 4px;
-    }
-
-    .featured-price {
-        font-size: 25px;
-        font-weight: bold;
-        margin: 4px;
-    }
-
-    .featured-product-background-image {
-        height: 400px;
-        width: 30%;
-    }
-
-    .featured-buy-now {
-        font-size: 14px;
-        font-weight: bold;
-
-        color: white;
-        text-decoration: none;
-        padding: 10px 0px 10px 0px;
-        border: 2px solid white;
-        border-radius: 5px;
-        margin-right: 8px;
-
-        text-align: center;
-        width: 120px;
-
-        padding-left: 22px;
-
-        background-image: url(../images/whitecart.png);
-        background-position: 18px center;
-        background-size: 34px 34px;
-        background-repeat: no-repeat;
-
-        transition: all 0.4s ease;
-    }
-
-    .featured-buy-now:hover {
-        color: black;
-        background-color: white;
-        background-image: url(../images/fast-cart.png);
-    }
-
-    .featured-more-info {
-        font-size: 14px;
-        font-weight: bold;
-
-        color: black;
-        background-color: rgb(248, 248, 248);
-        text-decoration: none;
-        padding: 10px;
-
-        border: 2px solid white;
-        border-radius: 5px;
-
-        text-align: center;
-        width: 120px;
-
-        transition: all 0.4s ease;
-    }
-
-    .featured-more-info:hover {
-        background-color: rgb(199, 199, 199);
-        border-color: rgb(199, 199, 199);
-    }
-
-    .arrow {
-        width: 50px;
-        height: 50px;
-        text-decoration: none;
-        background-color: gray;
-    }
 }
