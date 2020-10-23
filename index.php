@@ -118,5 +118,6 @@
             <input type="submit" name="logout" id="logout" value="logout">
         </form>-->
     <?php include "entities/footer.php"; ?>
+
 </body>
 </html>

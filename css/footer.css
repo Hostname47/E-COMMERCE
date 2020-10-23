@@ -1,6 +1,82 @@
 footer {
-    background-color: rgb(179, 179, 179);
-    padding: 20px;
+    background-color: rgb(134, 134, 134);
+    
+}
+
+.footer-container {
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+    flex-wrap: wrap;
+}
+
+.footer-news-item, .footer-products-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.footer-news-item a, .footer-product-name {
+    text-decoration: none;
+    color: black;
+}
+
+.footer-products-item img {
+    background-color: rgb(233, 233, 233);
+}
+
+#footer-new-letter-email {
+    padding: 10px;
+    width: 200px;
+    margin-bottom: 10px;
+    border: 1px solid rgb(44, 44, 44);
+}
+
+#footer-new-letter-sub {
+    padding: 10px 20px;
+    color: black;
+    background-color: rgb(180, 180, 180);
+    border: 2px solid black;
+    cursor: pointer;
+    transition: all 0.4s ease;
+}
+
+#footer-new-letter-sub:hover {
+    background-color: black;
+    color: white;
+}
+
+.footer-news-item a:hover, .footer-product-name:hover {
+    text-decoration: underline;
+}
+
+.footer-news-item img, .footer-products-item img {
+    height: 45px;
+    width: 45px;
+    margin-right: 12px;
+}
+
+.footer-section {
+    width: 300px;
+    margin-right: 24px;
+}
+
+.line-under-title {
+    height: 2px;
+    width: 50px;
+    background-color: rgb(77, 77, 77);
+    margin-bottom: 18px;
+}
+
+.footer-section-title {
+    font-size: 16px;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.who-are-we {
+    display: flex;
+    flex-direction: column;
 }
 
 #footer-links-container {
@@ -35,10 +111,6 @@ footer {
     background: linear-gradient(90deg, rgba(248,248,248,1) 0%, rgb(236, 236, 236) 50%, rgba(248,248,248,1) 100%);
 }
 
-#basic-footer-links-container {
-    
-}
-
 #basic-footer-links-container a {
     margin-left: 16px;
     text-decoration: none;
@@ -47,4 +119,14 @@ footer {
 
 #basic-footer-links-container a:hover {
     color: rgb(30, 106, 206);
+}
+
+.footer-product-price {
+    margin: 0px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.footer-product-name {
+    font-size: 13px;
 }

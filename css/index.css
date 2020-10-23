@@ -144,12 +144,11 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
-    color: white;
+    background-color: white;
+    color: black;
     margin-top: 12px;
     
     height: 380px;
-    background-image: url("../images/stars.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -181,8 +180,8 @@
 
 #user_news_subscribe_email {
     padding: 12px;
-    background-color: rgb(201, 201, 201);
-    border: 2px solid rgb(80, 80, 80);
+    background-color: white;
+    border: 1px solid rgb(80, 80, 80);
     border-right: none;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
@@ -190,13 +189,22 @@
 }
 
 #user-subscribe-button {
-    height: 44px;
+    height: 42px;
     color: white;
-    border: 2px solid rgb(36, 36, 36);
-    background-color: rgb(36, 36, 36);
+    border: 1px solid rgb(77, 77, 77);
+    background-color: rgb(77, 77, 77);
     cursor: pointer;
     border-top-right-radius: 4px;
     border-bottom-right-radius: 4px;
+    padding-left: 18px;
+    padding-right: 18px;
+
+    transition: all 0.4s ease;
+}
+
+#user-subscribe-button:hover {
+    background-color: rgb(36, 36, 36);
+    border: 1px solid rgb(36, 36, 36);
 }
 
 .news_thank {
