@@ -1,4 +1,5 @@
 <?php
+    require "config/DBConnection.php";
 
     session_start();
 
@@ -27,6 +28,7 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/featured-product.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/footer.css">
 
     <style>
         #go-to-ftr {
@@ -36,6 +38,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
     <script src="javascript/index.js" defer></script>
+    <script src="javascript/header.js" defer></script>
 </head>
 <body>
     <?php include "entities/header.php"; ?>
@@ -68,7 +71,7 @@
                 <a href="#" class="b-s-product-previous"></a>
                 <div class="best-sellers-container">
                     <div class="best-seller-product">
-                        <img src="images/iphone.png" alt="">
+                        <a href="#" style="margin: 0 auto"><img src="images/iphone.png" alt=""></a>
                         <p class="b-s-product-category">Category: Phones</p>
                         <p class="b-s-product-name">IPhone X</p>
                         <p class="b-s-product-price"><span class="b-s-product-discount">$800</span>$600.00</p>
@@ -97,18 +100,23 @@
                     </div>
                 </div>
                 <a href="#" class="b-s-product-next"></a>
-            </div>
-            
+            </div>    
         </div>
 
-        <div style="height: 500px">
-
+        <div class="news-letter-container">
+            <img src="images/newsletter.png" alt="" id="news-image">
+            <p class="news-letter-title">SUBSCRIBE TO OUR NEWSLETTER</p>
+            <p class="news-letter-desc">Join our subscribers list to get the latest news, updates and special offers directly in your box.</p>
+            <form action="#" method="POST" class="newsletter-container">
+                <input type="text" name="user-news-subscribe-email" id="user_news_subscribe_email" placeholder="Enter your email">
+                <input type="submit" name="user-subscribe-button" value="Subscribe" id="user-subscribe-button">
+            </form>
+            <p class="news_thank">Thnank you ! you have been subscribed.</p>
         </div>
 
         <!--<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
             <input type="submit" name="logout" id="logout" value="logout">
         </form>-->
-    </main>
-    
+    <?php include "entities/footer.php"; ?>
 </body>
 </html>

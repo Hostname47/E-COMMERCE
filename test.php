@@ -8,7 +8,10 @@
 <body>
     <?php
 
-        
+        $nginxVersion = shell_exec('nginx -v 2>&1');
+        $mysqlVersion = shell_exec('mysql --version');
+
+        echo $_SERVER['SERVER_SIGNATURE'];
 
     ?>
 </body>

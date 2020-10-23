@@ -1,3 +1,7 @@
+footer {
+    background-color: rgb(179, 179, 179);
+    padding: 20px;
+}
 
 #footer-links-container {
     list-style-type: none;

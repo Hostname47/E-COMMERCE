@@ -189,6 +189,7 @@ body {
     border: none;
     height: 34px;
     padding-left: 8px;
+    padding-right: 8px;
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
 
@@ -199,8 +200,6 @@ body {
     text-overflow: '';
 
     border: 1px solid gray;
-
-    width: 50px;
 }
 
 .search-field {

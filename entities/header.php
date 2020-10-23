@@ -16,10 +16,7 @@
             <form action="" class="product-search-form">
                 <select name="container-dropdownlist" class="categories-dropdownlist">
                     <!-- normally w got the categories from database but for symplicity we need to fill some options -->
-                    <option value="All" selected>All</option>
-                    <option value="arts-and-crafts">Arts & Crafts</option>
-                    <option value="computers">Computers</option>
-                    <option value="electronics">Electronics</option>
+                    <?php include "entities/get-categories.php" ?>
                 </select>
                 <input type="text" name="search-field" class="search-field" placeholder="Search">
                 <input type="submit" value="" name="search" class="search-button">
