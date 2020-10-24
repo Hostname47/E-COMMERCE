@@ -28,23 +28,21 @@
         </div>
 
         <div id="search-and-menu-container">
-        <a href="#" class="mobile-search-top"></a>
+            <a href="#" class="mobile-search-top"></a>
             <a href="#" class="mobile-menu-top"></a>
         </div>
 
         <nav id="top-nav">
             <ul>
-                <a href="#"><li>Home</li></a>
-                <a href="#"><li>Products</li></a>
+                <a href="index.php"><li>Home</li></a>
+                <a href="#"><li>Shop</li></a>
                 <a href="#"><li>About</li></a>
-                <a href="#"><li>Account</li></a>
                 <a href="#" class="menu-cart-button"><li>Cart</li></a>
             </ul>
         </nav>
     </div>
     <nav id="top-mobile-nav">
         <ul>
-            <a href="#" class="menu-cart-button"><li>Cart</li></a>    
             <a href="#"><li>Home</li></a>
             <a href="#"><li>Products</li></a>
             <a href="#"><li>About</li></a>
@@ -57,10 +55,7 @@
         <form action="" class="product-search-form">
             <select name="container-dropdownlist" class="categories-dropdownlist">
                 <!-- normally w got the categories from database but for symplicity we need to fill some options -->
-                <option value="All">All</option>
-                <option value="Arts & Crafts">Arts & Crafts</option>
-                <option value="computers">Computers</option>
-                <option value="Electronics">Electronics</option>
+                <?php include "entities/get-categories.php" ?>
             </select>
             <input type="text" name="search-field" class="search-field" placeholder="Search">
             <input type="submit" value="" name="search" class="search-button">

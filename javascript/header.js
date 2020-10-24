@@ -1,6 +1,20 @@
 $(".categories-dropdownlist").change(function() {
     let val = this.options[this.selectedIndex].text;
     $(".search-field").attr("placeholder", "Search on " + val);
+
+    //.categories-dropdownlist
+    canvas = document.createElement("canvas"); 
+    context = canvas.getContext("2d"); 
+    context.font = "Karla"; 
+    width = context.measureText(val).width + 58;
+    formattedWidth = Math.ceil(width); 
+    
+    if(formattedWidth > 200.0)
+        $(".categories-dropdownlist").css("width", "80px");
+
+    $(".categories-dropdownlist").css("width", formattedWidth + "px");
+    
+    console.log(formattedWidth);
 })
 
 $('.mobile-menu-top').click(function() {

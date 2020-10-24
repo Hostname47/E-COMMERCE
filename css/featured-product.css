@@ -2,14 +2,15 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 40%;
-    padding: 55px 0 55px 0px;
+    width: 600px;
+    padding: 55px 0 55px 0;
 }
 
 .fatured-product-global-container {
     background-color: black;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -44,8 +45,8 @@
 }
 
 .featured-product-background-image {
-    height: 400px;
-    width: 30%;
+    height: 300px;
+    width: 300px;
 }
 
 .featured-buy-now {
@@ -130,6 +131,12 @@
 }
 
 
-@media screen and (min-width: 800px) {
-
+@media screen and (max-width: 1040px) {
+    .fatured-product-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 600px;
+        padding: 55px 55px 55px 55px;
+    }
 }

@@ -1,5 +1,6 @@
 </main>
 <footer>
+    <div class="footer-strip-top"></div>
     <div class="footer-container">
         
         <!-- WHO WE ARE -->
@@ -7,6 +8,7 @@
             <h2 class="footer-section-title">HOW WE GET STARTED</h2>
             <div class="line-under-title"></div>
             <p style="margin: 0px; font-size: 14px">Don’t try to plan everything out to the very last detail. I’m a big believer in just getting it out there: create a minimal viable product or website, launch it, and get feedback. ~Neil Patel</p>
+            <p style="margin-top: 20px"><b>Questions? </b><a href="#" style="color: black">mouadstev1@gmail.com</a></p>
         </div>
 
         <!-- NEWS -->
@@ -86,8 +88,6 @@
         </div>
     </div>
     <div>
-        <p style="padding-bottom: 10px; margin:0; font-size: 14px; text-align: center">© 2019-<?php echo date("Y"); ?> Mouad Nassri (ECOM-EASY) All Rights Reserved</p>
+        <p style="padding-bottom: 16px; margin:0; font-size: 14px; text-align: center">© 2019-<?php echo date("Y"); ?> Mouad Nassri (ECOM-EASY) All Rights Reserved</p>
     </div>
 </footer>
-</body>
-</html>
