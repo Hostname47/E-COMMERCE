@@ -141,9 +141,9 @@
             <p class="news_thank">Thnank you ! you have been subscribed.</p>
         </div>
 
-        <!--<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
             <input type="submit" name="logout" id="logout" value="logout">
-        </form>-->
+        </form>
     <?php include "entities/footer.php"; ?>
 
 </body>

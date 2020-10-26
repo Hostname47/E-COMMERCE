@@ -1,23 +1,22 @@
 <?php
 
-session_start();
+    session_start();
 
-// First check whether the user is already connected witout logging out if so redirect him directly to dashboard
-if(isset($_SESSION["user_id"])) {
-    header("location: ../index.php");
-}
-// Else verify cookies, if user click remember me before and cookies are valid and he press login then redirect him to dashboard
-else {
-    if(/* verify login button pressed just fill in inputs */ isset($_POST["log"]) and isset($_COOKIE["username_or_email"]) and isset($_COOKIE["user_password"])) {
-        $count = check_credentials($_COOKIE["username_or_email"], $_COOKIE["user_password"])->rowCount();
-        echo $count;
-        if($count > 0) {
-            header("location: ../index.php");
-        }
+    // First check whether the user is already connected witout logging out if so redirect him directly to dashboard
+    if(isset($_SESSION["user_id"])) {
+        header("location: ../index.php");
     }
-}
+    
 
 $submitted_usernameoremail = $submitted_password = "";
+
+if(/* verify login button pressed just fill in inputs */ isset($_COOKIE["username_or_email"]) and isset($_COOKIE["user_password"])) {
+    $count = check_credentials($_COOKIE["username_or_email"], $_COOKIE["user_password"])->rowCount();
+    if($count > 0) {
+        $submitted_usernameoremail = $_COOKIE["username_or_email"];
+        $submitted_password = $_COOKIE["user_password"];
+    }
+}
 
 $error = ["generalErr"=>"", "usernameOrEmailErr"=>""];
 
@@ -63,6 +62,7 @@ if(isset($_POST["log"])) {
             $submitted_password = cleanInput($_POST["log-password"]);
 
             if(strlen($submitted_password) > 300) {
+                clearCookies();
                 $error["usernameOrEmailErr"] = "* Password is too long";
             }
         }
@@ -89,9 +89,14 @@ if(isset($_POST["log"])) {
                     setcookie("username_or_email", "", time() - 3600);  /* expire in 30 days */
                     setcookie("user_password", "", time() - 3600);  /* expire in 30 days */
                 }
-
-                header("location: ../index.php");
+                
+                if($user_data[0]['user_type'] == 1)
+                    header("location: ../Admin/dashboard.php");
+                else {
+                    header("location: ../index.php");
+                }
             } else {
+                clearCookies();
                 $error["usernameOrEmailErr"] = "Invalid credentials";
             }
         } catch (PDOException $ex) {
@@ -146,6 +151,11 @@ function cleanInput($data) {
     $data = htmlspecialchars($data);
 
     return $data;
+}
+
+function clearCookies() {
+    setcookie("username_or_email", "", time() - 3600);  /* expire in 30 days */
+    setcookie("user_password", "", time() - 3600);  /* expire in 30 days */
 }
 
 ?>

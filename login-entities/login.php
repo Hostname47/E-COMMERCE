@@ -35,12 +35,12 @@
                 <div class="invalid-credential"><?php echo $error["usernameOrEmailErr"]; ?></div>
             </div>
             
-            <input type="text" name="log-emailorusername" id="email-or-phone" class="styled-form-input" value="<?php if(isset($_COOKIE["username_or_email"])) { echo $_COOKIE["username_or_email"];} else if(isset($_POST["log"])) echo $submitted_usernameoremail; ?>">
+            <input type="text" name="log-emailorusername" id="email-or-phone" class="styled-form-input" value="<?php if($error["usernameOrEmailErr"] == "") { echo $_COOKIE["username_or_email"];} else echo $submitted_usernameoremail ?>">
             <div id="pass-label-with-forgot">
                 <label for="user-password" style="font-weight: bold; margin-left: 3px;">Password</label>
                 <a href="login-forgot-password.php" class="its-a-link">Forgot Password</a>
             </div>
-            <input type="password" name="log-password" id="user-password" class="styled-form-input" value="<?php if(isset($_COOKIE["user_password"])) { echo $_COOKIE["user_password"];} ?>">
+            <input type="password" name="log-password" id="user-password" class="styled-form-input" value="<?php if($error["usernameOrEmailErr"] == "") { echo $_COOKIE["user_password"];} ?>">
             <input type="submit" name="log" class="styled-button" value="Login">
             <div id="remember-me-container">
                 <input type="checkbox" name="remember-me" id="remember-me">
