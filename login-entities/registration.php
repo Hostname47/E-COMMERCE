@@ -38,7 +38,7 @@
                 </div>
 
                 <div style="display: flex">
-                <div  style="margin-bottom: 6px; margin-left: 2px; color: rgb(19, 184, 55);"><?php echo $user_created ?></div>
+                    <div  style="margin-bottom: 6px; margin-left: 2px; color: rgb(19, 184, 55);"><?php echo $user_created ?></div>
                 </div>
 
                 <!-- USERNAME -->

@@ -1,0 +1,14 @@
+main {
+    
+}
+
+.main-layout-title {
+    margin: 12px 0;
+    font-size: 24px;
+}
+
+.admin-main-layout {
+    display: flex;
+    padding-left: 45px;
+    flex-grow: 8;
+}

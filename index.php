@@ -1,18 +1,11 @@
 <?php
-    require "config/DBConnection.php";
 
     session_start();
 
-    if(!isset($_SESSION["user_id"])) {
-        header("location: login-entities/login.php");
-    }
-
     if(isset($_POST["logout"])) {
-        unset($_SESSION['user_id']);
-        session_destroy();
-        header("location: login-entities/login.php");
+        unset($_SESSION["user_id"]);
+        header("Location: login-entities/login.php");
     }
-
 
 ?>
 

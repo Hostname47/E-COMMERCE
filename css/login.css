@@ -82,7 +82,7 @@ input[type="text"], input[type="password"] {
     border-radius: 4px;
     color: white;
     cursor: pointer;
-    font-size: 15px;
+    font-size: 14px;
     transition: all 0.4s ease;
 }
 

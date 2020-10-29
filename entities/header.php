@@ -13,10 +13,10 @@
     <div id="top-menu-strip">
         <a href="#" id="top-logo"><img src="images/logo.png" class="logo"></a>
         <div class="search-container">
-            <form action="" class="product-search-form">
+            <form action="#" class="product-search-form">
                 <select name="container-dropdownlist" class="categories-dropdownlist">
                     <!-- normally w got the categories from database but for symplicity we need to fill some options -->
-                    <?php include "entities/get-categories.php" ?>
+                    <?php //include "entities/get-categories.php" ?>
                 </select>
                 <input type="text" name="search-field" class="search-field" placeholder="Search">
                 <input type="submit" value="" name="search" class="search-button">
@@ -55,7 +55,7 @@
         <form action="" class="product-search-form">
             <select name="container-dropdownlist" class="categories-dropdownlist">
                 <!-- normally w got the categories from database but for symplicity we need to fill some options -->
-                <?php include "entities/get-categories.php" ?>
+                    <?php //include "entities/get-categories.php" ?>
             </select>
             <input type="text" name="search-field" class="search-field" placeholder="Search">
             <input type="submit" value="" name="search" class="search-button">

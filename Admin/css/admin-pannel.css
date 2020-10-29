@@ -1,0 +1,103 @@
+
+.admin-global-layout {
+    display: flex;
+}
+
+.left-side-pannel-options-container {
+    border-right: 1px solid gray;
+    width: 280px;
+    background-color: rgb(29, 29, 29);
+    height: 100%;
+}
+
+.pannel-option {
+    display: flex;
+    flex-direction: column;
+}
+
+.panel-button-related-items-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-panel-global-button {
+    padding: 18px 0px 18px 22px;
+    background-color: rgb(207, 207, 207);
+    border-bottom: 1px solid rgb(187, 187, 187);
+    box-sizing: border-box;
+    width: 100%;
+    padding-left: 45px;
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: 18px center;
+}
+
+.admin-panel-button {
+    padding: 8px 0px 8px 0;
+    background-color: rgb(207, 207, 207);
+    box-sizing: border-box;
+    width: 100%;
+    padding-left: 58px;
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    border-bottom: 1px solid rgb(155, 155, 155);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: 28px center;
+}
+
+.global-button-without-suboptions {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-panel-global-button:hover, .admin-panel-button:hover {
+    background-color: rgb(223, 223, 223);
+}
+
+#products-management {
+    background-image: url(../assets/icons/product-management.png);
+}
+#category-management {
+    background-image: url(../assets/icons/categories.png);
+}
+#shippers-management {
+    background-image: url(../assets/icons/shippers.png);
+}
+
+.add-item {
+    background-image: url(../assets/icons/add-product.png);
+}
+.edit-item {
+    background-image: url(../assets/icons/edit-product.png);
+}
+.delete-item {
+    background-image: url(../assets/icons/delete.png);
+}
+.manage {
+    background-image: url(../assets/icons/manage.webp);   
+}
+.select-item {
+    background-image: url(../assets/icons/retrieve.png);
+}
+
+.admin-main-layout {
+    padding: 10px;
+}
+#dashboard-button {
+    background-image: url(../assets/icons/dashboard.png);
+}
+
+.panel-button-related-items-container {
+    display: none;
+}
+
+.selected-option {
+    background-color: rgb(240, 240, 240);
+}

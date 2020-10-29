@@ -1,0 +1,100 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Karla', sans-serif;
+    background-color: rgb(248, 248, 248);
+}
+
+body, html {
+    height: 100%;
+}
+
+.top-strip {
+    height: 45px;
+    background-color: rgb(223, 223, 223);
+
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.top-logo {
+    height: 35px;
+    width: 35px;
+    margin-left: 10px;
+    padding-top: 4px;
+}
+
+.big-title {
+    margin: 0;
+    margin: 0 12px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.logo-and-title {
+    display: flex;
+    align-items: center;
+    height: 45px;
+}
+
+.logo-and-title:hover {
+    background-color: rgb(185, 185, 185);
+}
+
+.admin-name-top {
+    font-size: 15px;
+    padding-left: 12px;
+    border-left: 1px solid rgb(37, 37, 37);
+}
+
+.top-nav-menu-container {
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-button {
+    margin: 0;
+    margin-top: -1px;
+    padding: 14px;
+    padding-left: 35px;
+    text-decoration: none;
+    border: none;
+    color: black;
+    background-color: rgb(223, 223, 223);
+    font-weight: bold;
+    background-repeat: no-repeat;
+    background-position: 12px 15px;
+    background-size: 15px 15px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: 'Karla', sans-serif;
+}
+
+.move-it-to-right {
+    margin-left: auto;
+}
+
+#home {
+    background-image: url("../assets/icons/home.png");
+}
+
+#logout {
+    background-image: url("../assets/icons/logout.png");
+    border-left: 4px solid gray;
+}
+
+#view-website {
+    background-image: url("../assets/icons/view-site.png");
+    border-left: 1px solid rgb(163, 163, 163);
+}
+
+#help {
+    background-image: url("../assets/icons/help.png");
+    border-left: 1px solid rgb(163, 163, 163);
+}
+
+.menu-button:hover, #logout:hover {
+    background-color: rgb(206, 206, 206);
+}

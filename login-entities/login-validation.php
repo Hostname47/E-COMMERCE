@@ -80,6 +80,8 @@ if(isset($_POST["log"])) {
 
                 // Preserve user_id in a session variable for remember me feature use later
                 $_SESSION["user_id"] = $user_data[0]['user_id'];
+                $_SESSION["username"] = $user_data[0]['user_name'];
+                
                 if(isset($_POST["remember-me"])) {
                     
                     // Here you have to encrypt password, don't try to send it directly to cookie
@@ -90,18 +92,21 @@ if(isset($_POST["log"])) {
                     setcookie("user_password", "", time() - 3600);  /* expire in 30 days */
                 }
                 
-                if($user_data[0]['user_type'] == 1)
+                if($user_data[0]['user_type'] == 1) {
                     header("location: ../Admin/dashboard.php");
+                }
                 else {
                     header("location: ../index.php");
                 }
             } else {
-                clearCookies();
+                $submitted_password = "";
                 $error["usernameOrEmailErr"] = "Invalid credentials";
             }
         } catch (PDOException $ex) {
             echo $ex->getMessage();
         }
+    } else {
+        $submitted_password = "";
     }
 
     
