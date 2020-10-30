@@ -42,6 +42,29 @@
                 return false;
         }
 
+        function getCategoriesAsComponents() {
+            $query = $this->link->prepare("SELECT * FROM Category");
+            $query->execute();
+            $result = $query->fetchAll();
+
+            foreach($result as $k => $v) {
+                if($v["active"] == 1) {
+                    $status = "active";
+                } else {
+                    $status = "InActive";
+                }
+
+                echo '<div class="category-item">';
+                echo "<img class='cat-picture' src='../../assets/images/Categories/" . $v["picture"] . "' alt='item image'>";
+                echo "<div style='margin-left: 12px'>";
+                echo "<h2 class='cat-title'>Category name: " . $v['categoryName'] . "</h2>";
+                echo "<p class='cat-desc'>Description: " . $v['description'] . "</p>";
+                echo "<p class='cat-status'>Status: " . $status . "</p>";
+                echo "</div>";
+                echo "</div>";
+            }
+        }
+
         function cleanData($data) {
             $data = htmlspecialchars($data);
             $data = trim($data);

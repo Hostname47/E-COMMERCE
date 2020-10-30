@@ -166,9 +166,14 @@
                     </form>
                 </div>
 
-                <div id="cat-img-container">
-                    <p>Category image demonstration</p>
-                    <img id="cat-picture-demo" src='<?php echo $image_src; ?>'>
+                <div id="available-categories-container">
+                    <p>Available categories : </p>
+                    <div class="cats-container">
+                        <?php
+                            $category_manager = new CategoryManager();
+                            $category_manager->getCategoriesAsComponents();
+                        ?>
+                    </div>
                 </div>
                 
             </div>

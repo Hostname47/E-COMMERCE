@@ -12,8 +12,11 @@
     width: 200px;
 }
 
-#cat-img-container {
-    margin-left: 45px;
+#available-categories-container {
+    margin-left: 35px;
+    padding: 12px;
+    height: 400px;
+    overflow-y: scroll;
 }
 
 #add-cat-container {
@@ -23,4 +26,22 @@
 
 .styled-form-input {
     width: 350px;
+}
+
+.cat-picture {
+    width: 80px;
+    height: 80px;
+}
+
+.category-item {
+    display: flex;
+    align-items: center;
+}
+
+.cat-title, .cat-desc, .cat-status {
+    margin: 6px;
+}
+
+.cat-title, .cat-desc, .cat-status {
+    margin-left: 12px;
 }
