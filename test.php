@@ -6,13 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <?php
-
-        $nginxVersion = shell_exec('nginx -v 2>&1');
-        $mysqlVersion = shell_exec('mysql --version');
-
-        echo $_SERVER['SERVER_SIGNATURE'];
-
-    ?>
+    <?php echo $_SERVER["DOCUMENT_ROOT"] . "/E-COMMERCE/Admin/entities/shipper-management/add-shipper.php" ?>
 </body>
 </html>

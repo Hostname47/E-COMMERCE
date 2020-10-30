@@ -1,31 +1,6 @@
 <?php
     include "shipper.php";
-    $submitted_company = $submitted_phone = $user_created = $err = "";
-    $error = ["companyErr"=>"", "phoneErr"=>""];
     
-    if(isset($_POST["add-shipper"])) {
-        $submitted_company = $_POST["company-name"];
-        $submitted_phone = $_POST["phone-number"];
-
-        
-        if(empty($submitted_company)) {
-            $error["companyErr"] = "a company name is required.";
-        }else if(empty($submitted_phone)) {
-            $error["phoneErr"] = "phone number is required.";
-        }else {
-            $shipper_manager = new ShipperManager();
-
-            // Cleaning data
-            $submitted_company = $shipper_manager->cleanData($submitted_company);
-            $submitted_phone = $shipper_manager->cleanData($submitted_phone);
-
-            if($shipper_manager->insertShipper($submitted_company, $submitted_phone) == 1) {
-                $user_created = "Shipper created successfully.";
-            } else {
-                $err = "Credentials already exist in our database.";
-            }
-        }
-    }
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-control" content="no-cache">
-    <title>Add Shipper</title>
+    <title>Manage Shippers</title>
     <link rel="stylesheet" href="../../css/header.css">
     <link rel="stylesheet" href="../../css/admin-pannel.css">
     <link rel="stylesheet" href="../../css/main-layout.css">
@@ -54,9 +29,10 @@
 
             <div class="admin-main-layout">
                 <!-- container of title and form for add shipper -->
-                <div>
-                    <h2 class="main-layout-title">Add Shipper</h2>
-                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+                <div style="width: 500px">
+                    <h2 class="main-layout-title">Shippers management</h2>
+                    <p>Please this web page is currently under constructing. we need more time to make it available. Thanks</p>
+                    <!--<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                         <div style="display: flex">
                             <div  style="margin-bottom: 6px; margin-left: 2px; color: rgb(19, 184, 55);"><?php echo $user_created ?></div>
                         </div>
@@ -76,7 +52,7 @@
                         <input type="text" name="phone-number" id="phone-number" class="styled-form-input" value="<?php echo $submitted_phone; ?>">
 
                         <input type="submit" name="add-shipper" class="styled-button" value="Add shipper">
-                    </form>
+                    </form>-->
                 </div>
                 <div class="existing-shippers">
                     <p>All existing shippers :</p>
@@ -95,9 +71,9 @@
         </div>
     </main>
     <script>
-        $("#add-shipper").addClass("selected-option");
+        $("#manage-shipper").addClass("selected-option");
         $("#shippers-related-items").css("display", "flex");
-        $("#add-shipper").on("click", function() {
+        $("#manage-shipper").on("click", function() {
             return false;
         })
     </script>

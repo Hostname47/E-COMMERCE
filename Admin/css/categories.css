@@ -1,0 +1,26 @@
+#cat_picture {
+    display: block;
+    margin: 10px 0;
+}
+
+.active-inactive-container {
+    margin: 6px 0px 10px 5px;
+}
+
+#cat-picture-demo {
+    height: 200px;
+    width: 200px;
+}
+
+#cat-img-container {
+    margin-left: 45px;
+}
+
+#add-cat-container {
+    width: 400px;
+    border-right: 1px solid gray;
+}
+
+.styled-form-input {
+    width: 350px;
+}

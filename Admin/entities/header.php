@@ -25,8 +25,8 @@
 <header>
     <div class="top-strip">
         <div class="logo-and-title">
-            <a href="<?php echo $_SERVER['DOCUMENT_ROOT'] . "/E-COMMERCE/Admin/dashboard.php"; ?>"><img id="lg" src="assets/icons/logo.png" class="top-logo" alt="logo"></a>
-            <a style="text-decoration: none; color: black;" href="<?php echo $_SERVER['DOCUMENT_ROOT'] . "/E-COMMERCE/Admin/dashboard.php"; ?>"><p class="big-title">Admin Space</p></a>
+            <a href="https://localhost/E-COMMERCE/Admin/dashboard.php"; ?><img id="lg" src="https://localhost/E-COMMERCE/Admin/assets/icons/logo.png" class="top-logo" alt="logo"></a>
+            <a style="text-decoration: none; color: black;" href="https://localhost/E-COMMERCE/Admin/dashboard.php"><p class="big-title">Admin Space</p></a>
         </div>
         <div>
             <p class="admin-name-top">admin: <span style="font-weight: bold;"><?php if(isset($_SESSION["username"])) {echo $_SESSION["username"];} ?></span></p>
@@ -37,7 +37,7 @@
         <div class="move-it-to-right">
             <nav class="top-nav-menu-container">
                 <a href="../Admin/dashboard.php" class="menu-button" id="home">Home</a>
-                <a href="../index.php" class="menu-button" id="view-website" target="_blank">View site</a>
+                <a href="https://localhost/E-COMMERCE/index.php" class="menu-button" id="view-website" target="_blank">View site</a>
                 <a href="../Admin/dashboard.php" class="menu-button" id="help" target="_blank">Help</a>
                 <!-- Logout button -->
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
