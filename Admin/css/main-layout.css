@@ -9,6 +9,7 @@ main {
 
 .admin-main-layout {
     display: flex;
+    flex-wrap: wrap;
     padding-left: 45px;
     flex-grow: 8;
 }

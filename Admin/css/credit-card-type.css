@@ -1,3 +1,12 @@
 #available-c-c-types-container {
     margin-left: 30px;
 }
+
+#add-c-c-type-container {
+    margin-bottom: 15px;
+}
+
+#edit-c-c-type-container {
+    padding-top: 12px;
+    border-top: 1px solid rgb(185, 185, 185);
+}
