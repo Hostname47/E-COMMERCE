@@ -1,0 +1,19 @@
+table, th, td {
+    border-collapse: collapse;
+    border: 1px solid rgb(109, 109, 109);
+}
+
+th, td {
+    padding: 8px 16px;
+}
+
+
+
+th {
+    background-color: gray;
+    color: white;
+}
+
+.table-form-button {
+
+}

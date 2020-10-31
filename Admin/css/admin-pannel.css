@@ -93,6 +93,10 @@
     background-image: url(../assets/icons/dashboard.png);
 }
 
+#credit-card-management-button {
+    background-image: url(../assets/icons/credit-card-type-manag.png);
+}
+
 .panel-button-related-items-container {
     display: none;
 }

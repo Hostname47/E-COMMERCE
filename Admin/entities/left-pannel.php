@@ -25,4 +25,7 @@
             <a href="https://localhost/E-COMMERCE/Admin/entities/shipper-management/manage-shippers.php" class="admin-panel-button manage" id="manage-shipper">Manage Shippers</a>
         </nav>
     </div>
+    <div class="global-button-without-suboptions">
+        <a href="https://localhost/E-COMMERCE/Admin/entities/credit-card-management/manage-credit-card-type.php" class="admin-panel-global-button" id="credit-card-management-button">Credit card management</a>
+    </div>
 </div>
