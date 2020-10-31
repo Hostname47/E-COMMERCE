@@ -28,11 +28,47 @@
             }
         }
 
+        function deleteCategory($id) {
+            if($this->idExists($id)) {
+                $query = $this->link->prepare("DELETE FROM Category WHERE categoryID = (:c_id)");
+                $query->bindParam(":c_id", $id);
+                
+                $query->execute();
+
+                $counts = $query->rowCount();
+
+                if($counts > 0) {
+                    $path = "../../assets/images/Categories";
+                    $filename =  $path . "/" . $_POST['deletedPicture']; // build the full path here
+                    if (file_exists($filename)) {
+                        unlink($filename);
+                    }
+                }
+
+                return $counts;
+            } else
+                return -1;
+        }
+
         function checkCategoryExists($cat_name) {
             $cat_name = $this->cleanData($cat_name);
             
             $query = $this->link->prepare("Select * FROM Category where categoryName = :cat_name");
             $query->bindParam(":cat_name", $cat_name);
+            $query->execute();
+            $counts = $query->rowCount();
+
+            if($counts > 0) {
+                return true;
+            } else
+                return false;
+        }
+
+        function idExists($id) {
+            $id = $this->cleanData($id);
+            
+            $query = $this->link->prepare("Select * FROM Category where categoryID = :id");
+            $query->bindParam(":id", $id);
             $query->execute();
             $counts = $query->rowCount();
 
@@ -54,6 +90,7 @@
                     $status = "InActive";
                 }
 
+                // Go to manage-credit-card-type and see how I get over this problem of multiple echos bu using herdocs syntax
                 echo '<div class="category-item">';
                 echo "<img class='cat-picture' src='../../assets/images/Categories/" . $v["picture"] . "' alt='item image'>";
                 echo "<div style='margin-left: 12px'>";
@@ -62,6 +99,43 @@
                 echo "<p class='cat-status'>Status: " . $status . "</p>";
                 echo "</div>";
                 echo "</div>";
+            }
+        }
+
+        function getCategoriesAsTableRows() {
+            $query = $this->link->prepare("SELECT * FROM Category");
+            $query->execute();
+            $result = $query->fetchAll();
+
+            foreach($result as $k => $v) {
+                if($v["active"] == 1) {
+                    $status = "active";
+                } else {
+                    $status = "InActive";
+                }
+
+                echo <<<EOS
+                <tr>
+                    <td>{$v['categoryID']}</td>
+                    <td><img class='cat-picture' style="width: 40px; height: 40px; vertical-align: top;" src='../../assets/images/Categories/{$v['picture']}' alt='item image'></td>
+                    <td><p class='cat-title' class="center-it">{$v['categoryName']}</p></td>
+                    <td><p class='cat-desc' class="center-it">{$v['description']}</p></td>
+                    <td><p class='cat-status'>{$status}</p></td>
+                    <td>
+                        <form action="https://localhost/E-COMMERCE/Admin/entities/categoryManagement/manage-categories.php" method="POST">
+                            <input type="submit" name="edit_cat" value="Edit">
+                            <input type="hidden" name="editedId" value="{$v['categoryID']}">
+                        </form>
+                    </td>
+                    <td>
+                        <form action="https://localhost/E-COMMERCE/Admin/entities/category-management/manage-categories.php" method="POST">
+                            <input type="submit" name="delete_cat" value="Delete">
+                            <input type="hidden" name="deletedId" value="{$v['categoryID']}">
+                            <input type="hidden" name="deletedPicture" value="{$v['picture']}">
+                        </form>
+                    </td>
+                </tr>
+                EOS;
             }
         }
 

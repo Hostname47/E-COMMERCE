@@ -15,7 +15,7 @@
         <a href="" class="admin-panel-global-button" onclick="return false;" id="category-management">Categories ▾</a>
         <nav class="panel-button-related-items-container" id="category-related-items">
             <a href="https://localhost/E-COMMERCE/Admin/entities/category-management/add-category.php" class="admin-panel-button add-item" id="add-category">Add category</a>
-            <a href="#" class="admin-panel-button manage" id="manage-category">Manage categories</a>
+            <a href="https://localhost/E-COMMERCE/Admin/entities/category-management/manage-categories.php" class="admin-panel-button manage" id="manage-category">Manage categories</a>
         </nav>
     </div>
     <div class="pannel-option">
