@@ -32,3 +32,14 @@ $("#shippers-management").click(function() {
         $("#shippers-management").text("Shippers management ▾");
     }
 });
+
+$("#suppliers-management").click(function() {
+    let supplier_manag = $("#suppliers-related-items");
+    if(supplier_manag.css("display") == "none") {
+        supplier_manag.css("display", "flex");
+        $("#suppliers-management").text("Suppliers management ▸");
+    } else {
+        supplier_manag.css("display", "none");
+        $("#suppliers-management").text("Suppliers management ▾");
+    }
+});

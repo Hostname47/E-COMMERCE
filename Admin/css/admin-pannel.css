@@ -1,7 +1,6 @@
 
 .left-side-pannel-options-container {
     width: 280px;
-    background-color: rgb(29, 29, 29);
     height: 100%;
 }
 
@@ -13,12 +12,13 @@
 .panel-button-related-items-container {
     display: flex;
     flex-direction: column;
+    border-right: 2px solid rgb(99, 99, 99);
 }
 
 .admin-panel-global-button {
     padding: 18px 0px 18px 22px;
-    background-color: rgb(207, 207, 207);
-    border-bottom: 1px solid rgb(187, 187, 187);
+    background-color: rgb(235, 235, 235);
+    border-bottom: 1px solid rgb(212, 212, 212);
     box-sizing: border-box;
     width: 100%;
     padding-left: 45px;
@@ -91,6 +91,10 @@
 
 #credit-card-management-button {
     background-image: url(../assets/icons/credit-card-type-manag.png);
+}
+
+#suppliers-management {
+    background-image: url(../assets/icons/supplier-icon.png);
 }
 
 .panel-button-related-items-container {

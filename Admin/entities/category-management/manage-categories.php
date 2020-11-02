@@ -128,6 +128,10 @@
         */
         function setOld() {
             // Get image name from hidden input that hold the old category image's name
+            /* 
+                I wanted to set the value of input file directly from javascript but There's a reason behind it why it doesn't allow me to set it dynamically 
+                to find out the reason visit php hints folder -> access form input from another form.txt
+            */
             let oldImageName = $("#c_old_picture").val();
             let oldImageLabel = $("#old-image-label");
             oldImageLabel.text(oldImageLabel.text() + oldImageName);

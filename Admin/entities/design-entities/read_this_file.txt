@@ -1,0 +1,5 @@
+I created this folder to encapsulate all the entities that are commun to all web pages including inputs, 
+basically this idea came to me when i got a lot of inputs in supplier add page and get the code harder to read 
+for that reason i decided to create some separate entities so i can use them later without writing the code from scratch
+
+Hint: Notice that some entities require some css files to be included, otherwise they don't work

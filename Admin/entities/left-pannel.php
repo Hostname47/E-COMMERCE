@@ -28,4 +28,11 @@
     <div class="global-button-without-suboptions">
         <a href="https://localhost/E-COMMERCE/Admin/entities/credit-card-management/manage-credit-card-type.php" class="admin-panel-global-button" id="credit-card-management-button">Credit card management</a>
     </div>
+    <div class="pannel-option">
+        <a href="" class="admin-panel-global-button" onclick="return false;" id="suppliers-management">Suppliers Management ▾</a>
+        <nav class="panel-button-related-items-container" id="suppliers-related-items">
+            <a href="https://localhost/E-COMMERCE/Admin/entities/supplier-management/add-supplier.php" class="admin-panel-button add-item" id="add-supplier">Add Supplier</a>
+            <a href="https://localhost/E-COMMERCE/Admin/entities/supplier-management/manage-suppliers.php" class="admin-panel-button manage" id="manage-shipper">Manage Suppliers</a>
+        </nav>
+    </div>
 </div>
