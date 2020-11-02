@@ -36,7 +36,7 @@
         </div>
         <div class="move-it-to-right">
             <nav class="top-nav-menu-container">
-                <a href="../Admin/dashboard.php" class="menu-button" id="home">Home</a>
+                <a href="https://localhost/E-COMMERCE/Admin/dashboard.php" class="menu-button" id="home">Home</a>
                 <a href="https://localhost/E-COMMERCE/index.php" class="menu-button" id="view-website" target="_blank">View site</a>
                 <a href="../Admin/dashboard.php" class="menu-button" id="help" target="_blank">Help</a>
                 <!-- Logout button -->

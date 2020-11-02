@@ -11,6 +11,8 @@
     <title>Admin space</title>
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/admin-pannel.css">
+    <link rel="stylesheet" href="css/main-layout.css">
+
     <link rel="icon" href="assets/icons/favicon.ico">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -30,6 +32,9 @@
     </main>
     <script>
         $("#dashboard-button").addClass("selected-option");
+        $("#dashboard-button").on("click", function() {
+            return false;
+        })
     </script>
 </body>
 </html>

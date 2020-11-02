@@ -11,9 +11,7 @@
 
 .admin-main-layout {
     display: flex;
-    flex-wrap: wrap;
     padding-left: 25px;
-    width: 70%;
 }
 
 .left-side-pannel-options-container {

@@ -12,6 +12,11 @@
     width: 200px;
 }
 
+#select-old-image {
+    text-decoration: none;
+    color: rgb(25, 87, 219)
+}
+
 #available-categories-container {
     margin-left: 35px;
     padding: 12px;
@@ -35,7 +40,7 @@
 .cats-container {
     border-left: 1px solid gray;
     padding-left: 16px;
-    height: 400px; 
+    max-height: 400px; 
     overflow-y: scroll;
 }
 
@@ -54,4 +59,9 @@
 
 .cat-title, .cat-desc, .cat-status {
     margin-left: 12px;
+}
+
+.edit-button {
+    text-decoration: none;
+    color: rgb(25, 73, 230);
 }

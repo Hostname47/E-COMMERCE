@@ -153,7 +153,7 @@
     </main>
     <script>
         $("#credit-card-management-button").addClass("selected-option");
-        $("#add-category").on("click", function() {
+        $("#credit-card-management-button").on("click", function() {
             return false;
         })
     </script>
