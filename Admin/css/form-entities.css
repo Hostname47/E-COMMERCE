@@ -53,3 +53,15 @@
     margin-left: 10px;
     color: rgb(207, 58, 58);
 }
+
+.form-dropDown {
+    box-sizing: border-box;
+    padding: 8px 10px;
+    margin: 5px auto 12px 0;
+    width: 300px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border: 1px solid rgb(173, 173, 173);
+    display: block;
+    transition: all 0.4s ease;
+}
