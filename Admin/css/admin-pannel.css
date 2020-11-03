@@ -1,6 +1,6 @@
 
 .left-side-pannel-options-container {
-    width: 280px;
+    width: 290px;
     height: 100%;
 }
 
@@ -23,7 +23,7 @@
     width: 100%;
     padding-left: 45px;
     color: black;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: bold;
     text-decoration: none;
     background-size: 20px 20px;
@@ -95,6 +95,14 @@
 
 #suppliers-management {
     background-image: url(../assets/icons/supplier-icon.png);
+}
+
+#payment-management {
+    background-image: url(../assets/icons/payment.png);
+}
+
+#payment-types-management-button {
+    background-image: url(../assets/icons/payment.png);
 }
 
 .panel-button-related-items-container {

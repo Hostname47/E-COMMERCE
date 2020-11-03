@@ -43,3 +43,14 @@ $("#suppliers-management").click(function() {
         $("#suppliers-management").text("Suppliers management ▾");
     }
 });
+
+$("#payment-management").click(function() {
+    let payment_manag = $("#payment-related-items");
+    if(payment_manag.css("display") == "none") {
+        payment_manag.css("display", "flex");
+        $("#payment-management").text("Payment management ▸");
+    } else {
+        payment_manag.css("display", "none");
+        $("#payment-management").text("Payment management ▾");
+    }
+});
