@@ -25,13 +25,6 @@
             <a href="https://localhost/E-COMMERCE/Admin/entities/shipper-management/manage-shippers.php" class="admin-panel-button manage" id="manage-shipper">Manage Shippers</a>
         </nav>
     </div>
-    <div class="pannel-option">
-        <a href="" class="admin-panel-global-button" onclick="return false;" id="payment-management">Payment Types ▾</a>
-        <nav class="panel-button-related-items-container" id="payment-related-items">
-            <a href="https://localhost/E-COMMERCE/Admin/entities/payment-management/add-payment-method.php" class="admin-panel-button add-item" id="add-payment">Add Payment Method</a>
-            <a href="https://localhost/E-COMMERCE/Admin/entities/payment-management/manage-payment-method.php" class="admin-panel-button manage" id="manage-payment">Manage Payment Methods</a>
-        </nav>
-    </div>
     <div class="global-button-without-suboptions">
         <a href="https://localhost/E-COMMERCE/Admin/entities/payment-management/manage-payment-method.php" class="admin-panel-global-button" id="payment-types-management-button">Payment Types</a>
     </div>
