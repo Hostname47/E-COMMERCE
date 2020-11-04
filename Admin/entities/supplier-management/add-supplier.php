@@ -26,6 +26,7 @@
     "discount_availableErr"=>"", "logoErr" =>""];
 
     if(isset($_POST["add-supplier"])) {
+
         $submitted_company_name = clean($_POST["company_name"]);
         $submitted_contact_firstname = clean($_POST["contact_firstname"]);
         $submitted_contact_lastname = clean($_POST["contact_lastname"]);
@@ -96,9 +97,7 @@
             $error["emailErr"] = "*";
         } else if(!valideEmail($_POST["email"])) {
             $err = "Invalid email format";
-        } 
-        
-        else if(empty($_POST["payment_method"])) {
+        } else if(empty($_POST["payment_method"])){
             $err = "payment method is required";
             $error["payment_mathodErr"] = "*";
         } 
@@ -108,46 +107,62 @@
             $error["type_goodsErr"] = "*";
         } else if(!preg_match("/^[\sa-zA-Z0-9_'-]+$/", $_POST["type_goods"])) {
             $err = "Invalid type goods name";
-        }else if(!isset($_FILES['logo']) || $_FILES['logo']['error'] == UPLOAD_ERR_NO_FILE) {
+        } else if((!isset($_FILES['logo']) || $_FILES['logo']['error'] == UPLOAD_ERR_NO_FILE) && $_POST["logos"] == 0) {
             $err = "picture is required.";
             $error["logoErr"] = "*";
-        }
+        } 
         else {
-
-            /* picture check */
-            $name = $_FILES["logo"]["name"];
-            $target_dir = "../../assets/images/Suppliers/";
-            $target_file = $target_dir . basename($_FILES["logo"]["name"]);
-            $uploadOk = 1;
-            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-            
-            // Check if image file is a actual image or fake image
-            $check = getimagesize($_FILES["logo"]["tmp_name"]);
-            if($check == false) {
-                $error["logoErr"] = "*";
-                $err = "logo is not an image";
-            } // Check log existance
-            else if (file_exists($target_file)) {
-                $err = "Sorry, this logo is already exists.";
-            } // check size
-            else if($_FILES["logo"]["size"] > 500000) {
-                $err = "Sorry, your logo size is too large.";
-            }
-            // Allow certain file formats
-            else if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-                && $imageFileType != "gif" ) {
-                $err = "Sorry, only JPG, JPEG, PNG & GIF logo are allowed.";
-            } else {
-                if (move_uploaded_file($_FILES["logo"]["tmp_name"], $target_file)) {
-                    $supplier_manager = new SupplierManager();
-                    if($supplier_manager->addSupplier($submitted_company_name, $submitted_contact_firstname, $submitted_contact_lastname,
-                        $submitted_contact_address1, $submitted_contact_address2, $submitted_city,$submitted_postal_code, 
-                        $submitted_email, $submitted_payment_method, $submitted_type_goods, $submitted_discount_available, $name)>0)
+            if($_POST["logos"] != 0) {
+                $supplier_manager = new SupplierManager();
+                $lg = $supplier_manager->getLogoById($_POST["logos"])['logo'];
+                
+                if(!$supplier_manager->emailExists($submitted_email)) {
+                    $supplier_manager->addSupplier($submitted_company_name, $submitted_contact_firstname, $submitted_contact_lastname,
+                    $submitted_contact_address1, $submitted_contact_address2, $submitted_city,$submitted_postal_code, 
+                    $submitted_email, $submitted_payment_method, $submitted_type_goods, $submitted_discount_available, $lg);
                     $supplier_created = "Supplier created successfully";
-                    else
-                        $err = "email already exists";
+                }
+                else
+                    $err = "email already exists";
+            } else {
+                /* picture check */
+                $name = $_FILES["logo"]["name"];
+                $target_dir = "../../assets/images/Suppliers/";
+                $target_file = $target_dir . basename($_FILES["logo"]["name"]);
+                $uploadOk = 1;
+                $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+                
+                // Check if image file is a actual image or fake image
+                $check = getimagesize($_FILES["logo"]["tmp_name"]);
+                if($check == false) {
+                    $error["logoErr"] = "*";
+                    $err = "logo is not an image";
+                } // Check log existance
+                else if (file_exists($target_file)) {
+                    $err = "Sorry, this logo is already exists.";
+                } // check size
+                else if($_FILES["logo"]["size"] > 500000) {
+                    $err = "Sorry, your logo size is too large.";
+                }
+                // Allow certain file formats
+                else if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                    && $imageFileType != "gif" ) {
+                    $err = "Sorry, only JPG, JPEG, PNG & GIF logo are allowed.";
                 } else {
-                    $err = "Sorry, there was an error uploading your file.";
+                    if (move_uploaded_file($_FILES["logo"]["tmp_name"], $target_file)) {
+                        $supplier_manager = new SupplierManager();
+                        if(!$supplier_manager->emailExists($submitted_email)) {
+                            $supplier_manager->addSupplier($submitted_company_name, $submitted_contact_firstname, $submitted_contact_lastname,
+                            $submitted_contact_address1, $submitted_contact_address2, $submitted_city,$submitted_postal_code, 
+                            $submitted_email, $submitted_payment_method, $submitted_type_goods, $submitted_discount_available, $name);
+                            $supplier_created = "Supplier created successfully";
+                        }
+                        else
+                            $err = "email already exists";
+
+                    } else {
+                        $err = "Sorry, there was an error uploading your logo.";
+                    }
                 }
             }
         }
@@ -247,23 +262,23 @@
                                     <option value="0">No</option>
                                 </select>
 
-                                <?php generateFileInput("logo", "Logo", $error["logoErr"], "logo", "logo"); ?>
+                                <div style="display: flex">
+                                    <label style="font-weight: bold; margin-left: 3px;" for="logo">Logo</label>
+                                    <div class="invalid-credential"><?php echo $error["logoErr"] ?></div>
+                                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data" style="display: flex; align-items: center;">
+                                        <label style="margin-left: 8px; " for="logo">select companies logo</label>
+                                        <select name="logos" id="logos" class="form-dropDown" style="width: 80px; padding: 0">
+                                            <?php
+                                                $supplier_manager = new SupplierManager();
+                                                $supplier_manager->generateLogos();
+                                            ?>
+                                        </select>
+                                    </form>
+                                </div>
+                                <input type="file" name="logo" id="logo" class="styled-form-input">
                             </div>
                         </div>
                     </form>
-                </div>
-                <div style="padding-top: 45px">
-                    <p>All existing shippers :</p>
-                    <table>
-                        <tr>
-                            <th>Company name</th>
-                            <th>Phone number</th>
-                        </tr>
-                        <?php
-                            /*$sm = new ShipperManager(); 
-                            $sm->generateShippersRows();*/
-                        ?>
-                    </table>
                 </div>
             </div>
         </div>

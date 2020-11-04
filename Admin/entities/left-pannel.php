@@ -35,7 +35,7 @@
         <a href="" class="admin-panel-global-button" onclick="return false;" id="suppliers-management">Suppliers Management ▾</a>
         <nav class="panel-button-related-items-container" id="suppliers-related-items">
             <a href="https://localhost/E-COMMERCE/Admin/entities/supplier-management/add-supplier.php" class="admin-panel-button add-item" id="add-supplier">Add Supplier</a>
-            <a href="https://localhost/E-COMMERCE/Admin/entities/supplier-management/manage-suppliers.php" class="admin-panel-button manage" id="manage-shipper">Manage Suppliers</a>
+            <a href="https://localhost/E-COMMERCE/Admin/entities/supplier-management/manage-suppliers.php" class="admin-panel-button manage" id="manage-supplier">Manage Suppliers</a>
         </nav>
     </div>
 </div>

@@ -28,7 +28,7 @@
 
             foreach($result as $key => $value) {
                 echo <<<EOS
-                    <option value="{$value['allowed']}">{$value['paymentType']}</option>
+                    <option value="{$value['id']}">{$value['paymentType']}</option>
                 EOS;
             }
 
@@ -72,6 +72,29 @@
                 return true;
             } else 
                 return false;
+        }
+
+        function generateLogos() {
+            $query = $this->link->prepare("SELECT * FROM supplier");
+                                
+            $query->execute();
+            $result = $query->fetchAll();
+            echo "<option value='0'>-- Select --</option>";
+            foreach($result as $k => $v) {
+                include "../../config/settings.php";
+                echo <<<EOS
+                    <option value="{$v['supplierID']}">{$v['companyName']}</option>
+                EOS;
+            }
+        }
+
+        function getLogoById($id) {
+            $query = $this->link->prepare("SELECT logo FROM supplier WHERE supplierID = :id");
+            $query->bindParam(":id", $id);
+
+            $query->execute();
+
+            return $query->fetch();
         }
     }
 
