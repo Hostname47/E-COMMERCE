@@ -53,7 +53,7 @@
                 $error["PasswordErr"] = "* Password is too long";
             }
 
-            // Pattern for email match
+            // Pattern for password match
             $pattern = "/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/";
 
             if(!preg_match($pattern, $submitted_password)) {
@@ -72,7 +72,7 @@
                     $error["repasswordErr"] = "* Password is too long";
                 }
     
-                // Pattern for email match
+                // Pattern for password match
                 $pattern = "/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/";
     
                 if(!preg_match($pattern, $submitted_password)) {
