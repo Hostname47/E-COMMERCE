@@ -62,6 +62,38 @@
                     return -1;
         }
 
+        function editSupplier($id, $company_name, $contact_firstname, 
+            $contact_lastname, $address1, $address2="", 
+            $city, $postal_code, $email, $payment_method, $type_goods, $discount_available, $logo) {
+                if(empty($id)) {
+                    return -3;
+                }
+                
+                if(!$this->emailExists($email) || $this->emailExistsByThisId($id)) {
+                    
+                    $query = $this->link->prepare("UPDATE `supplier` Set 
+                    companyName = :comp_name, contactFname = :contact_fn, contactLname = :contact_ln, address1 = :addr1, address2 = :addr2, city = :city, postalCode = :postal_code, email = :email, typeGoods = :type_goods, discountAvailable = :disc_av, logo = :logo, paymentMethods = :payment_m WHERE supplierID = :id");
+
+                    $query->bindParam(":id", $id);
+                    $query->bindParam(":comp_name", $company_name);
+                    $query->bindParam(":contact_fn", $contact_firstname);
+                    $query->bindParam(":contact_ln", $contact_lastname);
+                    $query->bindParam(":addr1", $address1);
+                    $query->bindParam(":addr2", $address2);
+                    $query->bindParam(":city", $city);
+                    $query->bindParam(":postal_code", $postal_code);
+                    $query->bindParam(":email", $email);
+                    $query->bindParam(":type_goods", $type_goods);
+                    $query->bindParam(":disc_av", $discount_available);
+                    $query->bindParam(":logo", $logo);
+                    $query->bindParam(":payment_m", $payment_method);
+    
+                    $query->execute();
+                    return $query->rowCount();
+                } else
+                    return -4;
+        }
+
         function emailExists($email) {
             $query = $this->link->prepare("SELECT * FROM supplier where email = :email");
             $query->bindParam(":email", $email);
@@ -75,7 +107,7 @@
         }
 
         function generateLogos() {
-            $query = $this->link->prepare("SELECT * FROM supplier");
+            $query = $this->link->prepare("SELECT * FROM supplier GROUP BY logo");
                                 
             $query->execute();
             $result = $query->fetchAll();
@@ -97,6 +129,14 @@
             return $query->fetch();
         }
 
+        function emailExistsByThisId($id) {
+            $query = $this->link->prepare("SELECT email FROM supplier WHERE supplierID = :id");
+                    $query->bindParam(":id", $id);
+    
+            $query->execute();
+            return ($query->rowCount() > 0) ? true : false;
+        }
+
         function generateSuppliers() {
             // Here we don't have to pecify aliases beause there's no conflicts between the tables
             $query = $this->link->prepare("SELECT * FROM supplier INNER JOIN payment ON paymentMethods = id");
@@ -114,7 +154,11 @@
                             <p class="supplier-label">Supplier name: {$supplier['contactFname']} {$supplier['contactLname']}</p>
                             <p class="supplier-label">Type goods: {$supplier['typeGoods']}</p>
                             <p class="supplier-label">Payment method: {$supplier['paymentType']}</p>
-                            <a href="" class="see-more-supplier-info" onclick="printSupplierInfos({$supplier['supplierID']}); return false;">See more ▶</a>
+                            <div class="supplier-info-buttons-container">
+                                <a href="#edit-section" class="supplier-info-button" onclick="editSupplier({$supplier['supplierID']});">Edit</a>
+                                <a href="" class="supplier-info-button" onclick="return false;">Delete</a>
+                                <a href="" class="supplier-info-button" onclick="printSupplierInfos({$supplier['supplierID']}); return false;">See more ▶</a>
+                            </div>
                         </div>
                 EOS;
                 /* 

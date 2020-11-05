@@ -1,5 +1,5 @@
 <?php
-    include "../../config/dbConnect.php";
+    include "../../../config/dbConnect.php";
 
     $link = "";
     $connection = new dbConnection();

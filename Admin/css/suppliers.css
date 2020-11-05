@@ -7,12 +7,21 @@ body, html {
     margin: 6px;
 }
 
-.see-more-supplier-info {
+.supplier-info-button {
     text-decoration: none;
     color: rgb(32, 32, 32);
 
     font-size: 14px;
     font-weight: 600;
+}
+
+.supplier-info-button:hover {
+    text-decoration: underline;
+}
+
+.supplier-info-buttons-container {
+    display: flex;
+    flex-direction: column;
     margin-left: auto;
     margin-top: auto;
 }
@@ -26,18 +35,18 @@ body, html {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
+    transition: background-color 0.4 ease;
 }
 
 .supplier-item:hover {
-    background-color: rgb(197, 197, 197);
+    background-color: rgb(243, 243, 243);
 }
 
 .suppliers-container {
     display: flex;
     flex-wrap: wrap;
     box-sizing: border-box;
-    background-color: brown;
-    width: 1000px;
+    width: 100%;
 }
 
 #supplier-infos {
@@ -51,6 +60,10 @@ body, html {
     top: 0;
     background: rgba(51,51,51,0.8);
     z-index: 10;
+}
+
+#selected {
+    transition: all 0.4s ease;
 }
 
 #close-supplier-infos {
