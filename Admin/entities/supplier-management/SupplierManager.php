@@ -111,7 +111,7 @@
                                 <p class="supplier-label">Company name: {$supplier['companyName']}</p>
                                 <img src="../../assets/images/Suppliers/{$supplier['logo']}" alt="company image" class="supplier-company-logo">
                             </div>
-                            <p class="supplier-label">Supplier name: {$supplier['contactFname']} . ' ' . {$supplier['contactLname']}</p>
+                            <p class="supplier-label">Supplier name: {$supplier['contactFname']} {$supplier['contactLname']}</p>
                             <p class="supplier-label">Type goods: {$supplier['typeGoods']}</p>
                             <p class="supplier-label">Payment method: {$supplier['paymentType']}</p>
                             <a href="" class="see-more-supplier-info" onclick="printSupplierInfos({$supplier['supplierID']}); return false;">See more ▶</a>

@@ -63,8 +63,10 @@
                             </div>
                         </div>
                         <div id="supplier-infos">
-                            <a href="#" id="close-supplier-infos">✖</a>
-                            <p></p>
+                            <a href="" id="close-supplier-infos">✖</a>
+                            <div class="supplier-item" id="selected" style="margin: 0 auto; width: 380px">
+
+                            </div>
                         </div>
                     </div>
                 </div>

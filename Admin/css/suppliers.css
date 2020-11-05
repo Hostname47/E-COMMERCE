@@ -2,20 +2,6 @@ body, html {
     height: 100%;
 }
 
-.supplier-item {
-    border: 2px solid rgb(197, 197, 197);
-    padding: 12px;
-    width: 270px;
-    background-color: rgb(228, 228, 228);
-    margin: 6px;
-    display: flex;
-    flex-direction: column;
-}
-
-.supplier-item:hover {
-    background-color: rgb(197, 197, 197);
-}
-
 .supplier-label {
     margin: 0;
     margin: 6px;
@@ -31,15 +17,34 @@ body, html {
     margin-top: auto;
 }
 
+.supplier-item {
+    border: 2px solid rgb(197, 197, 197);
+    padding: 12px;
+    width: 270px;
+    background-color: rgb(228, 228, 228);
+    margin: 6px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.supplier-item:hover {
+    background-color: rgb(197, 197, 197);
+}
+
 .suppliers-container {
     display: flex;
     flex-wrap: wrap;
+    box-sizing: border-box;
+    background-color: brown;
+    width: 1000px;
 }
 
 #supplier-infos {
     position: fixed;
 
     display: none;
+    flex-direction: column;
     width: 100%;
     height: 100%;
     left: 0;
@@ -57,4 +62,14 @@ body, html {
     padding: 16px 22px 0 0;
 
     margin-left: auto;
+}
+
+.sup-title {
+    font-size: 18px;
+    text-align: center;
+    color: rgb(20, 20, 20);
+    font-weight: bold;
+    margin-top: 2px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgb(165, 165, 165);
 }
