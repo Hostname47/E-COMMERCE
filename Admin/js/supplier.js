@@ -3,7 +3,6 @@ $("#close-supplier-infos").click(function() {
 });
 
 function editSupplier(id) {
-    console.log("id: " + id);
     fillEditedFields(id);
 }
 
@@ -34,8 +33,32 @@ function fillEditedFields(id) {
     }
 }
 
-function deleteSupplier() {
+function deleteSupplier(id) {
+    if (id == null) {
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                
+            }
+        };
+        xmlhttp.open("GET", "API/deleteSupplier.php?id=" + id, true);
+        xmlhttp.send();
+    }
+}
 
+function refresh() {
+
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementsByClassName("suppliers-container").innerHTML = this.responseText;
+            console.log(this.responseText);
+        }
+    };
+    xmlhttp.open("GET", "API/getAllSuppliers.php", true);
+    xmlhttp.send();
 }
 
 function printSupplierInfos(id) {

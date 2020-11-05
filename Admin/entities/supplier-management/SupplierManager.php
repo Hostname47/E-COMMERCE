@@ -94,6 +94,15 @@
                     return -4;
         }
 
+        function deleteSupplier($id) {
+            $query = $this->link->prepare("DELETE FROM supplier WHERE supplierID = :id");
+            $query->bindParam(":id", $id);
+
+            $query->execute();
+
+            return $query->rowCount();
+        }
+
         function emailExists($email) {
             $query = $this->link->prepare("SELECT * FROM supplier where email = :email");
             $query->bindParam(":email", $email);
@@ -156,7 +165,7 @@
                             <p class="supplier-label">Payment method: {$supplier['paymentType']}</p>
                             <div class="supplier-info-buttons-container">
                                 <a href="#edit-section" class="supplier-info-button" onclick="editSupplier({$supplier['supplierID']});">Edit</a>
-                                <a href="" class="supplier-info-button" onclick="return false;">Delete</a>
+                                <a href="" class="supplier-info-button" onclick="deleteSupplier({$supplier['supplierID']}); return false;">Delete</a>
                                 <a href="" class="supplier-info-button" onclick="printSupplierInfos({$supplier['supplierID']}); return false;">See more ▶</a>
                             </div>
                         </div>

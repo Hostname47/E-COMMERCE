@@ -35,11 +35,11 @@ body, html {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
-    transition: background-color 0.4 ease;
+    transition: background-color 0.5s ease;
 }
 
 .supplier-item:hover {
-    background-color: rgb(243, 243, 243);
+    background-color: rgb(250, 250, 250);
 }
 
 .suppliers-container {
@@ -66,15 +66,37 @@ body, html {
     transition: all 0.4s ease;
 }
 
+#refresh {
+    margin-right: 12px;
+    padding-left: 25px;
+    text-decoration: none;
+
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: 0 center;
+    background-image: url(../assets/icons/refresh.png);
+}
+
+#refresh:hover {
+    background-image: url(../assets/icons/refresh-rotated.png);
+}
+
 #close-supplier-infos {
     font-size: 26px;
     font-weight: bold;
     color: white;
+    border-radius: 50%;
     text-decoration: none;
     display: inline-block;
-    padding: 16px 22px 0 0;
+    margin: 16px 22px 0 0;
+    padding: 6px 12px;
 
     margin-left: auto;
+    transition: background-color 0.4s ease;
+}
+
+#close-supplier-infos:hover {
+    background-color: gray;
 }
 
 .sup-title {

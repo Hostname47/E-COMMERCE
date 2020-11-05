@@ -217,7 +217,10 @@
                         <h2 class="main-layout-title">Manage Suppliers</h2>
                         <div>
                             <div class="available">
-                                <p>Available suppliers</p>
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 8px">
+                                    <p style="margin: 0;">Available suppliers</p>
+                                    <a href="#" id="refresh" class="supplier-info-button" onclick="refresh(); return false;">Refresh</a>
+                                </div>
                                 <div class="suppliers-container">
                                     <?php  
                                         $supplier_manager->generateSuppliers();
