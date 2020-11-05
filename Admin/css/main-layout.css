@@ -17,3 +17,13 @@
 .left-side-pannel-options-container {
     width: 280px;
 }
+
+.flex-center {
+    display: flex;
+    align-items: center;
+}
+
+.supplier-company-logo {
+    height: 30px;
+    width: 30px;
+}

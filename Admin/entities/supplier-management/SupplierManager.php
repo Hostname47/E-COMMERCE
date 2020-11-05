@@ -96,6 +96,33 @@
 
             return $query->fetch();
         }
+
+        function generateSuppliers() {
+            // Here we don't have to pecify aliases beause there's no conflicts between the tables
+            $query = $this->link->prepare("SELECT * FROM supplier INNER JOIN payment ON paymentMethods = id");
+            $query->execute();
+
+            $result = $query->fetchAll();
+
+            foreach($result as $supplier) {
+                echo <<<EOS
+                        <div class="supplier-item">
+                            <div class="flex-center">
+                                <p class="supplier-label">Company name: {$supplier['companyName']}</p>
+                                <img src="../../assets/images/Suppliers/{$supplier['logo']}" alt="company image" class="supplier-company-logo">
+                            </div>
+                            <p class="supplier-label">Supplier name: {$supplier['contactFname']} . ' ' . {$supplier['contactLname']}</p>
+                            <p class="supplier-label">Type goods: {$supplier['typeGoods']}</p>
+                            <p class="supplier-label">Payment method: {$supplier['paymentType']}</p>
+                            <a href="" class="see-more-supplier-info" onclick="printSupplierInfos({$supplier['supplierID']}); return false;">See more ▶</a>
+                        </div>
+                EOS;
+                /* 
+                    Hint: Here we pass supplier id to print Method to work with it in back end by pass it to other
+                    PHP file and get all the other informations without refreshing the page using AJAX
+                */
+            }
+        }
     }
 
 ?>

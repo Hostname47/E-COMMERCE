@@ -1,0 +1,60 @@
+body, html {
+    height: 100%;
+}
+
+.supplier-item {
+    border: 2px solid rgb(197, 197, 197);
+    padding: 12px;
+    width: 270px;
+    background-color: rgb(228, 228, 228);
+    margin: 6px;
+    display: flex;
+    flex-direction: column;
+}
+
+.supplier-item:hover {
+    background-color: rgb(197, 197, 197);
+}
+
+.supplier-label {
+    margin: 0;
+    margin: 6px;
+}
+
+.see-more-supplier-info {
+    text-decoration: none;
+    color: rgb(32, 32, 32);
+
+    font-size: 14px;
+    font-weight: 600;
+    margin-left: auto;
+    margin-top: auto;
+}
+
+.suppliers-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#supplier-infos {
+    position: fixed;
+
+    display: none;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(51,51,51,0.8);
+    z-index: 10;
+}
+
+#close-supplier-infos {
+    font-size: 26px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+    padding: 16px 22px 0 0;
+
+    margin-left: auto;
+}

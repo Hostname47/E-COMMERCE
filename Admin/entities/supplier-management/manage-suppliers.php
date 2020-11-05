@@ -17,7 +17,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-control" content="no-cache">
-    <title>Add Category</title>
+    <title>Manage Suppliers</title>
     <link rel="stylesheet" href="../../css/header.css">
     <link rel="stylesheet" href="../../css/admin-pannel.css">
     <link rel="stylesheet" href="../../css/main-layout.css">
@@ -39,6 +39,8 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="../../js/admin-pannel-dynamics.js" defer></script>
+    <script src="../../js/supplier.js" defer></script>
+
 </head>
 <body>
     <?php include "../../entities/header.php" ?>
@@ -52,13 +54,17 @@
                         <h2 class="main-layout-title">Manage Suppliers</h2>
                         <div>
                             <div class="available">
-                                <p>Available suppliers <span style="opacity: 0.6; color: gray;">-----</span></p>
+                                <p>Available suppliers</p>
                                 <div class="suppliers-container">
-                                    <div class="supplier-item">
-                                        
-                                    </div>
+                                    <?php  
+                                        $supplier_manager->generateSuppliers();
+                                    ?>
                                 </div>
                             </div>
+                        </div>
+                        <div id="supplier-infos">
+                            <a href="#" id="close-supplier-infos">✖</a>
+                            <p></p>
                         </div>
                     </div>
                 </div>

@@ -14,7 +14,7 @@
     }
 
     function valideCity($city) {
-        return preg_match("/^[a-zA-Z0-9_]+$/", $city) ? true : false;
+        return preg_match("/^[a-zA-Z0-9_\s]+$/", $city) ? true : false;
     }
 
     function validePostalCode($postal_code) {
