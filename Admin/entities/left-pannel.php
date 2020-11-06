@@ -5,9 +5,9 @@
     <div class="pannel-option">
         <a href="" class="admin-panel-global-button" onclick="return false;" id="products-management">Products Management ▾</a>
         <nav class="panel-button-related-items-container" id="product-related-items">
-            <a href="#" class="admin-panel-button add-item">Add product</a>
-            <a href="#" class="admin-panel-button edit-item">Edit product</a>
-            <a href="#" class="admin-panel-button delete-item">Delete product</a>
+            <a href="https://localhost/E-COMMERCE/Admin/entities/product-management/add-product.php" class="admin-panel-button add-item" id="add-product">Add product</a>
+            <a href="#" class="admin-panel-button edit-item" id="edit-product">Edit product</a>
+            <a href="#" class="admin-panel-button delete-item" id="delete-product">Delete product</a>
             <a href="#" class="admin-panel-button select-item">Retrieve product</a>
         </nav>
     </div>

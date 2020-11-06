@@ -305,9 +305,9 @@
                                         <div style="display: flex">
                                             <label style="font-weight: bold; margin-left: 3px;" for="logo">Logo</label>
                                             <div class="invalid-credential"><?php echo $error["logoErr"] ?></div>
-                                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data" style="display: flex; align-items: center;">
-                                                <label style="margin-left: 8px; " for="logo">select companies logo</label>
-                                                <select name="logos" id="logos" class="form-dropDown" style="width: 80px; padding: 0">
+                                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data">
+                                                <label style="margin-left: 8px; " for="logo">companies logo</label>
+                                                <select name="logos" id="logos" class="form-dropDown" style="width: 100px; padding: 0; margin-left: 4px">
                                                     <?php
                                                         $supplier_manager = new SupplierManager();
                                                         $supplier_manager->generateLogos();

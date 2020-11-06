@@ -26,4 +26,8 @@
         return preg_match($pattern, $email) ? true : false;
     }
 
+    function valideDecimal($data) {
+        return (is_float($data) || is_numeric($data)) ? true : false;
+    }
+
 ?>

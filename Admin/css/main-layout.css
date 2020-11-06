@@ -27,3 +27,14 @@
     height: 30px;
     width: 30px;
 }
+
+.link-label-button {
+    text-decoration: none;
+    color: rgb(27, 27, 27);
+
+    font-size: 14px;
+    font-weight: bold;
+    margin-left: auto;
+
+    background-repeat: no-repeat;
+}

@@ -1,0 +1,10 @@
+#add-sup-link {
+    padding-right: 20px;
+    background-size: 16px 16px;
+    background-position: right center;
+    background-image: url(../assets/icons/go.png);
+}
+
+#add-sup-link:hover {
+    background-image: url(../assets/icons/go1.png);
+}
