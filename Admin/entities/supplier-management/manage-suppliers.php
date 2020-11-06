@@ -221,7 +221,7 @@
                                     <p style="margin: 0;">Available suppliers</p>
                                     <a href="#" id="refresh" class="supplier-info-button" onclick="refresh(); return false;">Refresh</a>
                                 </div>
-                                <div class="suppliers-container">
+                                <div class="suppliers-container" id="supps-block">
                                     <?php  
                                         $supplier_manager->generateSuppliers();
                                     ?>

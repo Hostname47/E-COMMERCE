@@ -53,8 +53,9 @@ function refresh() {
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
-            document.getElementsByClassName("suppliers-container").innerHTML = this.responseText;
-            console.log(this.responseText);
+            document.getElementById("supps-block").innerHTML = this.responseText;
+            /*console.log("------ intended data ----------" + document.getElementById("supps-block").innerHTML);
+            console.log("------ response data ----------" + this.responseText);*/
         }
     };
     xmlhttp.open("GET", "API/getAllSuppliers.php", true);
@@ -69,7 +70,7 @@ function printSupplierInfos(id) {
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("selected").innerHTML = this.responseText;
+                document.getElementById("selected").innerHTML = this.responseText;
             }
         };
         xmlhttp.open("GET", "API/ajaxGetSupplier.php?id=" + id, true);
