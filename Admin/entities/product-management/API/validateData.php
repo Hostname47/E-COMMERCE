@@ -2,7 +2,7 @@
 
     if(isset($_POST["add-product"])) {
 
-
+        $product_manager = new ProductManager();
 
         $submitted_product_name = clean($_POST["product_name"]);
         $submitted_sku = clean($_POST["product_sku"]);
@@ -28,15 +28,19 @@
         }
         else if(!validName($submitted_product_name)) {
             $err = "Product name should be at least 2 chars and accept only (Alphanumerics chars and underscores)";
+        } 
+        else if($product_manager->productNameExists($submitted_product_name)) {
+            $err = "Product name already exists ! try another one";
         }
-        
+
         else if(empty($submitted_sku)) {
             $err = "SKU is required";
             $error["skuErr"] = "*";
         }
         else if(!validName($submitted_sku)) {
             $err = "SKU should be at least 2 chars and accept only (Alphanumerics chars and underscores)";
-        } 
+        }
+
         else if(empty($submitted_desc)) {
             $err = "Description is required";
             $error["product_descErr"] = "*";
@@ -56,107 +60,146 @@
             $error["product_categoryErr"] = "*";
         }
 
+        else if(!valideDecimal($submitted_unit_price)) {
+            $err = "Invalid unit price format";
+            $error["product_unit_priceErr"] = "*";
+        } 
         else if(empty($submitted_unit_price)) {
             $err = "unit price is required";
             $error["product_unit_priceErr"] = "*";
         }
-        else if(!valideDecimal($submitted_unit_price)) {
-            $err = "Invalid unit price format";
+
+        else if(empty($submitted_available_sizes)) {
+            $err = "Available sizes requires at least one size";
+            $error["product_av_sizesErr"] = "*";
+        }
+        else if(strlen($submitted_available_sizes) > 300) {
+            $err = "Available sizes is too long";
+            $error["product_av_sizesErr"] = "*";
         } 
 
-        else if(strlen($_POST["contact_address2"]) > 800) {
-            $error["contact_address2Err"] = "*";
-            $err = "Address is too long";
+        else if(empty($submitted_available_colors)) {
+            $err = "Available colors requires at least one color";
+            $error["product_av_colorsErr"] = "*";
         }
-        else if(empty($_POST["city"])) {
-            $err = "city is required";
-            $error["cityErr"] = "*";
-        }
-        else if(!valideCity($_POST["city"])) {
-            $err = "Invalid city name";
-        } 
-
-        else if(empty($_POST["postal_code"])) {
-            $err = "postal code is required";
-            $error["postal_codeErr"] = "*";
-        } else if(!validePostalCode($_POST["postal_code"])) {
-            $err = "Invalid postal code";
+        else if(strlen($submitted_available_colors) > 300) {
+            $err = "Available colors is too long";
+            $error["product_av_colorsErr"] = "*";
         }
 
-        else if(empty($_POST["email"])) {
-            $err = "email is required";
-            $error["emailErr"] = "*";
-        } else if(!valideEmail($_POST["email"])) {
-            $err = "Invalid email format";
-        } else if(empty($_POST["payment_method"])){
-            $err = "payment method is required";
-            $error["payment_mathodErr"] = "*";
+        else if(empty($submitted_size)) {
+            $err = "Size is required";
+            $error["product_sizeErr"] = "*";
+        }
+        else if(!preg_match("/^[a-zA-Z0-9,-_&]{1,}$/", $submitted_size)) {
+            $err = "Invalid size format";
+            $error["product_sizeErr"] = "*";
+        }
+
+        else if(empty($submitted_color)) {
+            $err = "Color is required";
+            $error["product_colorErr"] = "*";
+        }
+        else if(!validName($submitted_color)) {
+            $err = "Invalid color format";
+            $error["product_colorErr"] = "*";
+        }
+
+        else if(!valideDecimal($submitted_discount)) {
+            $err = "Invalid discount format";
+            $error["product_discountErr"] = "*";
         } 
+        else if(empty($submitted_discount)) {
+            $err = "discount is required";
+            $error["product_discountErr"] = "*";
+        }
         
-        else if(empty($_POST["type_goods"])) {
-            $err = "type goods is required";
-            $error["type_goodsErr"] = "*";
-        } else if(!preg_match("/^[\sa-zA-Z0-9_'-]+$/", $_POST["type_goods"])) {
-            $err = "Invalid type goods name";
-        } else if((!isset($_FILES['logo']) || $_FILES['logo']['error'] == UPLOAD_ERR_NO_FILE) && $_POST["logos"] == 0) {
-            $err = "picture is required.";
-            $error["logoErr"] = "*";
+        else if(!valideDecimal($submitted_unit_weight)) {
+            $err = "Invalid unit weight format";
+            $error["product_unit_weightErr"] = "*";
         } 
-        else {
-            if($_POST["logos"] != 0) {
-                $supplier_manager = new SupplierManager();
-                $lg = $supplier_manager->getLogoById($_POST["logos"])['logo'];
-                
-                if(!$supplier_manager->emailExists($submitted_email)) {
-                    $supplier_manager->addSupplier($submitted_company_name, $submitted_contact_firstname, $submitted_contact_lastname,
-                    $submitted_contact_address1, $submitted_contact_address2, $submitted_city,$submitted_postal_code, 
-                    $submitted_email, $submitted_payment_method, $submitted_type_goods, $submitted_discount_available, $lg);
-                    $supplier_created = "Supplier created successfully";
-                }
-                else
-                    $err = "email already exists";
-            } else {
-                /* picture check */
-                $name = $_FILES["logo"]["name"];
-                $target_dir = "../../assets/images/Suppliers/";
-                $target_file = $target_dir . basename($_FILES["logo"]["name"]);
-                $uploadOk = 1;
-                $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-                
-                // Check if image file is a actual image or fake image
-                $check = getimagesize($_FILES["logo"]["tmp_name"]);
-                if($check == false) {
-                    $error["logoErr"] = "*";
-                    $err = "logo is not an image";
-                } // Check log existance
-                else if (file_exists($target_file)) {
-                    $err = "Sorry, this logo is already exists.";
-                } // check size
-                else if($_FILES["logo"]["size"] > 500000) {
-                    $err = "Sorry, your logo size is too large.";
-                }
-                // Allow certain file formats
-                else if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-                    && $imageFileType != "gif" ) {
-                    $err = "Sorry, only JPG, JPEG, PNG & GIF logo are allowed.";
-                } else {
-                    if (move_uploaded_file($_FILES["logo"]["tmp_name"], $target_file)) {
-                        $supplier_manager = new SupplierManager();
-                        if(!$supplier_manager->emailExists($submitted_email)) {
-                            $supplier_manager->addSupplier($submitted_company_name, $submitted_contact_firstname, $submitted_contact_lastname,
-                            $submitted_contact_address1, $submitted_contact_address2, $submitted_city,$submitted_postal_code, 
-                            $submitted_email, $submitted_payment_method, $submitted_type_goods, $submitted_discount_available, $name);
-                            $supplier_created = "Supplier created successfully";
-                        }
-                        else
-                            $err = "email already exists";
+        else if(empty($submitted_unit_weight)) {
+            $err = "Unit weight is required";
+            $error["product_unit_weightErr"] = "*";
+        }
 
-                    } else {
-                        $err = "Sorry, there was an error uploading your logo.";
+        else if(!preg_match("/^[0-9]{0,15}$/", $submitted_units_in_stock)) {
+            $err = "Invalid unit in stock format";
+            $error["product_units_in_stockErr"] = "*";
+        } 
+        else if($submitted_units_in_stock == "") {
+            $err = "Units in stock is required";
+            $error["product_units_in_stockErr"] = "*";
+        }
+
+        else if(!preg_match("/^[0-9]{0,15}$/", $submitted_units_on_order)) {
+            $err = "Invalid unit on order format";
+            $error["product_units_on_orderErr"] = "*";
+        } 
+        else if($submitted_units_on_order == "") {
+            $err = "Units on order is required";
+            $error["product_units_on_orderErr"] = "*";
+        }
+
+        else if(!preg_match("/^[0-9]{0,15}$/", $submitted_product_available)) {
+            $err = "Invalid products available format";
+            $error["product_availabilityErr"] = "*";
+        } 
+        else if($submitted_product_available == "") {
+            $err = "products available is required";
+            $error["product_availabilityErr"] = "*";
+        }
+
+        else if(empty($submitted_keywords)) {
+            $err = "At least on keyword is required";
+            $error["product_keywordsErr"] = "*";
+        }
+        else if(strlen($submitted_keywords) > 1200) {
+            $error["product_keywordsErr"] = "*";
+            $err = "Keywords field is too long";
+        }
+        else if($_FILES['product_picture']["name"] == "") {
+            $error["product_pictureErr"] = "*";
+            $err = "picture is required";
+        }
+        else {
+
+            $name = $_FILES["product_picture"]["name"];
+            $target_dir = "../../assets/images/Products/";
+            $target_file = $target_dir . basename($_FILES["product_picture"]["name"]);
+            $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+            
+            // Check if image file is a actual image or fake image
+            $check = getimagesize($_FILES["product_picture"]["tmp_name"]);
+
+            // Allow certain file formats
+            if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                && $imageFileType != "gif" ) {
+                $err = "Sorry, only JPG, JPEG, PNG & GIF pictures are allowed.";
+            }
+            else if($_FILES["product_picture"]["size"] > 500000) {
+                $err = "Sorry, your logo size is too large.";
+            }
+            else {
+                $productFolder = $target_dir . $submitted_product_name;
+                mkdir($productFolder);
+                /*if (move_uploaded_file($_FILES["logo"]["tmp_name"], $target_file)) {
+                    $supplier_manager = new SupplierManager();
+                    if(!$supplier_manager->emailExists($submitted_email)) {
+                        $supplier_manager->addSupplier($submitted_company_name, $submitted_contact_firstname, $submitted_contact_lastname,
+                        $submitted_contact_address1, $submitted_contact_address2, $submitted_city,$submitted_postal_code, 
+                        $submitted_email, $submitted_payment_method, $submitted_type_goods, $submitted_discount_available, $name);
+                        $supplier_created = "Supplier created successfully";
                     }
-                }
+                    else
+                        $err = "email already exists";
+
+                } else {
+                    $err = "Sorry, there was an error uploading your logo.";
+                }*/
             }
         }
+
     }
 
 ?>

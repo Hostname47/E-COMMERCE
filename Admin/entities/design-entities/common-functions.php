@@ -1,5 +1,5 @@
 <?php
-    include "../../config/DbConnect.php";
+
     class CommonFunctionProvider {
         private $link;
 

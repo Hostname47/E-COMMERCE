@@ -8,20 +8,17 @@
     = $submitted_desc
     = $submitted_supplier
     = $submitted_category
-    = $submitted_unit_price
     = $submitted_available_sizes
     = $submitted_available_colors
     = $submitted_size
     = $submitted_color
-    = $submitted_discount
-    = $submitted_unit_weight
-    = $submitted_units_in_stock
-    = $submitted_units_on_order
-    = $submitted_product_available
     = $submitted_picture
     = $submitted_keywords
     = $product_created
     = $err = "";
+
+    $submitted_unit_price = $submitted_discount = $submitted_unit_weight = "0.00";
+    $submitted_units_in_stock = $submitted_units_on_order = $submitted_product_available = "0";
 
     $error = ["skuErr"=>"", "product_nameErr"=>"", 
     "product_descErr"=>"", "product_supplierErr"=>"",

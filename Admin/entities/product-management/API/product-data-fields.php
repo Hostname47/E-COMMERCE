@@ -48,7 +48,7 @@
             ?>
 
             <!--  label_for - labe_content - error - type - name - id - input value  >>>> Unit price <<<<-->
-            <?php generateDecimalInput("product_unit_price", "Unit price", $error["product_unit_priceErr"],"product_unit_price", "product_unit_price", $submitted_unit_price) ?>
+            <?php generateDecimalInput("product_unit_price", "Unit price", $error["product_unit_priceErr"],"product_unit_price", "product_unit_price", $submitted_unit_price, ".01") ?>
 
             <!-- ////////////////// SUBMIT ////////////////// -->
             <input type="submit" name="add-product" class="styled-button" value="Add Product">
@@ -69,23 +69,23 @@
             <?php generateInputText("product_color", "Color", $error["product_colorErr"], "text","product_color", "product_color", $submitted_color) ?>
 
             <!--  label_for - labe_content - error - type - name - id - input value  >>>> Unit discount <<<< -->
-            <?php generateDecimalInput("product_discount", "Discount", $error["product_discountErr"], "product_discount", "product_discount", $submitted_discount) ?>
+            <?php generateDecimalInput("product_discount", "Discount", $error["product_discountErr"], "product_discount", "product_discount", $submitted_discount, ".01") ?>
 
             <!--  label_for - labe_content - error - type - name - id - input value  >>>> Unit weight <<<< -->
-            <?php generateDecimalInput("product_unit_weight", "Unit weight", $error["product_unit_weightErr"], "product_unit_weight", "product_unit_weight", $submitted_unit_weight) ?>
+            <?php generateDecimalInput("product_unit_weight", "Unit weight", $error["product_unit_weightErr"], "product_unit_weight", "product_unit_weight", $submitted_unit_weight, ".01") ?>
         </div>
         <div>
             <!--  label_for - labe_content - error - type - name - id - input value  >>>> Unit weight <<<< -->
-            <?php generateDecimalInput("product_units_in_stock", "Units in stock", $error["product_units_in_stockErr"], "product_units_in_stock", "product_units_in_stock", $submitted_units_in_stock) ?>
+            <?php generateDecimalInput("product_units_in_stock", "Units in stock", $error["product_units_in_stockErr"], "product_units_in_stock", "product_units_in_stock", $submitted_units_in_stock, "") ?>
 
             <!--  label_for - labe_content - error - type - name - id - input value  >>>> Unit weight <<<< -->
-            <?php generateDecimalInput("product_units_on_order", "Units on order", $error["product_units_on_orderErr"], "product_units_on_order", "product_units_on_order", $submitted_units_on_order) ?>
+            <?php generateDecimalInput("product_units_on_order", "Units on order", $error["product_units_on_orderErr"], "product_units_on_order", "product_units_on_order", $submitted_units_on_order, "") ?>
 
             <!--  label_for - labe_content - error - type - name - id - input value  >>>> Unit weight <<<< -->
-            <?php generateDecimalInput("product_available", "Products available", $error["product_availabilityErr"], "product_available", "product_available", $submitted_product_available) ?>
+            <?php generateDecimalInput("product_available", "Products available", $error["product_availabilityErr"], "product_available", "product_available", $submitted_product_available, "") ?>
 
             <!--  label_for - labe_content - error - type - name - id - input value  >>>> Unit color <<<< -->
-            <?php generateInputText("product_keywords", "Keywords", $error["product_keywordsErr"], "text","product_keywords", "product_keywords", $submitted_keywords) ?>
+            <?php generateTextArea("product_keywords", "Keywords", $error["product_keywordsErr"], "product_keywords","product_keywords", $submitted_keywords) ?>
 
             <?php
                 generateFileInput("product_picture", "Picture", $error["product_pictureErr"], "product_picture", "product_picture");
