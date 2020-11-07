@@ -26,8 +26,9 @@
             $err = "Product name is required";
             $error["product_nameErr"] = "*";
         }
-        else if(!validName($submitted_product_name)) {
-            $err = "Product name should be at least 2 chars and accept only (Alphanumerics chars and underscores)";
+        else if(!preg_match("/^[a-zA-Z0-9-_'`,&\+()\[\]\s]*$/", $submitted_product_name)) {
+            $err = "Product name invalid format";
+            $error["product_nameErr"] = "*";
         } 
         else if($product_manager->productNameExists($submitted_product_name)) {
             $err = "Product name already exists ! try another one";
@@ -45,7 +46,7 @@
             $err = "Description is required";
             $error["product_descErr"] = "*";
         }
-        else if(strlen($submitted_desc) > 800) {
+        else if(strlen($submitted_desc) > 2000) {
             $error["product_descErr"] = "*";
             $err = "Address is too long";
         }
@@ -69,29 +70,17 @@
             $error["product_unit_priceErr"] = "*";
         }
 
-        else if(empty($submitted_available_sizes)) {
-            $err = "Available sizes requires at least one size";
-            $error["product_av_sizesErr"] = "*";
-        }
         else if(strlen($submitted_available_sizes) > 300) {
             $err = "Available sizes is too long";
             $error["product_av_sizesErr"] = "*";
         } 
 
-        else if(empty($submitted_available_colors)) {
-            $err = "Available colors requires at least one color";
-            $error["product_av_colorsErr"] = "*";
-        }
         else if(strlen($submitted_available_colors) > 300) {
             $err = "Available colors is too long";
             $error["product_av_colorsErr"] = "*";
         }
 
-        else if(empty($submitted_size)) {
-            $err = "Size is required";
-            $error["product_sizeErr"] = "*";
-        }
-        else if(!preg_match("/^[a-zA-Z0-9,-_&]{1,}$/", $submitted_size)) {
+        else if(!preg_match("/^[a-zA-Z0-9,-_&]*$/", $submitted_size)) {
             $err = "Invalid size format";
             $error["product_sizeErr"] = "*";
         }
@@ -166,7 +155,7 @@
 
             $name = $_FILES["product_picture"]["name"];
             $target_dir = "../../assets/images/Products/";
-            $target_file = $target_dir . basename($_FILES["product_picture"]["name"]);
+            $target_file = $target_dir . $submitted_product_name . "/" . basename($_FILES["product_picture"]["name"]);
             $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
             
             // Check if image file is a actual image or fake image
@@ -181,22 +170,24 @@
                 $err = "Sorry, your logo size is too large.";
             }
             else {
-                $productFolder = $target_dir . $submitted_product_name;
-                mkdir($productFolder);
-                /*if (move_uploaded_file($_FILES["logo"]["tmp_name"], $target_file)) {
-                    $supplier_manager = new SupplierManager();
-                    if(!$supplier_manager->emailExists($submitted_email)) {
-                        $supplier_manager->addSupplier($submitted_company_name, $submitted_contact_firstname, $submitted_contact_lastname,
-                        $submitted_contact_address1, $submitted_contact_address2, $submitted_city,$submitted_postal_code, 
-                        $submitted_email, $submitted_payment_method, $submitted_type_goods, $submitted_discount_available, $name);
-                        $supplier_created = "Supplier created successfully";
-                    }
-                    else
-                        $err = "email already exists";
+                $productFolder = $target_dir . basename($submitted_product_name);
+                if(file_exists($productFolder)) {
+                    $err = "Sorry, Folder already exists";
+                    $error["product_pictureErr"] = "*";
+                }
+                else {
+                    $productPicture = $submitted_product_name . "/" . basename($_FILES["product_picture"]["name"]);
 
-                } else {
-                    $err = "Sorry, there was an error uploading your logo.";
-                }*/
+                    mkdir($productFolder);
+                    if (move_uploaded_file($_FILES["product_picture"]["tmp_name"], $target_file)) {
+                        echo $product_manager->addProduct($submitted_product_name, $submitted_sku, $submitted_desc, $submitted_supplier, 
+                        $submitted_category, $submitted_available_sizes, $submitted_available_colors, $submitted_size, $submitted_color,
+                        $submitted_unit_price, $submitted_discount, $submitted_unit_weight, $submitted_units_in_stock, $submitted_units_on_order,
+                        $submitted_product_available, $submitted_keywords, $productPicture);
+                        
+                        $product_created = "Product created successfully";
+                    }
+                }
             }
         }
 
