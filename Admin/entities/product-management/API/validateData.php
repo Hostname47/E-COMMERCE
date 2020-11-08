@@ -154,7 +154,7 @@
         else {
 
             $name = $_FILES["product_picture"]["name"];
-            $target_dir = "../../assets/images/Products/";
+            $target_dir = "../../Products/";
             $target_file = $target_dir . $submitted_product_name . "/" . basename($_FILES["product_picture"]["name"]);
             $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
             
@@ -172,7 +172,7 @@
             else {
                 $productFolder = $target_dir . basename($submitted_product_name);
                 if(file_exists($productFolder)) {
-                    $err = "Sorry, Folder already exists";
+                    $err = "Sorry, Product already exists with this name";
                     $error["product_pictureErr"] = "*";
                 }
                 else {
@@ -180,7 +180,7 @@
 
                     mkdir($productFolder);
                     if (move_uploaded_file($_FILES["product_picture"]["tmp_name"], $target_file)) {
-                        echo $product_manager->addProduct($submitted_product_name, $submitted_sku, $submitted_desc, $submitted_supplier, 
+                        $product_manager->addProduct($submitted_product_name, $submitted_sku, $submitted_desc, $submitted_supplier, 
                         $submitted_category, $submitted_available_sizes, $submitted_available_colors, $submitted_size, $submitted_color,
                         $submitted_unit_price, $submitted_discount, $submitted_unit_weight, $submitted_units_in_stock, $submitted_units_on_order,
                         $submitted_product_available, $submitted_keywords, $productPicture);
