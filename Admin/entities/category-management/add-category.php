@@ -123,7 +123,7 @@
         <div class="admin-global-layout">
             <?php include "../../entities/left-pannel.php" ?>
 
-            <div class="admin-main-layout">
+            <div class="admin-main-layout" style="display: flex;">
                 <div id="add-cat-container">
                     <h2 class="main-layout-title">Add Category</h2>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data">

@@ -85,11 +85,7 @@
             $error["product_sizeErr"] = "*";
         }
 
-        else if(empty($submitted_color)) {
-            $err = "Color is required";
-            $error["product_colorErr"] = "*";
-        }
-        else if(!validName($submitted_color)) {
+        else if(!preg_match("/^[a-zA-Z0-9,-_&]*$/", $submitted_color)) {
             $err = "Invalid color format";
             $error["product_colorErr"] = "*";
         }
@@ -176,7 +172,7 @@
                     $error["product_pictureErr"] = "*";
                 }
                 else {
-                    $productPicture = $submitted_product_name . "/" . basename($_FILES["product_picture"]["name"]);
+                    $productPicture = $submitted_product_name . "/" . $_FILES["product_picture"]["name"];
 
                     mkdir($productFolder);
                     if (move_uploaded_file($_FILES["product_picture"]["tmp_name"], $target_file)) {

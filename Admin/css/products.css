@@ -8,3 +8,76 @@
 #add-sup-link:hover {
     background-image: url(../assets/icons/go1.png);
 }
+
+.product-item {
+    width: 220px;
+    background-color: rgb(201, 201, 201);
+    padding: 6px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 14px;
+}
+
+.product-img {
+    height: 185px;
+    
+
+    padding: 8px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+.products-container {
+    display: flex;
+
+    padding: 10px;
+    background-color: rgb(231, 231, 231);
+}
+
+.product-label {
+    padding: 3px;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0px 4px 2px 4px;
+}
+
+.product-name {
+    margin: 8px 4px 2px 4px;
+    border-bottom: 1px solid rgb(165, 165, 165);
+    padding-bottom: 8px;
+}
+
+.original-price {
+    color: rgb(90, 90, 90);
+    text-decoration: line-through;
+    padding-right: 6px;
+    font-size: 18px;
+}
+
+.product-data-label {
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.available {
+    color: rgb(28, 150, 64);
+    font-weight: bold;
+}
+
+.not-available {
+    color: rgb(223, 51, 51);
+    font-weight: bold;
+}
+
+#man-product {
+    text-decoration: none;
+    color: rgb(26, 26, 26);
+
+    font-weight: bold;
+    padding-left: 25px;
+
+    background-repeat: no-repeat;
+    background-size: 18px 18px;
+    background-position: 0 center;
+    background-image: url(../assets/icons/manage.webp);
+}

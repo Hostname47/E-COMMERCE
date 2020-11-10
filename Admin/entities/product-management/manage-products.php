@@ -60,24 +60,91 @@
         <div class="admin-global-layout">
             <?php include "../../entities/left-pannel.php" ?>
 
-            <div class="admin-main-layout" style="flex-direction: column; background-color: yellow">
-                <div style="background-color: gray">
-                    <h2 class="main-layout-title" style="">Products Management</h2>
-                </div>
-                <div style="background-color: gray">
-                    <div style="display: flex; margin-left: auto">
-                        <div style="display: flex">
-                            <label style="font-weight: bold; margin-left: 3px; font-size: 14px" for="currency">Currency</label>
-                            <div class="invalid-credential"><?php //echo $error["currency"]; ?></div>
+            <div class="admin-main-layout">
+                <div>
+                    <div class="flex-row">
+                        <h2 class="main-layout-title">Products Management</h2>
+                        <div class="currency-container">
+                            <div style="display: flex">
+                                <label style="font-weight: bold; margin-left: 3px; font-size: 14px" for="currency">Currency</label>
+                                <div class="invalid-credential"><?php //echo $error["currency"]; ?></div>
+                            </div>
+                            <select name="currency" id="currency">
+                                <option value="dollar">$usd</option>
+                                <option value="dollar">€euro</option>
+                                <option value="dollar">£pound</option>
+                                <option value="dollar">MAD</option>
+                            </select>
                         </div>
-                        <select name="currency" id="currency">
-                            <option value="dollar">$usd</option>
-                            <option value="dollar">€euro</option>
-                            <option value="dollar">£pound</option>
-                            <option value="dollar">MAD</option>
-                        </select>
+                    </div>
+                </div>
+                <!-- search and filters container -->
+                <div>
+                    <p class="para">Search for a product</p>
+                    <form action="#" method="POST" class="flex-row">
+                        <input type="text" name="search-field" placeholder="Search .." class="search-field">
+                        <input type="submit" value="search" name="search-button" class="search-button">
+                    </form>
+                    
+                    <div class="flex-row" style="margin: 14px 0">
+                        <div class="flex-row">
+                            <p class="para basic-label">Category</p>
+                            <?php
+                                include "../design-entities/common-functions.php";
+                                $comm = new CommonFunctionProvider();
+                                $comm->getCategoriesAsDropDownList("basic-dropdownlist");
+                            ?>
+                        </div>
                     </div>
 
+                    <!-- PRODUCT SECTION -->
+                    <div class="products-container">
+                        <?php
+                        try
+                        {
+                            $prod_manager = new ProductManager();
+                            $products = $prod_manager->getProductsByCategory(0);
+
+                            foreach($products as $key => $product) {
+                                if($product['UnitsInStock'] - $product['UnitsOnOrder'] > 0) {
+                                    $av = "Yes";
+                                    $class = "available";
+                                }else {
+                                    $av = "No";
+                                    $class = "not-available";
+                                }
+
+                                $pic = "{$product['pic']}";
+
+                                $discountedPrice = $product['unitPrice'] - (20 * $product['unitPrice'] / 100);
+                                echo <<<EOS
+                                    <div class="product-item">
+                                        <img src="../../Products/{$pic}" alt="product image not found" class="product-img">
+                                        <p class="product-name product-label">{$product['productName']}</p>
+                                        <p class="product-label">Category: <span class="product-data-label">{$product['categoryName']}</span></p>
+                                        <p class="product-label">Available: <span class="product-data-label {$class}">{$av}</span></p>
+                                        <p style="margin-bottom: 8px" class="product-label">Price: <span class="original-price">{$product['unitPrice']}</span><span style="font-size: 18px">{$discountedPrice}</span></p>
+                                        <div style="margin-left: auto; margin-top: auto;" class="flex-column">
+                                            <a href="#" id="man-product">Manage product</a>
+                                        </div>
+                                    </div>
+                                EOS;
+                            }
+                        } catch(Exception $ex) {
+                            echo $ex->getMessage();
+                        }
+                        ?>
+                        <div class="product-item">
+                            <img src="../../assets/images/categories/4-513.png" alt="" class="product-img">
+                            <p class="product-name product-label">New Apple iPhone 12 (64GB, Black) [Locked] + Carrier Subscription</p>
+                            <p class="product-label">Category: <span class="product-data-label">TV & Movies</span></p>
+                            <p class="product-label">Available: <span class="product-data-label">Yes</span></p>
+                            <p style="margin-bottom: 8px" class="product-label">Price: <span class="original-price">1200$</span><span style="font-size: 18px">900$</span></p>
+                            <div style="margin-left: auto; margin-top: auto;" class="flex-column">
+                                <a href="#" id="man-product">Manage product</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

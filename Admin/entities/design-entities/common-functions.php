@@ -24,13 +24,13 @@
             echo "</select>";
         }
 
-        function getCategoriesAsDropDownList() {
+        function getCategoriesAsDropDownList($class = "form-dropDown") {
             // Here we don't have to pecify aliases beause there's no conflicts between the tables
             $query = $this->link->prepare("SELECT * FROM category");
             $query->execute();
     
             $result = $query->fetchAll();
-            echo "<select name='category' id='category' class='form-dropDown'>";
+            echo "<select name='category' id='category' class='$class'>";
 
             foreach($result as $k => $category) {
                 echo <<<EOS
