@@ -10,8 +10,8 @@
 }
 
 .admin-main-layout {
-    display: flex;
     padding-left: 25px;
+    flex-grow: 3;
 }
 
 .left-side-pannel-options-container {

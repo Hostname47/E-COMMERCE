@@ -1,0 +1,78 @@
+.help-container {
+    padding: 20px;
+}
+
+#help-section {
+    padding: 10px;
+}
+
+.mini-title {
+    margin: 12px 8px 6px 8px;
+}
+
+.help-title {
+    margin: 4px;
+}
+
+.phrase-title {
+    font-size: 16px; 
+    font-weight: 600;
+}
+
+.para {
+    font-size: 15px;
+    margin: 6px 0;
+}
+
+.underline {
+    color: rgb(235, 235, 235);
+    opacity: 0.4;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.top-section-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.its-a-link {
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 14px;
+    color: rgb(26, 26, 26);
+}
+
+.github {
+    padding: 15px 25px;
+    background-image: url(../../assets/icons/github-icon.png);
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    background-position: 0 center;
+}
+
+.help-footer {
+    margin-top: 20px;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.move-button {
+    padding: 8px;
+    text-decoration: none;
+    color: rgb(26, 26, 26);
+    width: 70px;
+
+    border: 2px solid rgb(26, 26, 26);
+    text-align: center;
+    transition: all 0.4s ease;
+}
+
+.move-button:hover {
+    background-color: rgb(26, 26, 26);
+    color: white;
+}
+

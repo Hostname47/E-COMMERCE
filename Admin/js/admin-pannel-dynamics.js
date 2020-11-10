@@ -1,4 +1,5 @@
 
+
 // Product panel open nesting
 $("#products-management").click(function() {
     let product_manag = $("#product-related-items");

@@ -41,7 +41,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="Cache-control" content="no-cache">
-    <title>Add product</title>
+    <title>Manage product</title>
     <link rel="stylesheet" href="../../css/header.css">
     <link rel="stylesheet" href="../../css/admin-pannel.css">
     <link rel="stylesheet" href="../../css/main-layout.css">
@@ -60,19 +60,32 @@
         <div class="admin-global-layout">
             <?php include "../../entities/left-pannel.php" ?>
 
-            <div class="admin-main-layout" style="display: flex; flex-direction: column">
-                <!-- container of title and form for add shipper -->
-                <h2 class="main-layout-title" style="">Add Product</h2>
-                <div>
-                    <?php include "API/product-data-fields.php" ?>
+            <div class="admin-main-layout" style="flex-direction: column; background-color: yellow">
+                <div style="background-color: gray">
+                    <h2 class="main-layout-title" style="">Products Management</h2>
+                </div>
+                <div style="background-color: gray">
+                    <div style="display: flex; margin-left: auto">
+                        <div style="display: flex">
+                            <label style="font-weight: bold; margin-left: 3px; font-size: 14px" for="currency">Currency</label>
+                            <div class="invalid-credential"><?php //echo $error["currency"]; ?></div>
+                        </div>
+                        <select name="currency" id="currency">
+                            <option value="dollar">$usd</option>
+                            <option value="dollar">€euro</option>
+                            <option value="dollar">£pound</option>
+                            <option value="dollar">MAD</option>
+                        </select>
+                    </div>
+
                 </div>
             </div>
         </div>
     </main>
     <script>
-        $("#add-product").addClass("selected-option");
+        $("#manage-product").addClass("selected-option");
         $("#product-related-items").css("display", "flex");
-        $("#add-product").on("click", function() {
+        $("#manage-product").on("click", function() {
             return false;
         })
     </script>
