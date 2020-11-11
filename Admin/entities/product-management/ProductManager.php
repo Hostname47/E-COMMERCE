@@ -68,42 +68,65 @@
         }
 
         function getProductsByCategory($category=0) {
-            
             if($category == 0) {
-                try {
+                return $this->selectAllProducts();
+            } else {
+                try {                    
                     $query = $this->link->prepare("SELECT `productID`, `SKU`, `productName`, `productDescription`, `supplierID`, 
                     products.categoryID, `unitPrice`, `availableSizes`, `availableColors`, `size`, `color`, `discount`, `unitWeight`, 
                     `UnitsInStock`, `UnitsOnOrder`, `productAvailable`, products.picture AS pic, `categoryName`, `keywords`, category.categoryID, category.picture FROM `products`
-                     INNER JOIN category ON products.categoryID = category.categoryID");
-    
+                    INNER JOIN category ON products.categoryID = category.categoryID WHERE category.categoryID = {$category}");
+
                     $query->execute();
-    
+
                     $result = $query->fetchAll(PDO::FETCH_ASSOC);
-    
+
                     return $result;
                 }
                 catch(PDOException $ex) {
                     echo $ex->getMessage();
-                }    
+                }
             }
+        }
 
+        function selectAllProducts() {
             try {
                 $query = $this->link->prepare("SELECT `productID`, `SKU`, `productName`, `productDescription`, `supplierID`, 
                 products.categoryID, `unitPrice`, `availableSizes`, `availableColors`, `size`, `color`, `discount`, `unitWeight`, 
                 `UnitsInStock`, `UnitsOnOrder`, `productAvailable`, products.picture AS pic, `categoryName`, `keywords`, category.categoryID, category.picture FROM `products`
-                 INNER JOIN category ON products.categoryID = category.categoryID WHERE category.categoryID = {$category}");
+                INNER JOIN category ON products.categoryID = category.categoryID");
 
                 $query->execute();
 
                 $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
                 return $result;
+            } catch(PDOException $ex) {
+                echo $ex->getMessage();
+            }
+        }
+
+        function getProductsByProdName($category=0, $prod_name) {
+            try {
+                if($category == 0) {
+                    return selectAllProducts();
+                } else {
+                    $query = $this->link->prepare("SELECT `productID`, `SKU`, `productName`, `productDescription`, `supplierID`, 
+                    products.categoryID, `unitPrice`, `availableSizes`, `availableColors`, `size`, `color`, `discount`, `unitWeight`, 
+                    `UnitsInStock`, `UnitsOnOrder`, `productAvailable`, products.picture AS pic, `categoryName`, `keywords`, category.categoryID, category.picture FROM `products`
+                INNER JOIN category ON products.categoryID = category.categoryID WHERE category.categoryID = {$category} AND productName LIKE '%{$prod_name}%'");
+
+                    $query->execute();
+
+                    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+                    return $result;
+                }
             }
             catch(PDOException $ex) {
                 echo $ex->getMessage();
             }
         }
-
 
     }
 

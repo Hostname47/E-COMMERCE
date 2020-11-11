@@ -6,8 +6,6 @@
     $submitted_product_name
     = $submitted_sku 
     = $submitted_desc
-    = $submitted_supplier
-    = $submitted_category
     = $submitted_available_sizes
     = $submitted_available_colors
     = $submitted_size
@@ -18,7 +16,7 @@
     = $err = "";
 
     $submitted_unit_price = $submitted_discount = $submitted_unit_weight = "0.00";
-    $submitted_units_in_stock = $submitted_units_on_order = $submitted_product_available = "0";
+    $submitted_units_in_stock = $submitted_units_on_order = $submitted_product_available = $submitted_supplier = $submitted_category = "0";
 
     $error = ["skuErr"=>"", "product_nameErr"=>"", 
     "product_descErr"=>"", "product_supplierErr"=>"",
@@ -32,6 +30,24 @@
 
     if(isset($_POST["add-product"])) {
         include "API/validateData.php";
+        
+        if(file_exists($productFolder)) {
+            $err = "Sorry, Product already exists with this name";
+            $error["product_pictureErr"] = "*";
+        }
+        else { 
+            $productPicture = $submitted_product_name . "/" . $_FILES["product_picture"]["name"];
+            mkdir($productFolder);
+
+            if (move_uploaded_file($_FILES["product_picture"]["tmp_name"], $target_file)) {
+                $product_manager->addProduct($submitted_product_name, $submitted_sku, $submitted_desc, $submitted_supplier, 
+                $submitted_category, $submitted_available_sizes, $submitted_available_colors, $submitted_size, $submitted_color,
+                $submitted_unit_price, $submitted_discount, $submitted_unit_weight, $submitted_units_in_stock, $submitted_units_on_order,
+                $submitted_product_available, $submitted_keywords, $productPicture);
+                
+                $product_created = "Product created successfully";
+            }
+        }
     }
 ?>
 

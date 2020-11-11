@@ -3,35 +3,21 @@
     include "ProductManager.php";
     include "../validation/data-validation.php";
 
-    $submitted_product_name
-    = $submitted_sku 
-    = $submitted_desc
-    = $submitted_supplier
-    = $submitted_category
-    = $submitted_available_sizes
-    = $submitted_available_colors
-    = $submitted_size
-    = $submitted_color
-    = $submitted_picture
-    = $submitted_keywords
-    = $product_created
-    = $err = "";
+    $submitted_filter_category = 0;
+    $submitted_search_field  = $submitted_filter_min = $submitted_filter_max = "";
 
-    $submitted_unit_price = $submitted_discount = $submitted_unit_weight = "0.00";
-    $submitted_units_in_stock = $submitted_units_on_order = $submitted_product_available = "0";
+    if(isset($_POST["product-search"])) {
+        $submitted_search_field = clean($_POST["search-field"]);
+        $submitted_filter_category = clean($_POST["category"]);
+        
 
-    $error = ["skuErr"=>"", "product_nameErr"=>"", 
-    "product_descErr"=>"", "product_supplierErr"=>"",
-    "product_categoryErr"=>"", "product_unit_priceErr"=>"",
-    "product_av_sizesErr"=>"", "product_av_colorsErr"=>"", 
-    "product_sizeErr"=>"", "product_colorErr"=>"",
-    "product_discountErr"=>"", "product_unit_weightErr"=>"",
-    "product_units_in_stockErr"=>"", "product_units_on_orderErr" =>"",
-    "product_availabilityErr"=>"", "product_pictureErr"=>"",
-    "product_keywordsErr"=>""];
+    }
 
-    if(isset($_POST["add-product"])) {
-        include "API/validateData.php";
+    if(isset($_POST["go-min-max"])) {
+        $submitted_search_field = clean($_POST["low-price"]);
+        $submitted_search_field = clean($_POST["high-price"]);
+
+
     }
 ?>
 
@@ -81,69 +67,40 @@
                 <!-- search and filters container -->
                 <div>
                     <p class="para">Search for a product</p>
-                    <form action="#" method="POST" class="flex-row">
-                        <input type="text" name="search-field" placeholder="Search .." class="search-field">
-                        <input type="submit" value="search" name="search-button" class="search-button">
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" class="flex-row" id="search-form">
+                        <input type="text" name="search-field" placeholder="Search .." class="search-field" id="search-field" value="<?php echo $submitted_search_field ?>">
+                        <input type="submit" value="search" name="product-search" class="search-button">
                     </form>
                     
                     <div class="flex-row" style="margin: 14px 0">
-                        <div class="flex-row">
+                        <div class="category-filter flex-row">
                             <p class="para basic-label">Category</p>
                             <?php
                                 include "../design-entities/common-functions.php";
                                 $comm = new CommonFunctionProvider();
-                                $comm->getCategoriesAsDropDownList("basic-dropdownlist");
+                                $comm->getCategoriesAsDropDownList("basic-dropdownlist", $submitted_filter_category, "search-form");
                             ?>
+                        </div>
+
+                        <div class="flex-row" style="margin-left: 12px">
+                            <p class="para basic-label">Price</p>
+                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" class="flex-row">
+                                <input type="text" name="low-price" placeholder="min" class="text-field min-max">
+                                <input type="text" name="high-price" placeholder="max" class="text-field min-max">
+                                <input type="submit" value="Go" name="go-min-max" class="basic-button">
+                            </form>
                         </div>
                     </div>
 
                     <!-- PRODUCT SECTION -->
-                    <div class="products-container">
+                    <div id="products-container">
                         <?php
-                        try
-                        {
-                            $prod_manager = new ProductManager();
-                            $products = $prod_manager->getProductsByCategory(0);
-
-                            foreach($products as $key => $product) {
-                                if($product['UnitsInStock'] - $product['UnitsOnOrder'] > 0) {
-                                    $av = "Yes";
-                                    $class = "available";
-                                }else {
-                                    $av = "No";
-                                    $class = "not-available";
-                                }
-
-                                $pic = "{$product['pic']}";
-
-                                $discountedPrice = $product['unitPrice'] - (20 * $product['unitPrice'] / 100);
-                                echo <<<EOS
-                                    <div class="product-item">
-                                        <img src="../../Products/{$pic}" alt="product image not found" class="product-img">
-                                        <p class="product-name product-label">{$product['productName']}</p>
-                                        <p class="product-label">Category: <span class="product-data-label">{$product['categoryName']}</span></p>
-                                        <p class="product-label">Available: <span class="product-data-label {$class}">{$av}</span></p>
-                                        <p style="margin-bottom: 8px" class="product-label">Price: <span class="original-price">{$product['unitPrice']}</span><span style="font-size: 18px">{$discountedPrice}</span></p>
-                                        <div style="margin-left: auto; margin-top: auto;" class="flex-column">
-                                            <a href="#" id="man-product">Manage product</a>
-                                        </div>
-                                    </div>
-                                EOS;
+                            if(isset($_POST["search-field"])) {
+                                echo "test";
+                            } else {
+                                include "API/functions/fill-in-all-products.php";
                             }
-                        } catch(Exception $ex) {
-                            echo $ex->getMessage();
-                        }
                         ?>
-                        <div class="product-item">
-                            <img src="../../assets/images/categories/4-513.png" alt="" class="product-img">
-                            <p class="product-name product-label">New Apple iPhone 12 (64GB, Black) [Locked] + Carrier Subscription</p>
-                            <p class="product-label">Category: <span class="product-data-label">TV & Movies</span></p>
-                            <p class="product-label">Available: <span class="product-data-label">Yes</span></p>
-                            <p style="margin-bottom: 8px" class="product-label">Price: <span class="original-price">1200$</span><span style="font-size: 18px">900$</span></p>
-                            <div style="margin-left: auto; margin-top: auto;" class="flex-column">
-                                <a href="#" id="man-product">Manage product</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

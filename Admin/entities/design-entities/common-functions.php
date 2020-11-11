@@ -24,14 +24,25 @@
             echo "</select>";
         }
 
-        function getCategoriesAsDropDownList($class = "form-dropDown") {
+        function getCategoryById($id) {
+            // Here we don't have to pecify aliases beause there's no conflicts between the tables
+            $query = $this->link->prepare("SELECT * FROM category WHERE categoryID = :cat");
+            $query->bindParam(":cat", $id);
+            $query->execute();
+
+            $result = $query->fetch();
+            return $result;
+        }
+
+
+        function getCategoriesAsDropDownList($class = "form-dropDown", $value=0, $form="") {
             // Here we don't have to pecify aliases beause there's no conflicts between the tables
             $query = $this->link->prepare("SELECT * FROM category");
             $query->execute();
     
             $result = $query->fetchAll();
-            echo "<select name='category' id='category' class='$class'>";
-
+            echo "<input type='hidden' id='id' value='$value'>";
+            echo "<select name='category' id='category' class='$class' value='{$value}' form='{$form}'>";
             foreach($result as $k => $category) {
                 echo <<<EOS
                     <option value="{$category['categoryID']}">{$category['categoryName']}</option>

@@ -18,16 +18,22 @@ $("#product_available").bind("change paste keyup", function() {
     printByNature("#product_available");
 });
 
+// save the selected category and change the search placeholder depending on admin choice
+let catById = $("#category option[value=" + $("#id").val() + "]").text() + " ..";
+$("#category").val($("#id").val());
+$("#search-field").attr("placeholder", "Search on " + catById);
+
 function printByNature(inputId) {
     if(!isNumeric($(inputId).val())) {
         $(inputId+"-val").css("display", "block")
     } else {
         $(inputId + "-val").css("display", "none");
     }
-}
+} // -----------------
 
 function isNumeric(str) {
     if (typeof str != "string") return false // we only process strings!  
     return !isNaN(str) && // use type coercion to parse the _entirety_ of the string (`parseFloat` alone does not do this)...
             !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
 }
+
