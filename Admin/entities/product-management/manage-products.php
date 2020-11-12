@@ -60,8 +60,8 @@
                 <!-- search and filters container -->
                 <div>
                     <div style="display: flex width: 300px; flex-wrap: no-wrap">
-                        <p class="para">Search for a product</p>
-                        <p class="para valide-credentials">Notice: allowed chars: a-z, A-Z, 0-9 -,[](), no apostrophes</p>
+                        <p class="para basic-label">● Search for a product</p>
+                        <p class="para">Notice: allowed chars: a-z, A-Z, 0-9 -,[](), no apostrophes</p>
                     </div>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" class="flex-row" id="search-form">
                         <input type="text" name="search-field" placeholder="Search .." class="search-field" id="search-field" value="<?php echo $submitted_search_field; ?>">
@@ -92,14 +92,19 @@
                         <h3 class="result-title" id="res-title">Result: </h3>
                         <div id="products-container">
                             <?php
-                                // Track if the user click on go to filter by price
-                                // If not check if the search if it is empty if so track if category is changed if all selected then print all
-                                //echo $submitted_search_field ."-". $submitted_filter_category ."-". $submitted_filter_min ."-". $submitted_filter_max;
+                                // Show products depends on search and filters - if search is empty all product will be shown
                                 $product_manager = new ProductManager();
                                 $product_manager->getFilteredProducts($submitted_search_field, $submitted_filter_category, $submitted_filter_min, $submitted_filter_max);
                                 
                             ?>
                         </div>
+                    </div>
+                </div>
+
+                <div class="semi-black-section-infos" id="product-selected-to-manage">
+                    <a href="" class="close-semi-black-section-info" id="close-product-infos-section" onclick="return false;">✖</a>
+                    <div class="product-item" id="selected" style="margin: 0 auto; width: 80%">
+
                     </div>
                 </div>
             </div>

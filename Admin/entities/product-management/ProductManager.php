@@ -219,7 +219,7 @@
                             <p class="product-label">Available: <span class="product-data-label {$class}">{$av}</span></p>
                             <p style="margin-bottom: 8px" class="product-label">Price: <span class="original-price">{$product['unitPrice']}$</span><span style="font-size: 18px">{$discountedPrice}$</span></p>
                             <div style="margin-left: auto; margin-top: auto;" class="flex-column">
-                                <a href="#" id="man-product">Manage product</a>
+                                <a href="#" id="man-product" onclick="printProductInfos({$product['productID']}); return false;">Manage product</a>
                             </div>
                         </div>
                     EOS;

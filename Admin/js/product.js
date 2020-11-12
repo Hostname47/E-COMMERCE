@@ -46,3 +46,26 @@ function isNumeric(str) {
             !isNaN(parseFloat(str)) // ...and ensure strings of whitespace fail
 }
 
+$("#close-product-infos-section").click(function() {
+    $("#product-selected-to-manage").css("display", "none");
+});
+
+function foo(id) {
+    console.log("ID: " + id);
+}
+
+function printProductInfos(id) {
+    $("#product-selected-to-manage").css("display", "flex");
+    if (id == null) {
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("selected").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "API/getProduct.php?id=" + id, true);
+        xmlhttp.send();
+    }
+}
