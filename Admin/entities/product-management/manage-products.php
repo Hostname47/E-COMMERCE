@@ -9,15 +9,8 @@
     if(isset($_POST["product-search"])) {
         $submitted_search_field = clean($_POST["search-field"]);
         $submitted_filter_category = clean($_POST["category"]);
-        
-
-    }
-
-    if(isset($_POST["go-min-max"])) {
-        $submitted_search_field = clean($_POST["low-price"]);
-        $submitted_search_field = clean($_POST["high-price"]);
-
-
+        $submitted_filter_min = clean($_POST["low-price"]);
+        $submitted_filter_max = clean($_POST["high-price"]);
     }
 ?>
 
@@ -66,9 +59,12 @@
                 </div>
                 <!-- search and filters container -->
                 <div>
-                    <p class="para">Search for a product</p>
+                    <div style="display: flex width: 300px; flex-wrap: no-wrap">
+                        <p class="para">Search for a product</p>
+                        <p class="para valide-credentials">Notice: allowed chars: a-z, A-Z, 0-9 -,[](), no apostrophes</p>
+                    </div>
                     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" class="flex-row" id="search-form">
-                        <input type="text" name="search-field" placeholder="Search .." class="search-field" id="search-field" value="<?php echo $submitted_search_field ?>">
+                        <input type="text" name="search-field" placeholder="Search .." class="search-field" id="search-field" value="<?php echo $submitted_search_field; ?>">
                         <input type="submit" value="search" name="product-search" class="search-button">
                     </form>
                     
@@ -84,23 +80,26 @@
 
                         <div class="flex-row" style="margin-left: 12px">
                             <p class="para basic-label">Price</p>
-                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" class="flex-row">
-                                <input type="text" name="low-price" placeholder="min" class="text-field min-max">
-                                <input type="text" name="high-price" placeholder="max" class="text-field min-max">
-                                <input type="submit" value="Go" name="go-min-max" class="basic-button">
-                            </form>
+                            <div class="flex-row">
+                                <input type="text" name="low-price" placeholder="min" class="text-field min-max" form="search-form" value="<?php echo $submitted_filter_min; ?>">
+                                <input type="text" name="high-price" placeholder="max" class="text-field min-max" form="search-form" value="<?php echo $submitted_filter_max; ?>">
+                            </div>
                         </div>
                     </div>
-
+                    
                     <!-- PRODUCT SECTION -->
-                    <div id="products-container">
-                        <?php
-                            if(isset($_POST["search-field"])) {
-                                echo "test";
-                            } else {
-                                include "API/functions/fill-in-all-products.php";
-                            }
-                        ?>
+                    <div>
+                        <h3 class="result-title" id="res-title">Result: </h3>
+                        <div id="products-container">
+                            <?php
+                                // Track if the user click on go to filter by price
+                                // If not check if the search if it is empty if so track if category is changed if all selected then print all
+                                //echo $submitted_search_field ."-". $submitted_filter_category ."-". $submitted_filter_min ."-". $submitted_filter_max;
+                                $product_manager = new ProductManager();
+                                $product_manager->getFilteredProducts($submitted_search_field, $submitted_filter_category, $submitted_filter_min, $submitted_filter_max);
+                                
+                            ?>
+                        </div>
                     </div>
                 </div>
             </div>

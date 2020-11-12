@@ -23,13 +23,22 @@ let catById = $("#category option[value=" + $("#id").val() + "]").text() + " .."
 $("#category").val($("#id").val());
 $("#search-field").attr("placeholder", "Search on " + catById);
 
+$("#category").on("change", function() {
+    let _catById = $("#category option[value=" + $("#category").val() + "]").text() + " ..";
+    $("#search-field").attr("placeholder", "Search on " + _catById);
+});
+ // -----------------
+
 function printByNature(inputId) {
     if(!isNumeric($(inputId).val())) {
         $(inputId+"-val").css("display", "block")
     } else {
         $(inputId + "-val").css("display", "none");
     }
-} // -----------------
+}
+
+let numrows = $("#nums").val();
+$("#res-title").html("Result: " + numrows + " item" + ((numrows > 1) ? "s" : ""));
 
 function isNumeric(str) {
     if (typeof str != "string") return false // we only process strings!  
