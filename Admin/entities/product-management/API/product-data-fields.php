@@ -1,4 +1,4 @@
-<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" enctype="multipart/form-data" novalidate>
+<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" id="product-data-field" method="POST" enctype="multipart/form-data" novalidate>
     <div style="display: flex; flex-wrap: wrap">
         <div style="padding-right: 25px">
             <div style="display: flex">
@@ -33,7 +33,7 @@
             <?php
                 include "../design-entities/common-functions.php";
                 $common = new CommonFunctionProvider();
-                $common->getSuppliersAsDropdownlist();
+                $common->getSuppliersAsDropdownlist($submitted_supplier);
             ?>
             
             <!--  label_for - labe_content - error - type - name - id - input value  >>>> Category <<<<-->
@@ -44,14 +44,11 @@
             </div>
             <?php
                 $common = new CommonFunctionProvider();
-                $common->getCategoriesAsDropDownList();
+                $common->getCategoriesAsDropDownList('form-dropDown', $submitted_category);
             ?>
 
             <!--  label_for - labe_content - error - type - name - id - input value  >>>> Unit price <<<<-->
             <?php generateDecimalInput("product_unit_price", "Unit price", $error["product_unit_priceErr"],"product_unit_price", "product_unit_price", $submitted_unit_price, ".01") ?>
-
-            <!-- ////////////////// SUBMIT ////////////////// -->
-            <input type="submit" name="add-product" class="styled-button" value="Add Product">
         </div>
         
         <div style="padding-top: 12px; padding-right: 12px">

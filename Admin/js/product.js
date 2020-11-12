@@ -50,10 +50,6 @@ $("#close-product-infos-section").click(function() {
     $("#product-selected-to-manage").css("display", "none");
 });
 
-function foo(id) {
-    console.log("ID: " + id);
-}
-
 function printProductInfos(id) {
     $("#product-selected-to-manage").css("display", "flex");
     if (id == null) {
@@ -69,3 +65,9 @@ function printProductInfos(id) {
         xmlhttp.send();
     }
 }
+
+// change suppliers dropdownlist by its value$("#suppliers").val()
+$("#suppliers option[value='" + $("#suppliers").attr("value") + "']").attr('selected','selected');
+
+// change category dropdownlist by its value
+//$("#category option[value='" + $("#category").attr("value") + "']").attr('selected','selected');

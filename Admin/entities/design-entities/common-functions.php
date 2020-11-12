@@ -9,13 +9,13 @@
             return $this->link;
         }
 
-        function getSuppliersAsDropdownlist() {
+        function getSuppliersAsDropdownlist($value) {
             // Here we don't have to pecify aliases beause there's no conflicts between the tables
             $query = $this->link->prepare("SELECT * FROM supplier");
             $query->execute();
     
             $result = $query->fetchAll();
-            echo "<select name='suppliers' id='suppliers' class='form-dropDown'>";
+            echo "<select name='suppliers' id='suppliers' class='form-dropDown' value='$value'>";
             foreach($result as $k => $supplier) {
                 echo <<<EOS
                     <option value="{$supplier['supplierID']}">{$supplier['contactFname']} {$supplier['contactLname']} - {$supplier['companyName']}</option>
@@ -35,14 +35,14 @@
         }
 
 
-        function getCategoriesAsDropDownList($class = "form-dropDown", $value=0, $form="") {
+        function getCategoriesAsDropDownList($class = "form-dropDown", $value=0) {
             // Here we don't have to pecify aliases beause there's no conflicts between the tables
             $query = $this->link->prepare("SELECT * FROM category");
             $query->execute();
     
             $result = $query->fetchAll();
             echo "<input type='hidden' id='id' value='$value'>";
-            echo "<select name='category' id='category' class='$class' value='{$value}' form='{$form}'>";
+            echo "<select name='category' id='category' class='$class' value='{$value}'>";
             foreach($result as $k => $category) {
                 echo <<<EOS
                     <option value="{$category['categoryID']}">{$category['categoryName']}</option>

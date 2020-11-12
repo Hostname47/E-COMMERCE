@@ -47,7 +47,7 @@
                             <p class="prod-title">Operations on product</p>
                         </div>
                         <div class="selected-product-operation-container">
-                            <a href="#" class="product-info-button" id="edit-product">Edit product</a>
+                            <a href="edit-product.php?id={$product['productID']}" class="product-info-button" id="edit-product">Edit product</a>
                             <a href="#" class="product-info-button" id="delete-product">Delete product</a>
                             <a href="#" class="product-info-button" id="analyse-product">See analysis</a>
                         </div>

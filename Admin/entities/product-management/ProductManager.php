@@ -131,6 +131,19 @@
             }
         }
 
+        function getProductById($id) {
+            $query = $this->link->prepare("SELECT `SKU`, `productName`, `productDescription`, `supplierID`, 
+                products.categoryID, `unitPrice`, `availableSizes`, `availableColors`, `size`, `color`, `discount`, `unitWeight`, 
+                `UnitsInStock`, `UnitsOnOrder`, `productAvailable`, products.picture AS pic, `keywords`, category.categoryID FROM `products`
+                INNER JOIN category ON products.categoryID = category.categoryID WHERE productID = :id");
+
+            $query->bindParam(":id", $id);
+            $query->execute();
+            $result = $query->fetch();
+
+            return $result;
+        }
+
         function getFilteredProducts($name, $category, $min, $max) {
             try {
                 $query = "SELECT `productID`, `SKU`, `productName`, `productDescription`, `supplierID`, 
