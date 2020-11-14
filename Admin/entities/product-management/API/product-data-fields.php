@@ -7,7 +7,6 @@
             <div style="display: flex">
                 <div  style="margin-bottom: 6px; margin-left: 2px; color: rgb(218, 47, 47); width: 300px"><?php echo $err ?></div>
             </div>
-            
             <!--  label_for - labe_content - error - type - name - id - input value  >>>> Product name <<<<-->
             <?php generateInputText(
                 "product_name", // label for

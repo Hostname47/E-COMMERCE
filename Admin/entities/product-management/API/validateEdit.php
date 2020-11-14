@@ -161,6 +161,7 @@
             }
             else {
                 $productFolder = $target_dir . basename($submitted_product_name);
+                $ok = 1;
             }
         }
 

@@ -71,3 +71,16 @@ $("#suppliers option[value='" + $("#suppliers").attr("value") + "']").attr('sele
 
 // change category dropdownlist by its value
 //$("#category option[value='" + $("#category").attr("value") + "']").attr('selected','selected');
+
+$("#edit-a").click(function(event){
+    /*var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+        }
+    };
+    xmlhttp.open("GET", "API/edit.php?id=" + $("#edited-id").val(), true);
+    xmlhttp.send();
+    
+    return false;*/
+});

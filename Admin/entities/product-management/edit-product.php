@@ -28,11 +28,10 @@
     "product_availabilityErr"=>"", "product_pictureErr"=>"",
     "product_keywordsErr"=>""];
 
-    $submittedId = "";
+    $product_manager = new ProductManager();
 
     if(isset($_GET["id"])) {
         // Fill-in the data of the selected item into fields
-        $product_manager = new ProductManager();
 
         $pr = $product_manager->getProductById($_GET['id']);
 
@@ -52,23 +51,63 @@
         $submitted_units_on_order = $pr["UnitsOnOrder"];
         $submitted_product_available = $pr["productAvailable"];
         $submitted_keywords = $pr["keywords"];
+        $submitted_id = $_GET["id"];
     }
+
+
 
     if(isset($_POST["edit-product"])) {
+        $submitted_id = $_POST["edited-id"];
+        if(!isset($submitted_id)) {
+            $err = "you should go back and select the product to edit it";
+        } else {
+            require "API/validateEdit.php";
+            if (isset($ok)){
+                $productPicture = $submitted_product_name . "/" . $_FILES["product_picture"]["name"];
+    
+                $old = $product_manager->getProductById($submitted_id);
+                $old_product_directory_name = $target_dir . $old["productName"];
+                $new_product_directory_name = $target_dir . $submitted_product_name;
+                // delete the older image
+                //rename($old_product_directory_name, $new_product_directory_name);
 
-        require "API/validateEdit.php";
-        
-        // Edit 
-
-        if (move_uploaded_file($_FILES["product_picture"]["tmp_name"], $target_file)) {
-            $product_manager->editProduct(/* CREATE EDIT FUNCTION */$id, $submitted_product_name, $submitted_sku, $submitted_desc, $submitted_supplier, 
-            $submitted_category, $submitted_available_sizes, $submitted_available_colors, $submitted_size, $submitted_color,
-            $submitted_unit_price, $submitted_discount, $submitted_unit_weight, $submitted_units_in_stock, $submitted_units_on_order,
-            $submitted_product_available, $submitted_keywords, $productPicture);
-            
-            $product_created = "Product edited successfully";
+                if(file_exists($old_product_directory_name)) {
+                    emptyDir($old_product_directory_name);
+                    rmdir($old_product_directory_name);
+                }
+                
+                mkdir($new_product_directory_name);
+    
+                if (move_uploaded_file($_FILES["product_picture"]["tmp_name"], $target_file)) {
+                    $product_manager->editProduct($_POST["edited-id"], $submitted_product_name, $submitted_sku, $submitted_desc, $submitted_supplier, 
+                    $submitted_category, $submitted_available_sizes, $submitted_available_colors, $submitted_size, $submitted_color,
+                    $submitted_unit_price, $submitted_discount, $submitted_unit_weight, $submitted_units_in_stock, $submitted_units_on_order,
+                    $submitted_product_available, $submitted_keywords, $productPicture);
+                    
+                    $product_created = "Product edited successfully";
+                }
+            }
         }
     }
+
+    function emptyDir($dir) {
+        if (is_dir($dir)) {
+            $scn = scandir($dir);
+            foreach ($scn as $files) {
+                if ($files !== '.') {
+                    if ($files !== '..') {
+                        if (!is_dir($dir . '/' . $files)) {
+                            unlink($dir . '/' . $files);
+                        } else {
+                            emptyDir($dir . '/' . $files);
+                            rmdir($dir . '/' . $files);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -101,6 +140,7 @@
                 <h2 class="main-layout-title" style="">Edit Product: <?php echo $submitted_product_name; ?></h2>
                 <div>
                     <?php include "API/product-data-fields.php" ?>
+                    <input type="hidden" name="edited-id" value="<?php echo $submitted_id; ?>" form="product-data-field">
                     <input type="submit" name="edit-product" class="styled-button" value="Edit Product" form="product-data-field">
                 </div>
             </div>

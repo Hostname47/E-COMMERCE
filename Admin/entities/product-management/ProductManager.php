@@ -131,6 +131,11 @@
             }
         }
 
+        function getProductNameById($id) {
+            // Get product name by id to pass it to rename to change the product directory that hold the image
+            
+        }
+
         function getProductById($id) {
             $query = $this->link->prepare("SELECT `SKU`, `productName`, `productDescription`, `supplierID`, 
                 products.categoryID, `unitPrice`, `availableSizes`, `availableColors`, `size`, `color`, `discount`, `unitWeight`, 
@@ -242,6 +247,42 @@
             }
         }
 
+        function editProduct($id, $prod_name, $prod_sku, $prod_desc, $prod_supplier, 
+        $prod_category, $prod_available_sizes, $prod_available_colors, $prod_size, $prod_color,
+        $prod_unit_price, $prod_discount, $prod_unit_weight, $prod_units_in_stock, $prod_units_on_order,
+        $prod_available, $prod_keywords, $prod_picture ) {
+
+            try {
+            $query = $this->link->prepare("
+                UPDATE `products` 
+                SET 
+                `SKU`='{$prod_sku}',
+                `productName`='{$prod_name}',
+                `productDescription`='$prod_desc',
+                `supplierID`=$prod_supplier,
+                `categoryID`=$prod_category,
+                `unitPrice`=$prod_unit_price,
+                `availableSizes`='$prod_available_sizes',
+                `availableColors`='$prod_available_colors',
+                `size`='$prod_size',
+                `color`='$prod_color',
+                `discount`=$prod_discount,
+                `unitWeight`=$prod_unit_weight,
+                `UnitsInStock`=$prod_units_in_stock,
+                `UnitsOnOrder`=$prod_units_on_order,
+                `productAvailable`=$prod_available,
+                `picture`='{$prod_picture}',
+                `keywords`='{$prod_keywords}' WHERE productID = :id");
+
+            $query->bindParam(":id", $id);
+
+            $query->execute();
+            return $query->rowCount();
+
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
     }
 
 ?>
