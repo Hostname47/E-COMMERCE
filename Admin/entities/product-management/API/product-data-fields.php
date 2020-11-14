@@ -43,7 +43,7 @@
             </div>
             <?php
                 $common = new CommonFunctionProvider();
-                $common->getCategoriesAsDropDownList('form-dropDown', $submitted_category);
+                $common->getCategoriesAsDropDownList('form-dropDown', $submitted_category, "product-data-field");
             ?>
 
             <!--  label_for - labe_content - error - type - name - id - input value  >>>> Unit price <<<<-->

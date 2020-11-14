@@ -156,7 +156,7 @@
                 && $imageFileType != "gif" ) {
                 $err = "Sorry, only JPG, JPEG, PNG & GIF pictures are allowed.";
             }
-            else if($_FILES["product_picture"]["size"] > 500000) {
+            else if($_FILES["product_picture"]["size"] > 50000000) {
                 $err = "Sorry, your logo size is too large.";
             }
             else {

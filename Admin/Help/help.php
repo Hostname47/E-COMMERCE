@@ -19,11 +19,11 @@
     <main class="help-container">
         <div class="top-section-container">
             <h1 class="help-title">DEVELOPER DOC</h1>
-            <a href="#" class="its-a-link github">project on github</a>
+            <a href="https://github.com/Hostname47/E-COMMERCE" target="_blank" class="its-a-link github">project on github</a>
         </div>
         <hr class="underline">
         <div id="help-section">
-            <?php include "Help-pages-container/help1.php"; ?>
+            <?php include "Help-pages-container/help.php"; ?>
         </div>
     </main>
 </body>
