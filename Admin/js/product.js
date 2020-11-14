@@ -19,8 +19,8 @@ $("#product_available").bind("change paste keyup", function() {
 });
 
 // save the selected category and change the search placeholder depending on admin choice
-let catById = $("#category option[value=" + $("#id").val() + "]").text() + " ..";
-$("#category").val($("#id").val());
+let catById = $("#category option[value=" + $("#val").val() + "]").text() + " ..";
+$("#category").val($("#val").val());
 $("#search-field").attr("placeholder", "Search on " + catById);
 
 $("#category").on("change", function() {
