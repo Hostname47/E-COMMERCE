@@ -48,8 +48,6 @@
                     $product_created = "Product created successfully";
                 }
             }
-        } else {
-            echo "error";
         }
     }
 ?>

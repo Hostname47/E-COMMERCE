@@ -101,10 +101,25 @@
                     </div>
                 </div>
 
+                <!-- Id of the selected item to delete -->
+                <input type="hidden" id="id-to-delete">
+
                 <div class="semi-black-section-infos" id="product-selected-to-manage">
                     <a href="" class="close-semi-black-section-info" id="close-product-infos-section" onclick="return false;">✖</a>
                     <div class="product-item" id="selected" style="margin: 0 auto; width: 80%">
 
+                    </div>
+                </div>
+
+                <div class="semi-black-section-infos" id="product-selected-to-delete">
+                    <a href="" class="close-semi-black-section-info" id="close-product-delete-section" onclick="return false;">✖</a>
+                    <div class="product-item" id="selected" style="margin: 0 auto; width: 80%">
+                        <h4 style="margin: 10px">Are you sure you want to delte this product ?</h4>
+                        <p style="margin: 0; padding: 4px 4px 10px 12px;" id="delete-result"></p>
+                        <div style="margin: 0 auto; padding: 25px 0">
+                            <a href="" class="styled-button" id="sure">I'm sure</a>
+                            <a href="" class="styled-button" id="not-sure">No</a>
+                        </div>
                     </div>
                 </div>
             </div>

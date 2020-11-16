@@ -51,6 +51,7 @@ $("#close-product-infos-section").click(function() {
 });
 
 function printProductInfos(id) {
+    $("#id-to-delete").val(id);
     $("#product-selected-to-manage").css("display", "flex");
     if (id == null) {
         return;
@@ -83,4 +84,41 @@ $("#edit-a").click(function(event){
     xmlhttp.send();
     
     return false;*/
+});
+
+function deleteProduct() {
+    $("#product-selected-to-delete").css("display", "flex");
+}
+
+$("#close-product-delete-section").click(function() {
+    $("#product-selected-to-delete").css("display", "none");
+});
+
+$("#not-sure").click(function() {
+    $("#product-selected-to-delete").css("display", "none");
+    return false;
+});
+
+$("#sure").click(function(){
+    let id = $("#id-to-delete").val();
+    if (id == null) {
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                if(this.responseText == 1) {
+                    document.getElementById("delete-result").innerHTML = "Product deleted successfully.";
+                    document.getElementById("delete-result").style.color = "green";
+                } else {
+                    document.getElementById("delete-result").innerHTML = "Error occured while deleting the product !";
+                    document.getElementById("delete-result").style.color = "red";
+                }
+            }
+        };
+        xmlhttp.open("GET", "API/deleteProduct.php?id=" + id, true);
+        xmlhttp.send();
+    }
+
+    return false;
 });

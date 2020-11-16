@@ -8,7 +8,7 @@
             <a href="https://localhost/E-COMMERCE/Admin/entities/product-management/add-product.php" class="admin-panel-button add-item" id="add-product">Add product</a>
             <a href="https://localhost/E-COMMERCE/Admin/entities/product-management/manage-products.php" class="admin-panel-button manage" id="manage-product">Manage products</a>
             <a href="https://localhost/E-COMMERCE/Admin/entities/product-management/edit-product.php" class="admin-panel-button edit-item" id="edit-product">Edit product</a>
-            <a href="#" class="admin-panel-button select-item">Retrieve product</a>
+            <a href="#" class="admin-panel-button select-item">Product analysis</a>
         </nav>
     </div>
     <div class="pannel-option">

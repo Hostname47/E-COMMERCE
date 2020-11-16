@@ -4,7 +4,7 @@
 
         $product_manager = new ProductManager();
 
-        $submitted_product_name = clean($_POST["product_name"]);
+        $submitted_product_name = $_POST["product_name"];
         $submitted_sku = clean($_POST["product_sku"]);
         $submitted_desc = clean($_POST["product_desc"]);
         $submitted_supplier = clean($_POST["suppliers"]);
