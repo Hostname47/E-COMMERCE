@@ -135,7 +135,7 @@ $(".paging-button").click(function(e) {
 
     if($(this).text() == "<< first") {
 
-        $(this).addClass("paging-selected-page");
+        $(this).next().addClass("paging-selected-page");
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
@@ -147,9 +147,9 @@ $(".paging-button").click(function(e) {
         xmlhttp.send();
         
     } else if($(this).text() == "last >>") {
+        $(this).prev().addClass("paging-selected-page");
+
         let minBound = ($(this).prev().text() - 1) * 4;
-        
-        $(this).addClass("paging-selected-page");
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {

@@ -106,12 +106,13 @@
                 <div style="margin: 20px 0">
                     <a href="#" class="paging-button">&lt&lt first</a>
                     <?php
-                    
-                    $number_of_iterations = ceil($result_products_number / $number_of_products_per_page); // we take 4 products per page
-                    for($i = 0;$i<$number_of_iterations;$i++) {
-                        $content = $i+1;
-                        echo "<a href='#' class='paging-button'>" . $content . "</a>";
-                    } ?>
+                        $num_of_products = $product_manager->getRowCount();
+                        $number_of_iterations = ceil($result_products_number / $number_of_products_per_page); // we take 4 products per page
+                        for($i = 0;$i<$number_of_iterations;$i++) {
+                            $content = $i+1;
+                            echo "<a href='#' class='paging-button'>" . $content . "</a>";
+                        } 
+                    ?>
                     <a href="#" class="paging-button">last >></a>
                 </div>
 

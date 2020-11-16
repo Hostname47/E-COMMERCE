@@ -202,7 +202,7 @@
                     }
                 }
 
-                $query .= " ORDER BY products.categoryID LIMIT 0, 25";
+                $query .= " ORDER BY products.categoryID";
 
                 $statement = $this->link->prepare($query);
                 
@@ -213,7 +213,14 @@
                 $result_products_number = $statement->rowCount();
                 echo "<input type='hidden' value='$result_products_number' id='nums'>";
 
+                $iterator = 0;
                 foreach($products as $key => $product) {
+                    if($iterator == 4) {
+                        $iterator = 0;
+                        break;
+                    }
+
+                    $iterator++;
                     if($product['UnitsInStock'] - $product['UnitsOnOrder'] > 0) {
                         $av = "Yes";
                         $class = "available";
@@ -289,6 +296,13 @@
             $query->execute();
 
             return $query->rowCount();
+        }
+
+        function getRowCount() {
+            $stmt = $this->link->prepare('SELECT * FROM products');
+            
+            $stmt->execute();
+            return $stmt->rowCount();
         }
     }
 
