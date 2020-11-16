@@ -3,7 +3,9 @@
     include "ProductManager.php";
     include "../validation/data-validation.php";
 
-    $submitted_filter_category = 0;
+    $number_of_products_per_page = 4;
+
+    $submitted_filter_category = $result_products_number = 0;
     $submitted_search_field  = $submitted_filter_min = $submitted_filter_max = "";
 
     if(isset($_POST["product-search"])) {
@@ -81,8 +83,8 @@
                         <div class="flex-row" style="margin-left: 12px">
                             <p class="para basic-label">Price</p>
                             <div class="flex-row">
-                                <input type="text" name="low-price" placeholder="min" class="text-field min-max" form="search-form" value="<?php echo $submitted_filter_min; ?>">
-                                <input type="text" name="high-price" placeholder="max" class="text-field min-max" form="search-form" value="<?php echo $submitted_filter_max; ?>">
+                                <input type="text" name="low-price" placeholder="min" id="min-price" class="text-field min-max" form="search-form" value="<?php echo $submitted_filter_min; ?>">
+                                <input type="text" name="high-price" placeholder="max" id = "max-price" class="text-field min-max" form="search-form" value="<?php echo $submitted_filter_max; ?>">
                             </div>
                         </div>
                     </div>
@@ -94,11 +96,23 @@
                             <?php
                                 // Show products depends on search and filters - if search is empty all product will be shown
                                 $product_manager = new ProductManager();
-                                $product_manager->getFilteredProducts($submitted_search_field, $submitted_filter_category, $submitted_filter_min, $submitted_filter_max);
+                                $result_products_number = $product_manager->getFilteredProducts($submitted_search_field, $submitted_filter_category, $submitted_filter_min, $submitted_filter_max);
                                 
                             ?>
                         </div>
                     </div>
+                </div>
+
+                <div style="margin: 20px 0">
+                    <a href="#" class="paging-button">&lt&lt first</a>
+                    <?php
+                    
+                    $number_of_iterations = ceil($result_products_number / $number_of_products_per_page); // we take 4 products per page
+                    for($i = 0;$i<$number_of_iterations;$i++) {
+                        $content = $i+1;
+                        echo "<a href='#' class='paging-button'>" . $content . "</a>";
+                    } ?>
+                    <a href="#" class="paging-button">last >></a>
                 </div>
 
                 <!-- Id of the selected item to delete -->

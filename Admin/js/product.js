@@ -122,3 +122,59 @@ $("#sure").click(function(){
 
     return false;
 });
+
+
+// --------- PAGING ---------
+
+$(".paging-button").click(function(e) {
+    let productName = $("#search-field").val();
+    let minPrice = $("#min-price").val();
+    let maxPrice = $("#max-price").val();
+    let category = $("#category").val();
+    $(".paging-button").removeClass("paging-selected-page");
+
+    if($(this).text() == "<< first") {
+
+        $(this).addClass("paging-selected-page");
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("products-container").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "API/getPagedProducts.php?min_bound=" + 0 + "&prod_number=" + 4 + "&name=" 
+            + productName + "&min=" + minPrice + "&max=" + maxPrice + "&category=" + category, true);
+        xmlhttp.send();
+        
+    } else if($(this).text() == "last >>") {
+        let minBound = ($(this).prev().text() - 1) * 4;
+        
+        $(this).addClass("paging-selected-page");
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("products-container").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "API/getPagedProducts.php?min_bound=" + minBound + "&prod_number=" + 4 + "&name=" 
+            + productName + "&min=" + minPrice + "&max=" + maxPrice + "&category=" + category, true);
+        xmlhttp.send();
+
+    } else {
+        $(this).addClass("paging-selected-page");
+        let minBound = ($(this).text() - 1) * 4 /* 4 here is number of products per page */;
+        let maxBound = 4/* 4 here is number of products per page */;
+
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("products-container").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "API/getPagedProducts.php?min_bound=" + minBound + "&prod_number=" + maxBound + "&name=" 
+            + productName + "&min=" + minPrice + "&max=" + maxPrice + "&category=" + category, true);
+        xmlhttp.send();
+    }
+
+    e.preventDefault();
+});

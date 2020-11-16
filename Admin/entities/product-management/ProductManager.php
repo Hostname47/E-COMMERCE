@@ -145,6 +145,8 @@
 
         function getFilteredProducts($name, $category, $min, $max) {
             try {
+                $result_products_number = 0;
+
                 $query = "SELECT `productID`, `SKU`, `productName`, `productDescription`, `supplierID`, 
                 products.categoryID, `unitPrice`, `availableSizes`, `availableColors`, `size`, `color`, `discount`, `unitWeight`, 
                 `UnitsInStock`, `UnitsOnOrder`, `productAvailable`, products.picture AS pic, `categoryName`, `keywords`, category.categoryID, category.picture FROM `products`
@@ -200,7 +202,7 @@
                     }
                 }
 
-                $query .= " ORDER BY products.categoryID";
+                $query .= " ORDER BY products.categoryID LIMIT 0, 25";
 
                 $statement = $this->link->prepare($query);
                 
@@ -239,6 +241,8 @@
             } catch(PDOException $ex) {
                 echo $ex->getMessage();
             }
+
+            return $result_products_number;
         }
 
         function editProduct($id, $prod_name, $prod_sku, $prod_desc, $prod_supplier, 

@@ -12,7 +12,7 @@
 .product-item {
     width: 220px;
     background-color: rgb(216, 216, 216);
-    border: 1px solid rgb(197, 197, 197);
+    border: 2px solid rgb(197, 197, 197);
     padding: 6px;
     display: flex;
     flex-direction: column;
