@@ -1,8 +1,8 @@
 <?php
 
-    include_once "config/dbconnect.php";
+    include_once "config/Database.php";
 
-    $database = new Database();
+    $database = new DB();
     $db = $database->connect();
 
     $stmt = $db->prepare("SELECT * FROM category");

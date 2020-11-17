@@ -1,4 +1,136 @@
-.fatured-product-container {
+
+
+.featured-product {
+    width: 100%;
+    color: white;
+    height: 450px;
+
+    background-image: linear-gradient(to right top, #050505, #080808, #0a0a0a, #0d0d0d, #0f0f0f, #0f0f0f, #0f0f0f, #0f0f0f, #0d0d0d, #0a0a0a, #080808, #050505);
+    position: relative;
+    
+    display: flex;
+
+}
+
+.paging-container {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0 20px 16px 0;
+
+    display: flex;
+}
+
+.featured-item-paging {
+    display: flex;
+    width: 20px;
+    height: 20px;
+
+    margin-left: 10px;
+
+    background-size: 16px 16px;
+    background-repeat: no-repeat;
+    
+    background-image: url("../images/featured-page-item.png");
+}
+
+.featured-item-selected {
+    background-image: url("../images/featured-page-selected.png");
+}
+
+.featured-button {
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+
+    border: 2px solid white;
+    background-color: black;
+    border-radius: 6px;
+
+    padding: 12px 16px;
+    text-decoration: none;
+    transition: all 0.4s ease;
+}
+
+.featured-info-section {
+    box-sizing: border-box;
+    width: 60%;
+    padding-left: 80px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.image-section {
+    width: 40%;
+    box-sizing: border-box;
+}
+
+.featured-product-image {
+    height: 450px;
+}
+
+.featured-buttons-container {
+    display: flex;
+    margin-top: 10px;
+}
+
+.featured-product-first-title {
+    margin: 6px;
+    margin-left: 14px;
+}
+
+.featured-product-second-title {
+    font-size: 32px;
+    margin: 0px;
+}
+
+.featured-product-description {
+    line-height: 1.5;
+    margin: 6px 0px;
+}
+
+.featured-product-price {
+    margin: 6px 0;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+#more-info {
+    color: black;
+    background-color: white;
+}
+
+#buy-now {
+    margin-right: 10px;
+    padding-left: 45px;
+
+    background-image: url("../images/white-cart.png");
+    background-size: 25px 25px;
+    background-position: 12px center;
+    background-repeat: no-repeat;
+}
+
+#buy-now:hover {
+    background-color: white;
+    background-image: url("../images/black-cart.png");
+    color: black;
+}
+
+@media screen and (min-width: 640px) AND (max-width: 900px) {
+    .featured-product {
+
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .featured-product {
+        
+    }
+}
+
+/*.fatured-product-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -139,4 +271,4 @@
         width: 600px;
         padding: 55px 55px 55px 55px;
     }
-}
+}*/

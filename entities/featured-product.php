@@ -1,4 +1,4 @@
-<div>
+<!--<div>
     <div class="fatured-product-global-container">
         <div class="fatured-product-container">
             <p class="featured-first-title-sentence">SPACE JUST GOT PERSONAL</p>
@@ -16,5 +16,30 @@
         <div class="arrow-container">
             <a href="#" id="go-to-ftr">▾</a>
         </div>
+    </div>
+</div>-->
+
+
+<div class="featured-product">
+    <div class="featured-info-section">
+        <p class="featured-product-first-title">Nilson boris</p>
+        <h2 class="featured-product-second-title">This is big title</h2>
+        <p class="featured-product-description">Description: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla nemo, voluptatum atque iste 
+            consequatur nostrum, nesciunt obcaecati aperiam dolore delectus fugiat! Maxime eaque cupiditate a 
+            obcaecati atque tenetur nam quaerat.</p>
+        <p class="featured-product-price">$30,700.00</p>
+        <div class="featured-buttons-container">
+            <a href="#" class="featured-button" id="buy-now">Buy now</a>
+            <a href="#" class="featured-button" id="more-info">More details ▾</a>
+        </div>
+    </div>
+    <div class="image-section">
+        <img src="images/featured-product-assets/bvlgary.png" class="featured-product-image" alt="">
+    </div>
+    <div class="paging-container">
+        <a href="#" class="featured-item-paging"></a>
+        <a href="#" class="featured-item-paging featured-item-selected"></a>
+        <a href="#" class="featured-item-paging"></a>
+        <a href="#" class="featured-item-paging"></a>
     </div>
 </div>

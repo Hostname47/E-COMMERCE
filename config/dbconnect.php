@@ -1,21 +1,15 @@
 <?php
-    Class Database {
+    $servername = "localhost";
+    $con_username = "hostname47";
+    $con_password = "truestory";
+    $dbname = "ECOM";
 
-        protected $conn;
-        public $db_name = "ECOM";
-        public $db_username = "mouad";
-        public $db_password = "truestory123";
-        public $db_host = "localhost";
-        
-        function connect() {
-            try {
-                $this->conn = new PDO("mysql:host=$this->db_host; dbname=$this->db_name", $this->db_username, $this->db_password);
-                return $this->conn;
-            } catch(PDOException $ex) {
-                return "Connection error: " . $ex->getMessage();
-            }
-        }
-    
+    try {
+        $conn = new PDO("mysql:host=$servername;dbname=$dbname;", $con_username, $con_password);
+
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    } catch(PDOException $ex) {
+        echo "Error: " . $ex->getMessage() . "<br>";
     }
 
 ?>
