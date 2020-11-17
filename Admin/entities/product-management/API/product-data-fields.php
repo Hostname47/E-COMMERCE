@@ -65,7 +65,7 @@
             <?php generateInputText("product_color", "Color", $error["product_colorErr"], "text","product_color", "product_color", $submitted_color) ?>
 
             <!--  label_for - labe_content - error - type - name - id - input value  >>>> Unit discount <<<< -->
-            <?php generateDecimalInput("product_discount", "Discount", $error["product_discountErr"], "product_discount", "product_discount", $submitted_discount, ".01") ?>
+            <?php generateDecimalInput("product_discount", "Discount (%)", $error["product_discountErr"], "product_discount", "product_discount", $submitted_discount, ".01") ?>
 
             <!--  label_for - labe_content - error - type - name - id - input value  >>>> Unit weight <<<< -->
             <?php generateDecimalInput("product_unit_weight", "Unit weight", $error["product_unit_weightErr"], "product_unit_weight", "product_unit_weight", $submitted_unit_weight, ".01") ?>

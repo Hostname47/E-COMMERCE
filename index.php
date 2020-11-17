@@ -1,11 +1,6 @@
 <?php
 
-    session_start();
-
-    if(isset($_POST["logout"])) {
-        unset($_SESSION["user_id"]);
-        header("Location: login-entities/login.php");
-    }
+    
 
 ?>
 
@@ -18,6 +13,7 @@
     <title>Dashboard</title>
     
     <link rel="icon" href="images/favicon.ico">
+    
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/featured-product.css">
     <link rel="stylesheet" href="css/index.css">

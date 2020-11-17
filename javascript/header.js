@@ -2,8 +2,8 @@ $(".categories-dropdownlist").change(function() {
     let val = this.options[this.selectedIndex].text;
     $(".search-field").attr("placeholder", "Search on " + val);
 
-    //.categories-dropdownlist
-    canvas = document.createElement("canvas"); 
+    //.categories-dropdownlist scalable proportional to category text
+    /*canvas = document.createElement("canvas"); 
     context = canvas.getContext("2d"); 
     context.font = "Karla"; 
     width = context.measureText(val).width + 58;
@@ -14,11 +14,13 @@ $(".categories-dropdownlist").change(function() {
 
     $(".categories-dropdownlist").css("width", formattedWidth + "px");
     
-    console.log(formattedWidth);
+    console.log(formattedWidth);*/
 })
 
-$('.mobile-menu-top').click(function() {
-    let height = $("#top-mobile-nav").css("height");
+$('.menu-top').click(function(e) {
+    e.preventDefault();
+
+    let height = $("#top-small-device-nav").css("height");
 
     if(height != "0px") {
         closeMobileMenu();
@@ -50,16 +52,12 @@ function closeMobileSearch() {
     container.css("display", "none");
 }
 
-
 function openMobileMenu() {
-    $("#top-mobile-nav").css("height", "auto");
-    $("#top-mobile-nav").css("transition", "all 0.4s ease");
-
-    $('.mobile-menu-top').css(`background-image`, `url(http://localhost/E-COMMERCE/images/x.png)`);
+    $("#top-small-device-nav").css("height", "auto");
+    $('.menu-top').css(`background-image`, `url(http://localhost/E-COMMERCE/images/x.png)`);
 }
 
 function closeMobileMenu() {
-    $("#top-mobile-nav").css("height", "0px");
-
-    $('.mobile-menu-top').css(`background-image`, `url(http://localhost/E-COMMERCE/images/menu.png)`);
+    $("#top-small-device-nav").css("height", "0px");
+    $('.menu-top').css(`background-image`, `url(http://localhost/E-COMMERCE/images/menu.png)`);
 }

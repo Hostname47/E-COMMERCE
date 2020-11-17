@@ -1,18 +1,19 @@
 <?php
-    try {
-        $database = new Connection();
-        $conn = $database->openConnection();
 
-        $stmt = $conn->prepare("SELECT * FROM categories");
-        $stmt -> execute();
+    include_once "config/dbconnect.php";
 
-        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $database = new Database();
+    $db = $database->connect();
 
-        foreach($results as $result){
-?>
-            <option value="<?php echo $result['cat_id']; ?>"><?php echo $result["cat_title"]?></option>
-<?php   }
-    } catch(PDOException $ex) {
-        echo "There is some problem in connection: " . $ex->getMessage();
+    $stmt = $db->prepare("SELECT * FROM category");
+    $stmt->execute();
+
+    $result = $stmt->fetchAll();
+    
+    foreach($result as $k => $category) {
+        echo <<<EOS
+            <option value="{$category['categoryID']}">{$category['categoryName']}</option>
+        EOS;
     }
+
 ?>

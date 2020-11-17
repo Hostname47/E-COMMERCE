@@ -1,35 +1,25 @@
 <header>
-    <div class="top-strip">
-        <h3>Time will show who's the hardest worker in the room .. MOUAD NASSRI</h3>
-        <div class="follow-me">
-            <a href="https://www.facebook.com/HelplessMiind/" target="_blank" id="fb-icon" class="s-m-icon"></a>
-            <a href="#" id="tw-icon" class="s-m-icon"></a>
-            <a href="#" id="li-icon" class="s-m-icon"></a>
-            <a href="#" id="sk-icon" class="s-m-icon"></a>
-            <a href="#" id="gh-icon" class="s-m-icon"></a>
-        </div>
-    </div>
-    
+
     <div id="top-menu-strip">
-        <a href="#" id="top-logo"><img src="images/logo.png" class="logo"></a>
+        <a href="index.php" id="top-logo"><img src="images/logo.png" class="logo"></a>
         <div class="search-container">
-            <form action="#" class="product-search-form">
+            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" class="product-search-form" id="search-form" method="POST">
                 <select name="container-dropdownlist" class="categories-dropdownlist">
                     <!-- normally w got the categories from database but for symplicity we need to fill some options -->
-                    <?php //include "entities/get-categories.php" ?>
+                    <?php include "entities/get-categories.php"?>
                 </select>
                 <input type="text" name="search-field" class="search-field" placeholder="Search">
                 <input type="submit" value="" name="search" class="search-button">
             </form>
         </div>
         <div id="my-account">
-            <a href=""><img src="images/mine.png" alt="NOT FOUND" id="account-picture"></a>
+            <a href=""><img src="images/account.png" alt="NOT FOUND" id="account-picture"></a>
             <a href="#" id="account-name">My-account</a>
         </div>
 
         <div id="search-and-menu-container">
             <a href="#" class="mobile-search-top"></a>
-            <a href="#" class="mobile-menu-top"></a>
+            <a href="#" class="menu-top"></a>
         </div>
 
         <nav id="top-nav">
@@ -41,22 +31,22 @@
             </ul>
         </nav>
     </div>
-    <nav id="top-mobile-nav">
+    <nav id="top-small-device-nav">
         <ul>
-            <a href="#"><li>Home</li></a>
-            <a href="#"><li>Products</li></a>
-            <a href="#"><li>About</li></a>
-            <a href="#"><li>Account</li></a>
-            
+            <a href="index.php" class="menu-button-style white-home"><li id="home">Home</li></a>
+            <a href="#" class="menu-button-style white-cart"><li id="home">My Cart</li></a>
+            <a href="#" class="menu-button-style white-shop"><li>Shop</li></a>
+            <a href="#" class="menu-button-style white-account"><li>Account</li></a>
+            <a href="#" class="menu-button-style white-about"><li>About</li></a>
         </ul>
     </nav>
 
     <div class="search-mobile-container">
-        <form action="" class="product-search-form">
-            <select name="container-dropdownlist" class="categories-dropdownlist">
-                <!-- normally w got the categories from database but for symplicity we need to fill some options -->
-                    <?php //include "entities/get-categories.php" ?>
-            </select>
+        <select name="category" class="categories-dropdownlist" id="mobile-category-dropdownlist" form="small-search-form">
+            <!-- normally w got the categories from database but for symplicity we need to fill some options -->
+                <?php include "entities/get-categories.php" ?>
+        </select>
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" class="product-search-form" id="small-search-form" method="POST">
             <input type="text" name="search-field" class="search-field" placeholder="Search">
             <input type="submit" value="" name="search" class="search-button">
         </form>
