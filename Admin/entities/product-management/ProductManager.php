@@ -215,7 +215,7 @@
 
                 $iterator = 0;
                 foreach($products as $key => $product) {
-                    if($iterator == 4) {
+                    if($iterator == 8) {
                         $iterator = 0;
                         break;
                     }
@@ -230,8 +230,9 @@
                     }
             
                     $pic = "{$product['pic']}";
-            
-                    $discountedPrice = $product['unitPrice'] - (20 * $product['unitPrice'] / 100);
+                    
+                    $discountedPrice = $product['unitPrice'] - (($product['discount'] * $product['unitPrice']) / 100.00);
+                    
                     echo <<<EOS
                         <div class="product-item">
                             <img src="../../Products/{$pic}" alt="product image not found" class="product-img">

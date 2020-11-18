@@ -142,14 +142,14 @@ $(".paging-button").click(function(e) {
                 document.getElementById("products-container").innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET", "API/getPagedProducts.php?min_bound=" + 0 + "&prod_number=" + 4 + "&name=" 
+        xmlhttp.open("GET", "API/getPagedProducts.php?min_bound=" + 0 + "&prod_number=" + 8 + "&name=" 
             + productName + "&min=" + minPrice + "&max=" + maxPrice + "&category=" + category, true);
         xmlhttp.send();
         
     } else if($(this).text() == "last >>") {
         $(this).prev().addClass("paging-selected-page");
 
-        let minBound = ($(this).prev().text() - 1) * 4;
+        let minBound = ($(this).prev().text() - 1) * 8;
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
@@ -162,8 +162,8 @@ $(".paging-button").click(function(e) {
 
     } else {
         $(this).addClass("paging-selected-page");
-        let minBound = ($(this).text() - 1) * 4 /* 4 here is number of products per page */;
-        let maxBound = 4/* 4 here is number of products per page */;
+        let minBound = ($(this).text() - 1) * 8 /* 4 here is number of products per page */;
+        let maxBound = 8/* 4 here is number of products per page */;
 
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {

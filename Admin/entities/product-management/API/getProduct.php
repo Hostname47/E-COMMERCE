@@ -17,6 +17,7 @@
     $result = $statement->fetchAll();
 
     foreach($result as $product) {
+        $discountedPrice = $product['unitPrice'] - (($product['discount'] * $product['unitPrice']) / 100.00);
         echo <<<EOS
                 <div>
                     <p class="prod-title">Product Informations</p>
@@ -31,11 +32,12 @@
                         <p class="selected-product-label"><b>Description</b>: {$product['productDescription']}</p>
                         <p class="selected-product-label"><b>product</b>: {$product['contactFname']} {$product['contactLname']}</p>
                         <p class="selected-product-label"><b>Category</b>: {$product['categoryName']}</p>
-                        <p class="selected-product-label"><b>Unit price</b>: {$product['unitPrice']}</p>
+                        <p class="selected-product-label"><b>Discount</b>: {$product['discount']}%</p>
+                        <p class="selected-product-label"><b>Unit price</b>: {$product['unitPrice']}$</p>
+                        <p class="selected-product-label"><b>Discounted price</b>: {$discountedPrice}$</p>
                         <p class="selected-product-label"><b>Available sizes</b>: {$product['availableSizes']}</p>
                         <p class="selected-product-label"><b>Size</b>: {$product['size']}</p>
                         <p class="selected-product-label"><b>Color</b>: {$product['color']}</p>
-                        <p class="selected-product-label"><b>Discount</b>: {$product['discount']}</p>
                         <p class="selected-product-label"><b>Unit weight</b>: {$product['unitWeight']}</p>
                         <p class="selected-product-label"><b>Units in stock</b>: {$product['UnitsInStock']}</p>
                         <p class="selected-product-label"><b>Unit on order</b>: {$product['UnitsOnOrder']}</p>

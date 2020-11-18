@@ -34,6 +34,13 @@
     <main>
         <?php include "entities/featured-product.php"; ?>
 
+        <div class="featuring-products">
+            <p style="text-align: center; margin: 25px 0 12px 0; font-weight: bold;">FEATURING</p>
+            <h3 class="best-seller-title">OUR BEST SELLERS</h3>
+
+            
+        </div>
+
         <div class="our-services-containers">
             <div class="service-item">
                 <img src="images/our-services/priority-shipping.png" alt="not found">
@@ -50,73 +57,6 @@
                 <p class="service-title">Priority Shipping</p>
                 <p class="service-description">Priority Mail is a quick, affordable service that ships domestically within 1-3 business days and internationally within 6-10 business days. </p>
             </div>
-        </div>
-
-        <div class="featuring-products">
-            <p style="text-align: center; margin: 25px 0 8px 0;">FEATURING</p>
-            <h3 style="text-align: center; letter-spacing: 2px">OUR BEST SELLERS</h3>
-
-            <div class="best-seller-global">
-                <div class="best-sellers-container">
-                    <div class="best-seller-product">
-                        <a href="#" class="center-it"><img src="images/iphone.png" alt=""></a>
-                        <p class="b-s-product-category">Category: Phones</p>
-                        <p class="b-s-product-name">IPhone X</p>
-                        <p class="b-s-product-price"><span class="b-s-product-discount">$800</span>$600.00</p>
-                        <a href="#" class="b-s-product-add-to-cart">ADD TO CART</a>
-                    </div>
-                    <div class="best-seller-product">
-                        <a href="#" class="center-it"><img src="images/iphone.png" alt=""></a>
-                        <p class="b-s-product-category">Category: Phones</p>
-                        <p class="b-s-product-name">IPhone X</p>
-                        <p class="b-s-product-price"><span class="b-s-product-discount">$800</span>$600.00</p>
-                        <a href="#" class="b-s-product-add-to-cart">ADD TO CART</a>
-                    </div>
-                    <div class="best-seller-product">
-                        <a href="#" class="center-it"><img src="images/iphone.png" alt=""></a>
-                        <p class="b-s-product-category">Category: Phones</p>
-                        <p class="b-s-product-name">IPhone X</p>
-                        <p class="b-s-product-price"><span class="b-s-product-discount">$800</span>$600.00</p>
-                        <a href="#" class="b-s-product-add-to-cart">ADD TO CART</a>
-                    </div>
-                    <div class="best-seller-product">
-                        <a href="#" class="center-it"><img src="images/iphone.png" alt=""></a>
-                        <p class="b-s-product-category">Category: Phones</p>
-                        <p class="b-s-product-name">IPhone X</p>
-                        <p class="b-s-product-price"><span class="b-s-product-discount">$800</span>$600.00</p>
-                        <a href="#" class="b-s-product-add-to-cart">ADD TO CART</a>
-                    </div>
-                    <div class="best-seller-product">
-                        <a href="#" class="center-it"><img src="images/iphone.png" alt=""></a>
-                        <p class="b-s-product-category">Category: Phones</p>
-                        <p class="b-s-product-name">IPhone X</p>
-                        <p class="b-s-product-price"><span class="b-s-product-discount">$800</span>$600.00</p>
-                        <a href="#" class="b-s-product-add-to-cart">ADD TO CART</a>
-                    </div>
-                    <div class="best-seller-product">
-                        <a href="#" class="center-it"><img src="images/iphone.png" alt=""></a>
-                        <p class="b-s-product-category">Category: Phones</p>
-                        <p class="b-s-product-name">IPhone X</p>
-                        <p class="b-s-product-price"><span class="b-s-product-discount">$800</span>$600.00</p>
-                        <a href="#" class="b-s-product-add-to-cart">ADD TO CART</a>
-                    </div>
-                    <div class="best-seller-product">
-                        <a href="#" class="center-it"><img src="images/iphone.png" alt=""></a>
-                        <p class="b-s-product-category">Category: Phones</p>
-                        <p class="b-s-product-name">IPhone X</p>
-                        <p class="b-s-product-price"><span class="b-s-product-discount">$800</span>$600.00</p>
-                        <a href="#" class="b-s-product-add-to-cart">ADD TO CART</a>
-                    </div>
-                    <div class="best-seller-product">
-                        <a href="#" class="center-it"><img src="images/iphone.png" alt=""></a>
-                        <p class="b-s-product-category">Category: Phones</p>
-                        <p class="b-s-product-name">IPhone X</p>
-                        <p class="b-s-product-price"><span class="b-s-product-discount">$800</span>$600.00</p>
-                        <a href="#" class="b-s-product-add-to-cart">ADD TO CART</a>
-                    </div>
-                    
-                </div>
-            </div>    
         </div>
 
         <div class="news-letter-container">

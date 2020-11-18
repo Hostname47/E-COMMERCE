@@ -78,7 +78,8 @@
 
 .featured-product-first-title {
     margin: 6px;
-    margin-left: 14px;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .featured-product-second-title {

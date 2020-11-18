@@ -22,8 +22,8 @@
 
 <div class="featured-product">
     <div class="featured-info-section">
-        <p class="featured-product-first-title">Nilson boris</p>
-        <h2 class="featured-product-second-title">This is big title</h2>
+        <p class="featured-product-first-title">BVLGARI</p>
+        <h2 class="featured-product-second-title">Octo Finissimo Skeleton In Rose Gold With Strap</h2>
         <p class="featured-product-description">Description: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla nemo, voluptatum atque iste 
             consequatur nostrum, nesciunt obcaecati aperiam dolore delectus fugiat! Maxime eaque cupiditate a 
             obcaecati atque tenetur nam quaerat.</p>

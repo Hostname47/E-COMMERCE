@@ -3,7 +3,7 @@
     include "ProductManager.php";
     include "../validation/data-validation.php";
 
-    $number_of_products_per_page = 4;
+    $number_of_products_per_page = 8;
 
     $submitted_filter_category = $result_products_number = 0;
     $submitted_search_field  = $submitted_filter_min = $submitted_filter_max = "";
