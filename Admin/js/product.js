@@ -156,7 +156,7 @@ $(".paging-button").click(function(e) {
                 document.getElementById("products-container").innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET", "API/getPagedProducts.php?min_bound=" + minBound + "&prod_number=" + 4 + "&name=" 
+        xmlhttp.open("GET", "API/getPagedProducts.php?min_bound=" + minBound + "&prod_number=" + 8 + "&name=" 
             + productName + "&min=" + minPrice + "&max=" + maxPrice + "&category=" + category, true);
         xmlhttp.send();
 

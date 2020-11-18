@@ -1,0 +1,167 @@
+
+.all-products-container {
+    background-color: gray;
+    padding: 14px;
+}
+
+.product-item {
+    height: 375px;
+    width: 260px;
+    background-color: white;
+
+    position: relative;
+    border-radius: 4px;
+    padding-top: 20px;
+}
+
+.product-info-container {
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-like {
+    height: 25px;
+}
+
+.product-like-container {
+    position: absolute;
+    top: 4px;
+    right: 8px;
+    height: 12px;
+    display: flex;
+}
+
+.discount-part {
+    position: absolute;
+    top: 4px;
+    height: 12px;
+    
+    background-color: rgb(47, 173, 102);
+    color: white;
+    padding: 6px;
+    padding-right: 12px;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    font-weight: 800;
+    
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 28px;
+}
+
+.product-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 170px;
+    margin: 15px 0 6px 0;
+    /*background-color: rgb(225, 247, 255);*/
+    padding-bottom: 6px;
+}
+
+.product-image {
+    display: block;
+    height: 150px;
+    transition: all 0.4s ease;
+}
+
+.product-image:hover {
+    height: 180px;
+}
+
+.line-underneath {
+    width: 80%;
+    height: 1px;
+    margin: 0 auto;
+    padding: 0;
+    border: 0;
+    background-color: rgb(207, 207, 207);
+}
+
+.product-category {
+    font-size: 14px;
+    margin: 4px 0 6px 0;
+}
+
+.product-name {
+    font-size: 17px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.product-price {
+    font-family: Helvetica;
+    margin: 6px 0;
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: auto;
+    color: rgb(32, 103, 255);
+}
+
+.discounted-price {
+    color: gray;
+    text-decoration: line-through;
+    margin-left: 8px;
+    font-size: 18px;
+}
+
+.product-add-to-cart {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+
+    background-color: rgb(44, 106, 240);
+    border-radius: 6px;
+    padding: 8px 50px;
+    padding-left: 70px;
+    display: block;
+    margin-top: 6px;
+
+    background-image: url(../images/white-cart.png);
+    background-size: 18px 18px;
+    background-position: 40px center;
+    background-repeat: no-repeat;
+}
+
+.rate-container {
+    height: 20px;
+    margin-right: auto;
+}
+
+.rate-stars-container {
+    height: 20px;
+    z-index: 2;
+}
+
+.rate-color-container {
+    position: absolute;
+    height: 20px;
+    /* 105 is 100% */
+    width: 105px;
+    z-index: 0;
+    background-color: rgb(254, 193, 7);
+}
+
+.product-number-of-rates {
+    margin: 0;
+    margin-left: 8px;
+
+    color: gray;
+    font-size: 14px;
+
+
+}
+
+.rate-section {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-right: auto;
+    margin-left: 4px;
+
+    margin-bottom: 4px;
+}
