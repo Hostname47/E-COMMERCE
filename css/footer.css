@@ -61,16 +61,15 @@ footer {
 }
 
 .footer-section {
-    width: 300px;
     margin-right: 24px;
     margin-bottom: 12px;
 }
 
 
 .line-under-title {
-    height: 2px;
+    height: 1px;
     width: 50px;
-    background-color: rgb(77, 77, 77);
+    background-color: rgb(133, 133, 133);
     margin-bottom: 14px;
 }
 
@@ -81,6 +80,7 @@ footer {
 }
 
 .who-are-we {
+    width: 300px;
     display: flex;
     flex-direction: column;
 }

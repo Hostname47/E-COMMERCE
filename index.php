@@ -82,11 +82,13 @@
                     <div class="product-like-container">
                         <a href="#"><img class="product-like" src="images/product-assets/like.png" alt=""></a>
                     </div>
+                    <!-- product image -->
                     <div class="product-image-container">
                         <a href="#"><img class="product-image" src="images/featured-product-assets/bvlgary.png" alt=""></a>
                     </div>
                     <hr class="line-underneath">
                     
+                    <!-- product informations -->
                     <div class="product-info-container">
                         <p class="product-category">Category: watches</p>
                         <p class="product-name">Octo Finissimo Skeleton In Rose Gold With Strap</p>
@@ -227,6 +229,11 @@
             </div>
         </div>
         
+        <div class="line-separator"></div>
+
+        <div class="strip-section">
+            <p class="sentence-strip-section">“The sooner we drop the ‘e’ out of ‘e-commerce’ and just call it commerce, the better.”</p>
+        </div>
     <?php include "entities/footer.php"; ?>
 
 </body>

@@ -47,6 +47,7 @@
 .products-by-category-container {
     margin-top: 30px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
@@ -54,6 +55,7 @@
     height: 500px;
     width: 30%;
     margin-right: 30px;
+    margin-bottom: 30px;
     background-color: gray;
 
     position: relative;
@@ -106,8 +108,9 @@
     flex-direction: column;
     margin-right: 0;
 
-    padding-left: 30px;
-    padding-right: 30px;
+    box-sizing: border-box;
+    padding-left: 25px;
+    padding-right: 25px;
     
     bottom: 0;
     z-index: 2;
@@ -153,12 +156,53 @@
     color: black;
 }
 
+.strip-section {
+    margin-top: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 400px;
+    background-image: url("../images/forest.jpg");
+    background-size: cover;
+
+    padding: 0 50px;
+}
+
+.sentence-strip-section {
+    font-family: 'Helvetica';
+    font-size: 45px;
+    color: white;
+    text-align: center;
+}
 
 
-@media screen and (min-width: 480px) and (max-width: 900px) {
-    
+@media screen and (min-width: 480px) and (max-width: 1024px) {
+    .category-products {
+        width: 350px;
+    }
+
+    .sentence-strip-section {
+        font-size: 35px;
+    }
+
+    .strip-section {
+        height: 300px;
+    }
 }
 
 @media screen and (max-width: 480px) {
-    
+    .category-products {
+        width: 300px;
+        margin-right: 0;
+    }
+
+    .sentence-strip-section {
+        font-size: 25px;
+    }
+
+    .strip-section {
+        height: 200px;
+    }
 }
