@@ -1,13 +1,18 @@
 
 .all-products-container {
-    background-color: gray;
     padding: 14px;
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .product-item {
+    margin: 12px;
     height: 375px;
     width: 260px;
     background-color: white;
+    border: 1px solid rgb(218, 218, 218);
 
     position: relative;
     border-radius: 4px;
@@ -120,6 +125,8 @@
     padding-left: 70px;
     display: block;
     margin-top: 6px;
+    width: 100%;
+    box-sizing: border-box;
 
     background-image: url(../images/white-cart.png);
     background-size: 18px 18px;
@@ -161,7 +168,6 @@
     display: flex;
     align-items: center;
     margin-right: auto;
-    margin-left: 4px;
 
     margin-bottom: 4px;
 }
