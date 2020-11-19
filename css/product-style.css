@@ -7,9 +7,16 @@
     flex-wrap: wrap;
 }
 
+.line-separator {
+    margin: 16px 0 6px 0;
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(206,206,206,1) 50%, rgba(255,255,255,1) 100%);
+}
+
 .product-item {
     margin: 12px;
-    height: 375px;
+    height: 385px;
     width: 260px;
     background-color: white;
     border: 1px solid rgb(218, 218, 218);

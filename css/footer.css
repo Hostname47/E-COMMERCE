@@ -1,5 +1,5 @@
 footer {
-    background: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(247, 247, 247) 50%, rgb(255, 255, 255) 100%);
+    background: linear-gradient(90deg, rgb(240, 240, 240) 0%, rgb(225, 225, 225) 50%, rgb(240, 240, 240) 100%);
 }
 
 .footer-strip-top {
@@ -135,4 +135,34 @@ footer {
 
 .footer-product-name {
     font-size: 13px;
+}
+
+.s-m-icon {
+    height: 28px;
+    width: 28px;
+    background-repeat: no-repeat;
+    background-position: 0 center;
+    background-size: 28px 28px;
+    margin-right: 6px;
+}
+
+
+#fb-icon {
+    background-image: url("../images/social-media-icons/fb-icon.png");
+}
+
+#tw-icon {
+    background-image: url("../images/social-media-icons/twitter-icon.png");
+}
+
+#li-icon {
+    background-image: url("../images/social-media-icons/linkedin-icon.png");
+}
+
+#sk-icon {
+    background-image: url("../images/social-media-icons/skype-icon.png");
+}
+
+#gh-icon {
+    background-image: url("../images/social-media-icons/github-icon.png");
 }

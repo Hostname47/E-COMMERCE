@@ -40,6 +40,8 @@
             <p style="text-align: center; margin: 25px 0 12px 0; font-weight: bold;">FEATURING</p>
             <h3 class="best-seller-title">OUR BEST SELLERS</h3>
 
+            <div class="line-separator"></div>
+
             <div class="all-products-container">
                 <div class="product-item">
                     <!-- discount -->
@@ -164,6 +166,8 @@
             </div>
         </div>
 
+        <div class="line-separator"></div>
+
         <div class="our-services-containers">
             <div class="service-item">
                 <img src="images/our-services/priority-shipping.png" alt="not found">
@@ -182,20 +186,47 @@
             </div>
         </div>
 
-        <div class="news-letter-container">
-            <img src="images/newsletter.png" alt="" id="news-image">
-            <p class="news-letter-title">SUBSCRIBE TO OUR NEWSLETTER</p>
-            <p class="news-letter-desc">Join our subscribers list to get the latest news, updates and special offers directly in your box.</p>
-            <form action="#" method="POST" class="newsletter-container">
-                <input type="text" name="user-news-subscribe-email" id="user_news_subscribe_email" placeholder="Enter your email">
-                <input type="submit" name="user-subscribe-button" value="Subscribe" id="user-subscribe-button">
-            </form>
-            <p class="news_thank">Thnank you ! you have been subscribed.</p>
-        </div>
+        <div class="line-separator"></div>
 
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
-            <input type="submit" name="logout" id="logout" value="logout">
-        </form>
+        <div class="products-by-category-container">
+            <div class="category-products">
+                <img src="images/unnamed.jpg" alt="category image" class="category-products-image">
+                <div class="transparent-gradient-bottom">
+                    <img src="images/gradient.png" alt="" class="gradient-image">
+                </div>
+
+                <div class="products-by-category-info">
+                    <p class="pbc-light-title">Ultra fine watches</p>
+                    <p class="pbc-big-title">THE ULTIMATE LUXURY</p>
+                    <a href="#" class="product-by-category-buy">Shop watches</a>
+                </div>
+            </div>
+            <div class="category-products">
+                <img src="images/unnamed1.jpg" alt="category image" class="category-products-image">
+                <div class="transparent-gradient-bottom">
+                    <img src="images/gradient.png" alt="" class="gradient-image">
+                </div>
+
+                <div class="products-by-category-info">
+                    <p class="pbc-light-title">Know yourself</p>
+                    <p class="pbc-big-title">The more you know, the more you don't know</p>
+                    <a href="#" class="product-by-category-buy">Shop books</a>
+                </div>
+            </div>
+            <div class="category-products">
+                <img src="images/unnamed2.jpg" alt="category image" class="category-products-image">
+                <div class="transparent-gradient-bottom">
+                    <img src="images/gradient.png" alt="" class="gradient-image">
+                </div>
+
+                <div class="products-by-category-info">
+                    <p class="pbc-light-title">Ultra performence</p>
+                    <p class="pbc-big-title">PRO COMPUTERS</p>
+                    <a href="#" class="product-by-category-buy">Shop computers</a>
+                </div>
+            </div>
+        </div>
+        
     <?php include "entities/footer.php"; ?>
 
 </body>

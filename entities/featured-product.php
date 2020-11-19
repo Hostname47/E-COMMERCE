@@ -38,8 +38,8 @@
     </div>
     <div class="paging-container">
         <a href="#" class="featured-item-paging"></a>
-        <a href="#" class="featured-item-paging featured-item-selected"></a>
         <a href="#" class="featured-item-paging"></a>
         <a href="#" class="featured-item-paging"></a>
+        <a href="#" class="featured-item-paging" id="featured-later-item-paging"></a>
     </div>
 </div>
