@@ -47,16 +47,42 @@
             </div>
         </div>
         <div class="global-container">
-            <div class="left-side-panel">
-                <?php
-                    $categories = include "api/category/read.php";
-
-                    echo $categories;
-                ?>
-            </div>
+            <?php include "entities/shop-left-panel.php" ?>
             <div class="master-section">
 
+                <?php 
+                    /* Rather than using includes inside the api file and getting relative-absolute path problem, 
+                    I prefer to include files here instead and avoid the problem (temporarly at least)
+                    */
+                    include_once "config/DB.php";
+                    include_once "modules/category.php";
+
+                    $result = include "api/category/read.php";
+                    $result = json_decode($result);
+
+                    foreach($result->data as $dt) {
+                        echo $dt->name;
+                    }
+
+                ?>
+
+                <div>
+                    <p class="left-pannel-section-title">Department</p>
+                    <div class="departments-container">
+                        <a href="#" class="container-item-link">Video games</a>
+                        <a href="#" class="container-item-link">TV & Shows</a>
+                        <div class="sub-container-item-links">
+                            <a href="#" class="container-item-link">TV shows</a>
+                            <a href="#" class="container-item-link">TV</a>
+                            <a href="#" class="container-item-link">Movies & films</a>
+                        </div>
+                        <a href="#" class="container-item-link">Replacement Upright Vacuum Bags</a>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div style="height: 400px">
+
         </div>
     </main>
 </body>

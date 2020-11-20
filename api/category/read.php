@@ -3,10 +3,6 @@
     header("Access-Control-Allow-Origin: *");
     header("Content-Type: application/JSON");
 
-    // Get the data
-    include "../../config/DB.php";
-    include_once "../../modules/category.php";
-
     // The reason why I used plural in naming is because I want to use this object only to get all the categories
     $database = new Database();
     $db = $database->connect();
@@ -33,9 +29,9 @@
         }
 
         // Turn categories data to JSON objects and output
-        echo json_encode($category_arr);
+        return json_encode($category_arr);
     } else {
-        echo json_encode(array(
+        return json_encode(array(
             "message"=>"No category found"
         ));
     }

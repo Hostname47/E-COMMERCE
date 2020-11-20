@@ -1,3 +1,6 @@
+body {
+    background-color: white;
+}
 
 .search-strip-after-header {
     display: flex;
@@ -6,7 +9,7 @@
     height: 40px;
     padding: 0 16px;
 
-    background-color: rgb(24, 24, 24);
+    background-color: rgb(31, 31, 31);
 }
 
 .search-result-text, .search-top-strip-label {
@@ -22,4 +25,90 @@
     border: none;
 
     border-radius: 5px;
+}
+
+.left-pannel-section-title {
+    font-weight: bold;
+    font-size: 16px;
+    margin: 10px 4px 4px 4px;
+}
+
+.departments-container, .sub-container-item-links, .rating-options-container, .price-container {
+    padding-left: 4px;
+    display: flex;
+    flex-direction: column;
+}
+
+.container-item-link {
+    text-decoration: none;
+    color: rgb(39, 39, 39);
+    font-family: Verdana, Geneva, sans-serif;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.sub-container-item-links {
+    padding-left: 10px;
+}
+
+.container-item-link:hover {
+    color: black;
+    margin-bottom: 6px;
+    font-size: 14px;
+}
+
+.rating-item {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    padding: 2px 0px 2px 90px;
+    margin-bottom: 4px;
+
+    background-repeat: no-repeat;
+    background-position: 0 center;
+    background-size: 85px 15px;
+}
+
+.rating-item:hover {
+    color: darkorange;
+}
+
+#rating-4-and-up {
+    background-image: url(../images/ratings/rate4.png);
+}
+#rating-3-and-up {
+    background-image: url(../images/ratings/rate3.png);
+}
+#rating-2-and-up {
+    background-image: url(../images/ratings/rate2.png);
+}
+#rating-1-and-up {
+    background-image: url(../images/ratings/rate1.png);
+}
+
+.min-max-form, #availability-form {
+    display: flex;
+    align-items: center;
+    padding: 4px 0;
+}
+
+.min, .max {
+    width: 60px;
+    padding: 6px 6px;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.min-max-go {
+    padding: 5px 5px;
+    border-radius: 5px;
+    background-color: rgb(224, 224, 224);
+    font-weight: bold;
+    transition: all 0.4s ease;
+
+    cursor: pointer;
+}
+
+.min-max-go:hover {
+    background-color: rgb(204, 204, 204);
 }
