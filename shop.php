@@ -21,9 +21,9 @@
     <link rel="icon" href="images/favicon.ico">
     
     <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/shop.css">
     <link rel="stylesheet" href="css/global-styles.css">
     <link rel="stylesheet" href="css/product-style.css">
+    <link rel="stylesheet" href="css/shop.css">
     <link rel="stylesheet" href="css/footer.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
@@ -49,35 +49,17 @@
         <div class="global-container">
             <?php include "entities/shop-left-panel.php" ?>
             <div class="master-section">
+                <div class="products-container">
+                    <?php 
+                        include_once "config/DB.php";
+                        include "modules/product.php";
 
-                <?php 
-                    /* Rather than using includes inside the api file and getting relative-absolute path problem, 
-                    I prefer to include files here instead and avoid the problem (temporarly at least)
-                    */
-                    include_once "config/DB.php";
-                    include_once "modules/category.php";
+                        $database = new Database();
+                        $db = $database->connect();
+                        $productManager = new Product($db);
 
-                    $result = include "api/category/read.php";
-                    $result = json_decode($result);
-
-                    foreach($result->data as $dt) {
-                        echo $dt->name;
-                    }
-
-                ?>
-
-                <div>
-                    <p class="left-pannel-section-title">Department</p>
-                    <div class="departments-container">
-                        <a href="#" class="container-item-link">Video games</a>
-                        <a href="#" class="container-item-link">TV & Shows</a>
-                        <div class="sub-container-item-links">
-                            <a href="#" class="container-item-link">TV shows</a>
-                            <a href="#" class="container-item-link">TV</a>
-                            <a href="#" class="container-item-link">Movies & films</a>
-                        </div>
-                        <a href="#" class="container-item-link">Replacement Upright Vacuum Bags</a>
-                    </div>
+                        $productManager->read();
+                    ?>
                 </div>
             </div>
         </div>

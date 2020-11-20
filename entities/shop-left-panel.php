@@ -6,19 +6,24 @@
     ?>
 
     <!-- Left pannel: Categories section -->
-    <div>
-        <p class="left-pannel-section-title">Department</p>
-        <div class="departments-container">
-            <a href="#" class="container-item-link">Video games</a>
-            <a href="#" class="container-item-link">TV & Shows</a>
-            <div class="sub-container-item-links">
-                <a href="#" class="container-item-link">TV shows</a>
-                <a href="#" class="container-item-link">TV</a>
-                <a href="#" class="container-item-link">Movies & films</a>
-            </div>
-            <a href="#" class="container-item-link">Replacement Upright Vacuum Bags</a>
-        </div>
-    </div>
+    <?php 
+        /* Rather than using includes inside the api file and getting relative-absolute path problem, 
+        I prefer to include files here instead and avoid the problem (temporarly at least)
+        */
+        include_once "config/DB.php";
+        include_once "modules/category.php";
+        echo "<div>";
+        echo "<p class='left-pannel-section-title'>Department</p>";
+        echo "<div class='departments-container'>";
+        $result = include "api/category/read.php";
+        $result = json_decode($result);
+
+        foreach($result->data as $dt) {
+            echo "<a href='shop.php?category=$dt->name' class='container-item-link'>" . $dt->name . "</a>";
+        }
+        echo "</div>";
+        echo "</div>";
+    ?>
 
     <!-- Left pannel: Rating avg. filtering section -->
     <div>
