@@ -1,0 +1,19 @@
+
+.global-container {
+    display: flex;
+}
+
+.left-side-panel {
+    background-color: rgb(211, 211, 211);
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 260px;
+    max-width: 260px;
+    padding: 8px;
+}
+
+.master-section {
+    height: 700px;
+    width: 100%;
+}
+

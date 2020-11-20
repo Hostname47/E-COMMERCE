@@ -1,10 +1,22 @@
+<?php
+
+    if(isset($_POST["search"])) {
+        // Sanitize data
+        $submitted_category = htmlspecialchars(strip_tags($_POST["category"]));
+        $submitted_input = htmlspecialchars(strip_tags($_POST["search-field"]));
+
+        header("location: shop.php?catgeory=$submitted_category&search_k=$submitted_input");
+    }
+
+?>
+
 <header>
 
     <div id="top-menu-strip">
         <a href="index.php" id="top-logo"><img src="images/logo.png" class="logo"></a>
         <div class="search-container">
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]) ?>" class="product-search-form" id="search-form" method="POST">
-                <select name="container-dropdownlist" class="categories-dropdownlist">
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" class="product-search-form" id="search-form" method="POST">
+                <select name="category" class="categories-dropdownlist">
                     <!-- normally w got the categories from database but for symplicity we need to fill some options -->
                     <?php include "entities/get-categories.php"?>
                 </select>
@@ -25,7 +37,7 @@
         <nav id="top-nav">
             <ul>
                 <a href="index.php"><li>Home</li></a>
-                <a href="#"><li>Shop</li></a>
+                <a href="shop.php"><li>Shop</li></a>
                 <a href="#"><li>About</li></a>
                 <a href="#" class="menu-cart-button"><li>Cart</li></a>
             </ul>

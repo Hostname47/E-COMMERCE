@@ -1,0 +1,25 @@
+
+.search-strip-after-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    padding: 0 16px;
+
+    background-color: rgb(24, 24, 24);
+}
+
+.search-result-text, .search-top-strip-label {
+    color: white;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#sorting {
+    background-color: white;
+    padding: 4px;
+    color: black;
+    border: none;
+
+    border-radius: 5px;
+}
