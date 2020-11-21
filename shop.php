@@ -2,6 +2,13 @@
  	
     //Report all errors except warnings.
     error_reporting(E_ALL ^ E_WARNING);
+    
+    include_once "config/DB.php";
+    include_once "modules/product.php";
+
+    $database = new Database();
+    $db = $database->connect();
+    $productManager = new Product($db);
 
     if(isset($_POST["min-max-go"])) {
         // Sanitize data
@@ -14,15 +21,16 @@
             $prod_name = isset($_POST["search-field"]) ? htmlspecialchars(strip_tags($_POST["search-field"])) : "";
         }
         
-        $minmaxgo_cat = isset($_GET["category"]) ? htmlspecialchars(strip_tags($_GET["category"])) : 0;
-        echo $minmaxgo_cat . $prod_name . $minmaxgo_min . $minmaxgo_max;
-        header("location: shop.php?catgeory=$minmaxgo_cat&search_k=$prod_name&price_min=$minmaxgo_min&price_max=$minmaxgo_max");
+        $prod_category = isset($_GET["category"]) ? htmlspecialchars(strip_tags($_GET["category"])) : 0;
+
+        header("location: shop.php?catgeory=$prod_category&search_k=$prod_name&price_min=$minmaxgo_min&price_max=$minmaxgo_max");
     } 
 
     function listProducts() {
-        include_once "config/DB.php";
-        include "modules/product.php";
-        
+
+        $database = new Database();
+        $db = $database->connect();
+        $productManager = new Product($db);
         // Informations neccessary to list products
         if(!empty($_GET["search_k"])) {
             $prod_name = isset($_GET["search_k"]) ? htmlspecialchars(strip_tags($_GET["search_k"])) : "";
@@ -43,13 +51,7 @@
 
         $prod_category = isset($_GET["category"]) ? htmlspecialchars(strip_tags($_GET["category"])) : 0;
 
-        $database = new Database();
-        $db = $database->connect();
-        $productManager = new Product($db);
-        
-
-        $productManager->readFilteredProducts($prod_name, $prod_category, $prod_price_min, $prod_price_max);
-        
+        return $productManager->readFilteredProducts($prod_name, $prod_category, $prod_price_min, $prod_price_max);
     }
 
 ?>
@@ -80,7 +82,7 @@
     
     <main>
         <div class="search-strip-after-header">
-            <p class="search-result-text">1-16 of over 1,000 results for "<?php echo isset($prod_name) ? $prod_name : "" ?>"</p>
+            <p class="search-result-text">1-16 of over <span id="row-count"></span> results for "<?php echo isset($prod_name) ? $prod_name : "" ?>"</p>
             <div>
                 <label for="sorting" class="search-top-strip-label">Sorted by: </label>
                 <select name="sorting" id="sorting">
@@ -96,14 +98,21 @@
             <div class="master-section">
                 <div class="products-container">
                     <?php 
-                        listProducts();
+                        $row_count = listProducts();
                     ?>
+                    <input type="hidden" id="hidden-row-count" value="<?php echo $row_count ?>">
+                </div>
+                <input type="hidden" id="id-to-delete">
+
+                <div class="semi-black-section-infos" id="product-selected-to-buy">
+                    <a href="" class="close-semi-black-section-info" id="close-product-infos-section" onclick="return false;">✖</a>
+                    <div class="product-item" id="selected">
+                        <p>TEST</p>
+                        <a href="#">TEST</a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div style="height: 400px">
-
-        </div>
-    </main>
+    <?php include "entities/footer.php" ?>
 </body>
 </html>

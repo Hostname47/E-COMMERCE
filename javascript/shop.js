@@ -23,3 +23,41 @@ function getParameterByName(name, url = window.location.href) {
     if (!results[2]) return '';
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
+
+// Setting result number of products
+$("#row-count").text($("#hidden-row-count").val());
+
+$(".product-see-more").click(function() {
+    // Get product id when user click on products image
+    let productId = $(this).parent().parent().find(".current-product-id").val();
+    
+    // First put the css properties of the selected product to default values
+    $("#selected").css("margin-top","auto");
+
+    $(".semi-black-section-infos").css("display","flex");
+
+    $("#selected").animate({width: "50%"}, 150, "linear");
+    $("#selected").animate({marginTop: ""}, 200, "linear");
+
+    return false;
+});
+
+$(".close-semi-black-section-info").click(function() {
+    $(".semi-black-section-infos").css("display","none");
+});
+
+// Click somewhere except selected product section to close the section [LATER]
+/*$(function() {
+    $(document).on('click', function(e) {
+        
+        if (e.target.id == "selected") {
+            console.log(e.target);
+        } else {
+            console.log("outside");
+            
+            $('.semi-black-section-infos').css("display","none");
+        }
+    })
+})*/
+
+

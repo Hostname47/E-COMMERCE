@@ -88,6 +88,9 @@ class Product {
                 $disc = number_format($product['unitPrice'] - (($product['discount'] * $product['unitPrice']) / 100.00),2,",",".");
 
                 echo "<div class='product-item'>";
+                echo <<<EOS
+                    <input type='hidden' class='current-product-id' value="{$product['productID']}">
+                EOS;
                 if($product['discount'] > 0) {
                         echo <<<EOS
                             <!-- discount -->
@@ -100,7 +103,7 @@ class Product {
                             </div>
                             <!-- product image -->
                             <div class="product-image-container">
-                                <a href="#"><img class="product-image" src="https://localhost/E-COMMERCE/Admin/Products/{$product["pic"]}" alt=""></a>
+                                <a href="" class="product-see-more"><img class="product-image" src="https://localhost/E-COMMERCE/Admin/Products/{$product["pic"]}" alt=""></a>
                             </div>
                             <hr class="line-underneath">
                             
@@ -129,7 +132,7 @@ class Product {
                             </div>
                             <!-- product image -->
                             <div class="product-image-container">
-                                <a href="#"><img class="product-image" src="https://localhost/E-COMMERCE/Admin/Products/{$product["pic"]}" alt=""></a>
+                                <a href="#" class="product-see-more"><img class="product-image" src="https://localhost/E-COMMERCE/Admin/Products/{$product["pic"]}" alt=""></a>
                             </div>
                             <hr class="line-underneath">
                             
@@ -154,7 +157,7 @@ class Product {
         } catch(PDOException $ex) {
             echo $ex->getMessage();
         }
-
+        
         return $result_products_number;
     }
 
@@ -167,6 +170,8 @@ class Product {
         $stmt = $this->conn->prepare($query);
 
         $stmt->execute();
+
+        $res_count = $stmt->rowCount();
 
         $result = $stmt->fetchAll();
 
@@ -241,6 +246,17 @@ class Product {
                 EOS;
             }
         }
+        echo $res_count;
+        return $res_count;
+    }
+
+    public function getProductsCount() {
+        $query = "SELECT * FROM products";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+
+        return $stmt->rowCount();
     }
 }
 

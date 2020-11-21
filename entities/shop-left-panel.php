@@ -19,7 +19,7 @@
         $result = json_decode($result);
 
         foreach($result->data as $dt) {
-            echo "<a href='shop.php?category=$dt->name' class='container-item-link'>" . $dt->name . "</a>";
+            echo "<a href='shop.php?category=$dt->id' class='container-item-link'>" . $dt->name . "</a>";
         }
         echo "</div>";
         echo "</div>";
