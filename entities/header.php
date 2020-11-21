@@ -20,7 +20,7 @@
                     <!-- normally w got the categories from database but for symplicity we need to fill some options -->
                     <?php include "entities/get-categories.php"?>
                 </select>
-                <input type="text" name="search-field" class="search-field" placeholder="Search">
+                <input type="text" name="search-field" class="search-field" placeholder="Search" value="<?php echo isset($_GET["search_k"]) ? $_GET["search_k"] : "" ?>">
                 <input type="submit" value="" name="search" class="search-button">
             </form>
         </div>

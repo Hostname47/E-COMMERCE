@@ -45,10 +45,10 @@
             <a href="#" class="container-item-link">50$ to 100$</a>
             <a href="#" class="container-item-link">100$ to 200$</a>
             <div class="price-range">
-                <form action="" method="POST" class="min-max-form">
-                    <input type="text" name="min" class="min" placeholder="min">
-                    <input type="text" name="man" class="max" placeholder="max">
-                    <input type="submit" value="Go" class="min-max-go" name="mi-max-go">
+                <form action="<?php echo htmlspecialchars(strip_tags($_SERVER["PHP_SELF"])) ?>" method="POST" class="min-max-form">
+                    <input type="text" name="min" class="min" placeholder="min" value="<?php echo isset($_GET["price_min"]) ? $_GET["price_min"] : ""; ?>">
+                    <input type="text" name="max" class="max" placeholder="max" value="<?php echo isset($_GET["price_max"]) ? $_GET["price_max"] : ""; ?>">
+                    <input type="submit" value="Go" class="min-max-go" name="min-max-go">
                 </form>
             </div>
         </div>
