@@ -22,7 +22,7 @@
     function listProducts() {
         include_once "config/DB.php";
         include "modules/product.php";
-
+        
         // Informations neccessary to list products
         if(!empty($_GET["search_k"])) {
             $prod_name = isset($_GET["search_k"]) ? htmlspecialchars(strip_tags($_GET["search_k"])) : "";
@@ -72,6 +72,7 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
     <script src="javascript/header.js" defer></script>
+    <script src="javascript/shop.js" defer></script>
     <script src="javascript/product.js" defer></script>
 </head>
 <body>

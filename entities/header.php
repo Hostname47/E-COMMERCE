@@ -5,7 +5,7 @@
         $submitted_category = htmlspecialchars(strip_tags($_POST["category"]));
         $submitted_input = htmlspecialchars(strip_tags($_POST["search-field"]));
 
-        header("location: shop.php?catgeory=$submitted_category&search_k=$submitted_input");
+        header("location: shop.php?category=$submitted_category&search_k=$submitted_input");
     }
 
 ?>
@@ -16,11 +16,11 @@
         <a href="index.php" id="top-logo"><img src="images/logo.png" class="logo"></a>
         <div class="search-container">
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" class="product-search-form" id="search-form" method="POST">
-                <select name="category" class="categories-dropdownlist">
+                <select name="category" class="categories-dropdownlist" value="<?php echo isset($submitted_category) ? $submitted_category : 0 ?>">
                     <!-- normally w got the categories from database but for symplicity we need to fill some options -->
                     <?php include "entities/get-categories.php"?>
                 </select>
-                <input type="text" name="search-field" class="search-field" placeholder="Search" value="<?php echo isset($_GET["search_k"]) ? $_GET["search_k"] : "" ?>">
+                <input type="text" name="search-field" class="search-field" id="search-field" placeholder="Search" value="<?php echo isset($_GET["search_k"]) ? $_GET["search_k"] : "" ?>">
                 <input type="submit" value="" name="search" class="search-button">
             </form>
         </div>
