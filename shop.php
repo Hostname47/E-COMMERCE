@@ -96,6 +96,19 @@
         <div class="global-container">
             <?php include "entities/shop-left-panel.php" ?>
             <div class="master-section">
+                <?php
+                    if(isset($_GET["category"]) && $_GET["category"] != 0) {
+                        include "../../config/DB.php";
+                        include "../../modules/category.php";
+                        $res = include "api/category/read_single.php";
+                        $res = json_decode($res);
+                        echo "<h1 class='shop-res-title'>{$res->data[0]->name}</h1>";
+                        echo "<p class='shop-res-phrase'>This is category phrase will be fetched from db and will be shown here !</p>";
+                    }else {
+                        // DSIPLAY A BANNER OR CATEGORIES GROUP OR SOMETHING in case category is ALL
+                    }
+                ?>
+                
                 <div class="products-container">
                     <?php 
                         $row_count = listProducts();
@@ -107,8 +120,15 @@
                 <div class="semi-black-section-infos" id="product-selected-to-buy">
                     <a href="" class="close-semi-black-section-info" id="close-product-infos-section" onclick="return false;">✖</a>
                     <div class="product-item" id="selected">
-                        <p>TEST</p>
-                        <a href="#">TEST</a>
+                        <img src="images/bvlgary.png" class="selected-product-picture" alt="">
+                        <div>
+                            <p>Product name: BVLGARY</p>
+                            <p>Product name: BVLGARY</p>
+                            <p>Product name: BVLGARY</p>
+                            <p>Product name: BVLGARY</p>
+                            <p>Product name: BVLGARY</p>
+                            <p>Product name: BVLGARY</p>
+                        </div>
                     </div>
                 </div>
             </div>

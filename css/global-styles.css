@@ -66,3 +66,64 @@
 .close-semi-black-section-info:hover {
     background-color: gray;
 }
+
+.simple-strip-container {
+    display: flex;
+    align-items: center;
+    background-color: rgb(31, 31, 31);
+    height: 40px;
+    padding-left: 4px;
+}
+
+.simple-menu-button {
+    font-size: 15px;
+    text-decoration: none;
+    display: flex;
+    padding: 6px 12px;
+    color: white;
+    box-sizing: content-box;
+    margin-right: 4px;
+}
+
+.simple-menu-button:hover {
+    padding: 5px 11px;
+    border: 1px solid white;
+    border-radius: 4px;
+}
+
+#all-button {
+    box-sizing: border-box;
+    padding-left: 30px;
+    font-size: 15px;
+
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    background-position: 5px center;
+
+    background-image: url(../images/whitemenu.png);
+}
+
+#all-button:hover {
+    padding: 6px 11px 6px 29px;
+    background-color: white;
+    color: black;
+    background-image: url(../images/menu.png);
+}
+
+.back-to-results {
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(48, 48, 48);
+    text-decoration: none;
+    display: flex;
+    margin: 8px 4px;
+}
+
+.back-to-results:hover {
+    text-decoration: underline;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+}

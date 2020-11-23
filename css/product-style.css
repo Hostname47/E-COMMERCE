@@ -141,6 +141,10 @@
     background-repeat: no-repeat;
 }
 
+.product-add-to-cart:hover {
+    background-color: rgb(34, 87, 202);
+}
+
 .rate-container {
     height: 20px;
     margin-right: auto;

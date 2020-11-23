@@ -13,7 +13,7 @@
 <header>
 
     <div id="top-menu-strip">
-        <a href="index.php" id="top-logo"><img src="images/logo.png" class="logo"></a>
+        <a href="http://localhost/E-COMMERCE/index.php" id="top-logo"><img src="images/logo.png" class="logo"></a>
         <div class="search-container">
             <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?>" class="product-search-form" id="search-form" method="POST">
                 <select name="category" class="categories-dropdownlist" value="<?php echo isset($submitted_category) ? $submitted_category : 0 ?>">

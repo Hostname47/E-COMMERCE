@@ -28,6 +28,24 @@ function getParameterByName(name, url = window.location.href) {
 $("#row-count").text($("#hidden-row-count").val());
 
 $(".product-see-more").click(function() {
+    
+});
+
+$("#back-to-shop-result").click(function() {
+    window.history.go(-1); 
+    return false;
+});
+
+$(".product-asset-container").on("mouseenter", function() {
+    $(".product-asset-container").removeClass("product-image-style");
+    $(this).addClass("product-image-style");
+});
+
+$(".product-asset-container").on("mouseenter", function() {
+    $("#image-demo").attr("src", $(this).find(".product-image-info").attr("src"));
+});
+
+/*$(".product-see-more").click(function() {
     // Get product id when user click on products image
     let productId = $(this).parent().parent().find(".current-product-id").val();
     
@@ -44,7 +62,7 @@ $(".product-see-more").click(function() {
 
 $(".close-semi-black-section-info").click(function() {
     $(".semi-black-section-infos").css("display","none");
-});
+});*/
 
 // Click somewhere except selected product section to close the section [LATER]
 /*$(function() {
@@ -59,5 +77,4 @@ $(".close-semi-black-section-info").click(function() {
         }
     })
 })*/
-
 

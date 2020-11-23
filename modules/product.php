@@ -103,7 +103,7 @@ class Product {
                             </div>
                             <!-- product image -->
                             <div class="product-image-container">
-                                <a href="" class="product-see-more"><img class="product-image" src="https://localhost/E-COMMERCE/Admin/Products/{$product["pic"]}" alt=""></a>
+                                <a href="https://localhost/E-COMMERCE/buy-product.php?id={$product['productID']}" class="product-see-more"><img class="product-image" src="https://localhost/E-COMMERCE/Admin/Products/{$product["pic"]}" alt=""></a>
                             </div>
                             <hr class="line-underneath">
                             
@@ -132,7 +132,7 @@ class Product {
                             </div>
                             <!-- product image -->
                             <div class="product-image-container">
-                                <a href="#" class="product-see-more"><img class="product-image" src="https://localhost/E-COMMERCE/Admin/Products/{$product["pic"]}" alt=""></a>
+                                <a href="https://localhost/E-COMMERCE/buy-product.php?id={$product['productID']}" class="product-see-more"><img class="product-image" src="https://localhost/E-COMMERCE/Admin/Products/{$product["pic"]}" alt=""></a>
                             </div>
                             <hr class="line-underneath">
                             

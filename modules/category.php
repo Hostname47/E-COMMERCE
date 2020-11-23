@@ -23,6 +23,17 @@
 
             return $stmt;
         }
+
+        public function read_single($id) {
+            $query = "SELECT * FROM " . $this->table . " WHERE categoryID = :id";
+
+            $stmt = $this->conn->prepare($query);
+            $stmt->bindParam(":id", $id);
+
+            $stmt->execute();
+
+            return $stmt;
+        }
     }
 
 ?>

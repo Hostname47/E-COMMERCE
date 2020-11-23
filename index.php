@@ -158,7 +158,7 @@
                                 
                             </div>
                             <img src="images/product-assets/rate.png" alt="rate" class="rate-stars-container">
-                            <p class="product-number-of-rates">(32)</p>
+                            <p class="product-number-of-rates">32 ratings</p>
                         </div>
                         <div>
                             <a href="#" class="product-add-to-cart">Add to cart</a>
