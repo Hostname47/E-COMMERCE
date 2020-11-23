@@ -115,22 +115,6 @@
                     ?>
                     <input type="hidden" id="hidden-row-count" value="<?php echo $row_count ?>">
                 </div>
-                <input type="hidden" id="id-to-delete">
-
-                <div class="semi-black-section-infos" id="product-selected-to-buy">
-                    <a href="" class="close-semi-black-section-info" id="close-product-infos-section" onclick="return false;">✖</a>
-                    <div class="product-item" id="selected">
-                        <img src="images/bvlgary.png" class="selected-product-picture" alt="">
-                        <div>
-                            <p>Product name: BVLGARY</p>
-                            <p>Product name: BVLGARY</p>
-                            <p>Product name: BVLGARY</p>
-                            <p>Product name: BVLGARY</p>
-                            <p>Product name: BVLGARY</p>
-                            <p>Product name: BVLGARY</p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     <?php include "entities/footer.php" ?>

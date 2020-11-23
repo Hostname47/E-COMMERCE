@@ -39,11 +39,26 @@ $("#back-to-shop-result").click(function() {
 $(".product-asset-container").on("mouseenter", function() {
     $(".product-asset-container").removeClass("product-image-style");
     $(this).addClass("product-image-style");
+    $("#image-demo").attr("src", $(this).find(".product-image-info").attr("src"));
+
+    if($(this).find(".product-video-asset").length > 0) {
+        $("#video-entity").css("display", "block");
+        $("#image-demo").css("display", "none");
+    } else {
+        $("#video-entity").css("display", "none");
+        $("#image-demo").css("display", "block");
+    }
 });
 
-$(".product-asset-container").on("mouseenter", function() {
-    $("#image-demo").attr("src", $(this).find(".product-image-info").attr("src"));
-});
+/*$(".product-asset-container").on("mouseenter", function() {
+    if($(this).find(".product-video-asset")) {
+        console.log("It's a video");
+    }
+
+    console.log($(this).find(".product-video-asset").length);
+});*/
+
+
 
 /*$(".product-see-more").click(function() {
     // Get product id when user click on products image

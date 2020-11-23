@@ -56,15 +56,20 @@
                         <img src="images/bvlgary.png" alt="" class="product-image-info">
                     </div>
                     <div class="product-asset-container">
-                        <video class="product-video-asset" controls>
-                            <source src="movie.mp4" type="video/mp4" class="product-video-asset">
-                            <source src="movie.ogg" type="video/ogg" class="product-video-asset">
+                        <video class="product-video-asset">
+                            <source src="images/THE SEED Inspirational Short Film.mp4" type="video/mp4" class="product-video-asset">
+                            <source src="" type="video/ogg" class="product-video-asset">
                             Your browser does not support the video tag.
                         </video>
                     </div>
                 </div>
-                <div class="asset-demo">
+                <div id="asset-demo">
                     <img src="images/bvlgary.png" id="image-demo" alt="">
+                    <video id="video-entity" controls>
+                            <source src="images/THE SEED Inspirational Short Film.mp4" type="video/mp4" class="product-video-asset">
+                            <source src="" type="video/ogg" class="product-video-asset">
+                            Your browser does not support the video tag.
+                    </video>
                 </div>
                 <div class="text-infos">
                     <p class="text-info-name">BVLGARY - Octo Finissimo Skeleton In Rose Gold With Strap</p>

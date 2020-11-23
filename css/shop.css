@@ -187,6 +187,13 @@ box-shadow: 0 0 5px #999;
     height: 400px;
 }
 
+#video-entity {
+    background-color: black;
+    height: 400px;
+    width: 400px;
+    display: none;
+}
+
 .text-infos {
     padding: 10px;
     width: 500px;
