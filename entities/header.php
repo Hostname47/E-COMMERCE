@@ -36,10 +36,69 @@
 
         <nav id="top-nav">
             <ul>
-                <a href="index.php"><li>Home</li></a>
-                <a href="shop.php"><li>Shop</li></a>
-                <a href="#"><li>About</li></a>
-                <a href="#" class="menu-cart-button"><li>Cart</li></a>
+                <a href="index.php" class="top-menu-btn"><li>Home</li></a>
+                <a href="shop.php" id="top-nav-shop" class="top-menu-btn"><li>Shop</li></a>
+                <a href="#" class="top-menu-btn"><li>About</li></a>
+                <a href="" class="menu-cart-button top-menu-btn"><li>Cart</li></a>
+                <div class="cart-container">
+                    <div class="close-container">
+                        <p class="cart-title">Your Cart</p>
+                        <a href="#" id="close-cart-button">✖</a>
+                    </div>
+                    <div class="arrow_box">
+                    </div>
+                    <div class="cart-products">
+                        <div class="cart-product-item">
+                            <div class="img-container">
+                                <img src="images/headphone.webp" class="cart-product-image" alt="">
+                            </div>
+                            <div style="width: 800px;">
+                                <p class="cart-product-info">Product name</p>
+                                <p class="cart-product-info"><span class="gray-font">qte <span style="font-size: 11px">✖</span></span> <span>price</span></p>
+                            </div>
+                            <div class="delete-product-container">
+                                <a href="#" class="delete-cart-product-button">✖</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line-underneath"></div>
+                    <div class="cart-products">
+                        <div class="cart-product-item">
+                            <div class="img-container">
+                                <img src="images/headphone.webp" class="cart-product-image" alt="">
+                            </div>
+                            <div style="width: 800px;">
+                                <p class="cart-product-info">Product name</p>
+                                <p class="cart-product-info"><span class="gray-font">qte <span style="font-size: 11px">✖</span></span> <span>price</span></p>
+                            </div>
+                            <div class="delete-product-container">
+                                <a href="#" class="delete-cart-product-button">✖</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="line-underneath"></div>
+                    <div class="cart-products">
+                        <div class="cart-product-item">
+                            <div class="img-container">
+                                <img src="images/headphone.webp" class="cart-product-image" alt="">
+                            </div>
+                            <div style="width: 800px;">
+                                <p class="cart-product-info">Product name</p>
+                                <p class="cart-product-info"><span class="gray-font">qte <span style="font-size: 11px">✖</span></span> <span>price</span></p>
+                            </div>
+                            <div class="delete-product-container">
+                                <a href="#" class="delete-cart-product-button">✖</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div>SubTotal: $37,700.00</div>
+                    <div>
+                        <a href="#">VIEW CART</a>
+                    </div>
+                    <div>
+                        <a href="#">CHECKOUT</a>
+                    </div>
+                </div>
             </ul>
         </nav>
     </div>

@@ -61,3 +61,23 @@ function closeMobileMenu() {
     $("#top-small-device-nav").css("height", "0px");
     $('.menu-top').css(`background-image`, `url(http://localhost/E-COMMERCE/images/menu.png)`);
 }
+
+$(".menu-cart-button").click(function() {
+    displayCartContainer();
+    
+    return false;
+});
+
+$("#close-cart-button").click(function() {
+    displayCartContainer();
+    
+    return false;
+});
+
+function displayCartContainer() {
+    let cart = $(".cart-container");
+    if(cart.css("display") == "flex")
+        $(".cart-container").css("display","none");
+    else
+        $(".cart-container").css("display","flex");
+}

@@ -120,7 +120,7 @@ footer {
 #basic-footer-links-container a {
     margin-left: 16px;
     text-decoration: none;
-    font-family: 14px;
+    font-size: 14px;
 }
 
 #basic-footer-links-container a:hover {

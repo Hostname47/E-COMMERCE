@@ -1,4 +1,6 @@
 
+$("#top-nav-shop").addClass("header-top-underline-style");
+
 // Get category from query string
 const urlParams = new URLSearchParams(window.location.search);
 const category = getParameterByName("category");
@@ -49,6 +51,31 @@ $(".product-asset-container").on("mouseenter", function() {
         $("#image-demo").css("display", "block");
     }
 });
+
+/*$("#image-demo").on("mouseenter", function(e) {
+    //$("#zoomed-image-container").css("display", "flex");
+    $("#image-bck").css("display","flex"); 
+});*/
+
+/*$("#image-demo").on("mouseleave", function() {
+    //$("#image-bck").css("display","none");
+    //$("#zoomed-image-container").css("display", "none");
+});*/
+
+/*$("#image-demo").on("mousemove", function(e) {
+    
+    var x = e.pageX;     // Get the horizontal coordinate
+    var y = e.pageY;
+
+    $("#image-bck").css({left:x, top:y});
+});*/
+
+
+
+
+function getMousePos(e) {
+    return {x:e.clientX,y:e.clientY};
+}
 
 /*$(".product-asset-container").on("mouseenter", function() {
     if($(this).find(".product-video-asset")) {

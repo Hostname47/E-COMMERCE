@@ -119,6 +119,7 @@ class Product {
                                 </div>
                                 <div>
                                     <a href="#" class="product-add-to-cart">Add to cart</a>
+                                    <input type='hidden' id='p-id' value="{$product['productID']}">
                                 </div>
                             </div>
                         </div>
@@ -148,6 +149,7 @@ class Product {
                                 </div>
                                 <div>
                                     <a href="#" class="product-add-to-cart">Add to cart</a>
+                                    <input type='hidden' id='p-id' value="{$product['productID']}">
                                 </div>
                             </div>
                         </div>

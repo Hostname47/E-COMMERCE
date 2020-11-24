@@ -1,0 +1,17 @@
+.cart-container {
+    width: 240px;
+    height: 400px;
+    background-color: white;
+    border: 1px solid rgb(105, 105, 105);
+    position: absolute;
+    right: 14px;
+    top: 50px;
+
+    -webkit-box-shadow: 0 0 3px 0px rgb(82, 82, 82);
+    -moz-box-shadow: 0 0 3px 0px rgb(82, 82, 82);
+    box-shadow: 0 0 3px 0px rgb(82, 82, 82);
+
+    z-index: 10;
+
+    display: none;
+}

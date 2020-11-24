@@ -128,7 +128,11 @@
                     </div>
 
                 </div>
-
+                
+            </div>
+            <img id="image-bck" src="images/zoom-background.png"/>
+            <div id="zoomed-image-container">
+                <img src="" id="zoomed-image" />
             </div>
         </div>
 
