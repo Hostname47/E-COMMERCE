@@ -62,15 +62,19 @@ function delete_cookie( name ) {
     }
 }
 
-$("#empty-message-box").css("display","block");
-
 function fillCart() {
     let ids = getCookie("cart");
     if(ids == "-1") {
         $("#empty-message-box").css("display","block");
     } else {
+        $("#remaining-cart-info").css("display","block");
+        $("#empty-message-box").css("display","none");
+        $("#sub").text("$37,900.00");
         let arrIds = ids.split(", ");
         arrIds.forEach(fillProductsToCart);
+
+        // Get subtotal
+        $("#sub").text();
     }
     /*<div class="cart-product-item">
         <div class="img-container">
@@ -95,7 +99,6 @@ function fillProductsToCart(id_and_qte) {
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
                 let product = JSON.parse(this.responseText);
-                console.log(product);
                 let name = (product["productName"].length > 35) ? product["productName"].substring(0, 25) + " .." : product["productName"];
 
                 document.getElementById("cart-products").innerHTML += `
@@ -118,20 +121,6 @@ function fillProductsToCart(id_and_qte) {
         xmlhttp.open("GET", "common/get_single_product.php?id=" + id_and_qte, true);
         xmlhttp.send();
     }
-
-    /*<div class="cart-product-item">
-        <div class="img-container">
-            <img src="images/headphone.webp" class="cart-product-image" alt="">
-        </div>
-        <div style="width: 800px;">
-            <p class="cart-product-info">Product name</p>
-            <p class="cart-product-info"><span class="gray-font">qte <span style="font-size: 11px">✖</span></span> <span>price</span></p>
-        </div>
-        <div class="delete-product-container">
-            <a href="#" class="delete-cart-product-button">✖</a>
-        </div>
-    </div>
-    <div class="line-underneath"></div>*/
 }
 
 fillCart();

@@ -60,7 +60,7 @@
                     
                     <div id="remaining-cart-info">
                         <div class="line-underneath"></div>
-                        <div id="sub-total"><span style="color: rgb(40, 40, 40); font-size: 17px">Subtotal:</span> $37,700.00</div>
+                        <div id="sub-total"><span style="color: rgb(40, 40, 40); font-size: 17px">Subtotal:</span> <span id="sub"></span></div>
                         <div class="line-underneath"></div>
                         <div style="margin-top: 6px">
                             <a href="#" class="cart-button">VIEW CART</a>

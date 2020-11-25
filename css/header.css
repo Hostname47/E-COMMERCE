@@ -261,6 +261,8 @@ body {
 
 #cart-products {
     padding-top: 12px;
+    height: 220px;
+    overflow-y: scroll;
 }
 
 .cart-product-item {
@@ -378,6 +380,10 @@ body {
 .cart-button:hover {
     background-color: black;
     color: white;
+}
+
+#remaining-cart-info {
+    display: none;
 }
 
 @media screen and (min-width: 640px) and (max-width: 1024px) {

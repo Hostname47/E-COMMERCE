@@ -78,8 +78,11 @@ class Product {
 
             $result_products_number = $statement->rowCount();
 
+            $ids_and_qtes_arr = explode(", ", $_COOKIE["cart"]);
+
             $iterator = 0;
             foreach($products as $key => $product) {
+                $found = false;
                 $prod_name = strlen($product["productName"]) > 45 ? substr($product["productName"], 0, 30) . " .." : $product["productName"];
 
                 // Add comma after every 3 digits into price
@@ -90,7 +93,7 @@ class Product {
                 echo "<div class='product-item'>";
                 echo <<<EOS
                     <input type='hidden' class='current-product-id' value="{$product['productID']}">
-                EOS;
+EOS;
                 if($product['discount'] > 0) {
                         echo <<<EOS
                             <!-- discount -->
@@ -118,12 +121,29 @@ class Product {
                                     <p class="product-number-of-rates">({$product["numberOfRates"]})</p>
                                 </div>
                                 <div>
-                                    <a href="#" class="product-add-to-cart">Add to cart</a>
+EOS;
+                        
+                        foreach($ids_and_qtes_arr as $k => $id_and_qye) {
+                            $id = substr($id_and_qye, 1, -1);
+                            $id = explode(",", $id)[0];
+                            if($id == $product["productID"]) {
+                                $found = true;
+                                break;
+                            }
+                        }
+
+                        if($found) {
+                            echo "<a href='#' class='product-add-to-cart'>go to cart</a>";
+                        } else {
+                            echo "<a href='#' class='product-add-to-cart'>Add to cart</a>";
+                        }
+                            
+                        echo <<<EOS
                                     <input type='hidden' id='p-id' value="{$product['productID']}">
                                 </div>
                             </div>
                         </div>
-                    EOS;
+EOS;
                 } else {
 
                     echo <<<EOS
@@ -148,12 +168,29 @@ class Product {
                                     <p class="product-number-of-rates">({$product["numberOfRates"]})</p>
                                 </div>
                                 <div>
-                                    <a href="#" class="product-add-to-cart">Add to cart</a>
+EOS;
+                        
+                                foreach($ids_and_qtes_arr as $k => $id_and_qye) {
+                                    $id = substr($id_and_qye, 1, -1);
+                                    $id = explode(",", $id)[0];
+                                    if($id == $product["productID"]) {
+                                        $found = true;
+                                        break;
+                                    }
+                                }
+                                
+                                if($found) {
+                                    echo "<a href='#' class='product-add-to-cart'>go to cart</a>";
+                                } else {
+                                    echo "<a href='#' class='product-add-to-cart'>Add to cart</a>";
+                                }
+                                
+                    echo <<<EOS
                                     <input type='hidden' id='p-id' value="{$product['productID']}">
                                 </div>
                             </div>
                         </div>
-                    EOS;
+EOS;
                 }
             }
         } catch(PDOException $ex) {
