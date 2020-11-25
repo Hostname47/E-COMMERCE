@@ -47,56 +47,27 @@
                     </div>
                     <div class="arrow_box">
                     </div>
-                    <div class="cart-products">
-                        <div class="cart-product-item">
-                            <div class="img-container">
-                                <img src="images/headphone.webp" class="cart-product-image" alt="">
-                            </div>
-                            <div style="width: 800px;">
-                                <p class="cart-product-info">Product name</p>
-                                <p class="cart-product-info"><span class="gray-font">qte <span style="font-size: 11px">✖</span></span> <span>price</span></p>
-                            </div>
-                            <div class="delete-product-container">
-                                <a href="#" class="delete-cart-product-button">✖</a>
-                            </div>
+                    <div id="empty-message-box">
+                        <div class="line-underneath"></div>
+                        <h2 style="width: 100%; text-align: center">YOUR CART IS EMPTY ..</h2>
+                        <div class="line-underneath"></div>
+                    </div>
+                    <div id="cart-products">
+                        <input type="hidden" id="products-ids">
+
+                        
+                    </div>
+                    
+                    <div id="remaining-cart-info">
+                        <div class="line-underneath"></div>
+                        <div id="sub-total"><span style="color: rgb(40, 40, 40); font-size: 17px">Subtotal:</span> $37,700.00</div>
+                        <div class="line-underneath"></div>
+                        <div style="margin-top: 6px">
+                            <a href="#" class="cart-button">VIEW CART</a>
                         </div>
-                    </div>
-                    <div class="line-underneath"></div>
-                    <div class="cart-products">
-                        <div class="cart-product-item">
-                            <div class="img-container">
-                                <img src="images/headphone.webp" class="cart-product-image" alt="">
-                            </div>
-                            <div style="width: 800px;">
-                                <p class="cart-product-info">Product name</p>
-                                <p class="cart-product-info"><span class="gray-font">qte <span style="font-size: 11px">✖</span></span> <span>price</span></p>
-                            </div>
-                            <div class="delete-product-container">
-                                <a href="#" class="delete-cart-product-button">✖</a>
-                            </div>
+                        <div>
+                            <a href="#" class="cart-button" style="margin-bottom: 0">CHECKOUT</a>
                         </div>
-                    </div>
-                    <div class="line-underneath"></div>
-                    <div class="cart-products">
-                        <div class="cart-product-item">
-                            <div class="img-container">
-                                <img src="images/headphone.webp" class="cart-product-image" alt="">
-                            </div>
-                            <div style="width: 800px;">
-                                <p class="cart-product-info">Product name</p>
-                                <p class="cart-product-info"><span class="gray-font">qte <span style="font-size: 11px">✖</span></span> <span>price</span></p>
-                            </div>
-                            <div class="delete-product-container">
-                                <a href="#" class="delete-cart-product-button">✖</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div>SubTotal: $37,700.00</div>
-                    <div>
-                        <a href="#">VIEW CART</a>
-                    </div>
-                    <div>
-                        <a href="#">CHECKOUT</a>
                     </div>
                 </div>
             </ul>

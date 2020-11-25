@@ -7,21 +7,24 @@ $(".product-like").hover(
     }
 )
 
-delete_cookie("cart");
-console.log("cookie: " + getCookie("cart"));
+// Set ids of products in cart to hidden input to work with it
+if(getCookie("cart") == "")
+    $("#products-ids").val("-1");
+else
+    $("#products-ids").val(getCookie("cart"));
 
 $(".product-add-to-cart").click(function() {
     if($(this).text() == "go to cart") {
-        console.log("go to cart");
+        $(".cart-container").css("display","flex");
     } else {
         // pid for product id
         let pid = $(this).parent().find("#p-id").val();
         let cookie = getCookie("cart");
 
         if(getCookie("cart") == "") {
-            setCookie("cart", pid, 333);    
+            setCookie("cart", "{" + pid + ",1}", 333);    
         } else {
-            setCookie("cart", cookie + ", " + pid, 333);
+            setCookie("cart", cookie + ", {" + pid + ",1}", 333);
         }
     }
     $(this).text("go to cart");
@@ -59,6 +62,76 @@ function delete_cookie( name ) {
     }
 }
 
+$("#empty-message-box").css("display","block");
+
 function fillCart() {
-    
+    let ids = getCookie("cart");
+    if(ids == "-1") {
+        $("#empty-message-box").css("display","block");
+    } else {
+        let arrIds = ids.split(", ");
+        arrIds.forEach(fillProductsToCart);
+    }
+    /*<div class="cart-product-item">
+        <div class="img-container">
+            <img src="images/headphone.webp" class="cart-product-image" alt="">
+        </div>
+        <div style="width: 800px;">
+            <p class="cart-product-info">Product name</p>
+            <p class="cart-product-info"><span class="gray-font">qte <span style="font-size: 11px">✖</span></span> <span>price</span></p>
+        </div>
+        <div class="delete-product-container">
+            <a href="#" class="delete-cart-product-button">✖</a>
+        </div>
+    </div>
+    <div class="line-underneath"></div>*/
 }
+
+function fillProductsToCart(id_and_qte) {
+    if (id_and_qte == null) {
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                let product = JSON.parse(this.responseText);
+                console.log(product);
+                let name = (product["productName"].length > 35) ? product["productName"].substring(0, 25) + " .." : product["productName"];
+
+                document.getElementById("cart-products").innerHTML += `
+                    <div class="cart-product-item">
+                        <div class="img-container">
+                            <img src="images/headphone.webp" class="cart-product-image" alt="">
+                        </div>
+                        <div style="width: 800px;">
+                            <p class="cart-product-info">${name}</p>
+                            <p class="cart-product-info"><span class="gray-font">${product["qte"]} <span style="font-size: 11px">✖</span></span> <span>$${product["unitPrice"]}</span></p>
+                        </div>
+                        <div class="delete-product-container">
+                            <a href="#" class="delete-cart-product-button">✖</a>
+                        </div>
+                    </div>
+                    <div class="line-underneath"></div>
+                `;
+            }
+        };
+        xmlhttp.open("GET", "common/get_single_product.php?id=" + id_and_qte, true);
+        xmlhttp.send();
+    }
+
+    /*<div class="cart-product-item">
+        <div class="img-container">
+            <img src="images/headphone.webp" class="cart-product-image" alt="">
+        </div>
+        <div style="width: 800px;">
+            <p class="cart-product-info">Product name</p>
+            <p class="cart-product-info"><span class="gray-font">qte <span style="font-size: 11px">✖</span></span> <span>price</span></p>
+        </div>
+        <div class="delete-product-container">
+            <a href="#" class="delete-cart-product-button">✖</a>
+        </div>
+    </div>
+    <div class="line-underneath"></div>*/
+}
+
+fillCart();
