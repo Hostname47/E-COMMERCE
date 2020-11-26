@@ -109,7 +109,7 @@
                     }
                 ?>
                 
-                <div class="products-container">
+                <div id="products-container">
                     <?php 
                         $row_count = listProducts();
                     ?>

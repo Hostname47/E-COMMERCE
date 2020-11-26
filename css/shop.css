@@ -110,7 +110,7 @@
     background-color: rgb(204, 204, 204);
 }
 
-.products-container {
+#products-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
