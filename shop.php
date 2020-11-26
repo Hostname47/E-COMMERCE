@@ -81,6 +81,13 @@
     <?php include "entities/header.php"; ?>
     
     <main>
+        <div class="simple-strip-container">
+            <a href="index.php" class="simple-menu-button" id="all-button">All</a>
+            <a href="index.php" class="simple-menu-button">Home</a>
+            <a href="shop.php" class="simple-menu-button">Today's Deals</a>
+            <a href="vw_cart.php" class="simple-menu-button">Cart</a>
+            <a href="index.php" class="simple-menu-button">About</a>
+        </div>
         <div class="search-strip-after-header">
             <p class="search-result-text">1-16 of over <span id="row-count"></span> results for "<?php echo isset($prod_name) ? $prod_name : "" ?>"</p>
             <div>

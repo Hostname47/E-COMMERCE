@@ -33,8 +33,8 @@
             <a href="index.php" class="simple-menu-button" id="all-button">All</a>
             <a href="index.php" class="simple-menu-button">Home</a>
             <a href="shop.php" class="simple-menu-button">Shop</a>
+            <a href="vw_cart.php" class="simple-menu-button">Cart</a>
             <a href="index.php" class="simple-menu-button">About</a>
-            <a href="index.php" class="simple-menu-button">Home</a>
         </div>
         <div>
             <!-- Back to result -->
