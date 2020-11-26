@@ -11,7 +11,7 @@ try {
     $id = substr($id, 1, -1);
     $id = preg_split("/\,/", $id);
 
-    $query = $link->prepare("SELECT `SKU`, `productName`, `productDescription`, `supplierID`, 
+    $query = $link->prepare("SELECT productID, `SKU`, `productName`, `productDescription`, `supplierID`, 
         products.categoryID, `unitPrice`, `availableSizes`, `availableColors`, `size`, `color`, `discount`, `unitWeight`, 
         `UnitsInStock`, `UnitsOnOrder`, `productAvailable`, products.picture AS pic, `keywords`, category.categoryID FROM `products`
         INNER JOIN category ON products.categoryID = category.categoryID WHERE productID = :id");

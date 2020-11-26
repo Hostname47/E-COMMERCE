@@ -55,40 +55,22 @@ function getCookie(cname) {
     return "";
 }
 
-function delete_cookie( name ) {
-    if( getCookie(name) ) {
-        document.cookie = name +
-        ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
-    }
-}
-
 function fillCart() {
     let ids = getCookie("cart");
-    if(ids == "-1") {
+    
+    if(ids == "-1" || ids == "") {
         $("#empty-message-box").css("display","block");
+        $("#remaining-cart-info").css("display","none");
+        $("#cart-products").css("display","none");
     } else {
+        $("#cart-products").css("display","block");
         $("#remaining-cart-info").css("display","block");
         $("#empty-message-box").css("display","none");
-        $("#sub").text("$37,900.00");
         let arrIds = ids.split(", ");
+        $("#hidden-sub-total").val("0");
+        document.getElementById("cart-products").innerHTML = "";
         arrIds.forEach(fillProductsToCart);
-
-        // Get subtotal
-        $("#sub").text();
     }
-    /*<div class="cart-product-item">
-        <div class="img-container">
-            <img src="images/headphone.webp" class="cart-product-image" alt="">
-        </div>
-        <div style="width: 800px;">
-            <p class="cart-product-info">Product name</p>
-            <p class="cart-product-info"><span class="gray-font">qte <span style="font-size: 11px">✖</span></span> <span>price</span></p>
-        </div>
-        <div class="delete-product-container">
-            <a href="#" class="delete-cart-product-button">✖</a>
-        </div>
-    </div>
-    <div class="line-underneath"></div>*/
 }
 
 function fillProductsToCart(id_and_qte) {
@@ -103,19 +85,34 @@ function fillProductsToCart(id_and_qte) {
 
                 document.getElementById("cart-products").innerHTML += `
                     <div class="cart-product-item">
+                        <input type="hidden" value="${id_and_qte}" class="id_and_qte"/>
                         <div class="img-container">
-                            <img src="images/headphone.webp" class="cart-product-image" alt="">
+                            <img src="http://localhost/E-COMMERCE/Admin/products/${product['pic']}" class="cart-product-image" alt="">
                         </div>
                         <div style="width: 800px;">
                             <p class="cart-product-info">${name}</p>
                             <p class="cart-product-info"><span class="gray-font">${product["qte"]} <span style="font-size: 11px">✖</span></span> <span>$${product["unitPrice"]}</span></p>
                         </div>
                         <div class="delete-product-container">
-                            <a href="#" class="delete-cart-product-button">✖</a>
+                            <a href="" class="delete-cart-product-button">✖</a>
                         </div>
                     </div>
                     <div class="line-underneath"></div>
                 `;
+
+                // Calculate subtotal and past it to hidden input to use it by subtotal span
+                prds = product["qte"] * product["unitPrice"];
+                old = parseInt($("#hidden-sub-total").val());
+                old += prds;
+                $("#hidden-sub-total").val(old);
+                $("#sub").text("$" + old);
+
+                $(".delete-cart-product-button").on("click", function(e) {
+                    e.preventDefault();
+                    //console.log($(this).parent().parent().find(".id_and_qte").val());
+                    deleteProductFromCart($(this).parent().parent().find(".id_and_qte").val());
+
+                });                
             }
         };
         xmlhttp.open("GET", "common/get_single_product.php?id=" + id_and_qte, true);
@@ -123,4 +120,32 @@ function fillProductsToCart(id_and_qte) {
     }
 }
 
+function deleteProductFromCart(id) {
+    let ids_and_qtes =  getCookie("cart");
+    if(ids_and_qtes == "") {
+        setCookie("cart", "-1", 360);
+    }
+    iq = ids_and_qtes.split(", ");
+    iq = removeA(iq, id);
+    iq = iq.join(", ");
+
+    setCookie("cart", iq, 365);
+    $("#hidden-sub-total").val(old);
+    $("#sub").text("$" + old);
+    fillCart();
+    console.log(iq);
+}
+
+function removeA(arr) {
+    var what, a = arguments, L = a.length, ax;
+    while (L > 1 && arr.length) {
+        what = a[--L];
+        while ((ax= arr.indexOf(what)) !== -1) {
+            arr.splice(ax, 1);
+        }
+    }
+    return arr;
+}
+
 fillCart();
+
