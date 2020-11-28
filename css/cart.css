@@ -49,6 +49,13 @@ body {
     padding: 0;
 }
 
+.empty-cart {
+    display: none;
+    text-align: center;
+
+    padding: 30px;
+}
+
 .shopping-cart-label {
     color: gray;
     font-weight: bold;

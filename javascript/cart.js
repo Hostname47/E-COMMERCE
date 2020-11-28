@@ -8,25 +8,33 @@ function fillCartProducts() {
     let cookie = getCookie("cart");
 
     if(cookie == "") {
-        setCookie("cart", "-1", 360);
+        setCookie("cart", "", 360);
     }
     let iqs = cookie.split(", ");
 
     for(let i = 0;i<iqs.length;i++) {
         // Here we don't have to clear curly bracket because the file that will fetch it will do all the work for us
         // splite iqs and get both id and qte in different variables
-        console.log()
         addproductToCart(iqs[i]);
     }
 }
 
 function addSubTotal() {
-    let productsContainer = document.getElementById("products-in-cart");
-    productsContainer.innerHTML += `
-        <div style="display: flex">
-            <p class="cart-sub">Subtotal (<span>39</span> items): <span class="cart-prd-price">$4,238.65<span></p>
-        </div>
-    `;
+    let productsContainer = $("#products-in-cart");
+    if(productsContainer.find("#edit-qte").length > 0) {
+        document.getElementById("products-in-cart").innerHTML += `
+            <div style="display: flex">
+                <p class="cart-sub">Subtotal (<span class="number-of-items"></span> items): <span class="cart-prd-price sb-total">$4,238.65<span></p>
+            </div>
+        `;
+
+        $(".number-of-items").text($("#total-qte").val());
+
+        let formatedTotalPrice = number_format($("#total-price").val(), 2, ".", ",");
+        $(".sb-total").text("$" + formatedTotalPrice);
+    } else {
+        $(".empty-cart").css("display","block");
+    }
 }
 
 function number_format(number, decimals, dec_point, thousands_sep) {
@@ -133,7 +141,7 @@ function addproductToCart(id) {
                         <div class="cart-prd-infos-section">
                             <p class="cart-prd-name">${product['productName']} by - <span class="normal-p" style="color: rgb(60, 60, 60)">by Mouad Nassri(here use other file to get product by joining supplier to product data to get supplier name here)</span></p>
                             <p class="bold-p cart-prd-category">${product["categoryName"]}</p>
-                            <p class="stock-state"></p>
+                            <p class="stock-state ${stockClass}">${stockText}</p>
                             <!-- quantity and edit button -->
                             <div style="display: flex; align-items: center; margin-top: 5px" >
                                 <input type="hidden" value="${qte}" class="tst" >
@@ -161,7 +169,7 @@ function addproductToCart(id) {
 function fillQuantity() {
     let cookie = getCookie("cart");
     if(cookie == "" || cookie == "-1") {
-        setCookie("cart", "-1", 360);
+        setCookie("cart", "", 360);
     } else {
         let iqs = cookie.split(", ");    
         for(let i=0;i<iqs.length;i++) {
@@ -176,18 +184,36 @@ function fillQuantity() {
 }
 
 function fillQuantitiesValues() {
+    let number_of_items = 0;
+    let totalPrice = 0;
     $('.card-prd-quantity').each(function() {
+        // get the quantity
         let qte = $(this).attr("value");
-        console.log(qte);
+
+        // Accumulate the quantities to get total number of items
+        number_of_items += parseInt(qte);
+
+        // Get price of each product and multiply it by the qunatity for sake of total price accumulation
+        let prodPrice = $(this).parent().parent().parent().find(".price-section").find(".cart-prd-price").text();
+
+        // Here we get formated price with dollar sign and comma and dots separators we need to get rid of them
+        prodPrice = prodPrice.substr(1, prodPrice.length-1);
+        prodPrice = parseFloat(prodPrice.replace(/,/g, ''));
+
+        totalPrice += qte*prodPrice;
+        
         /* Here we loop over options and find out the one equals to quantity in cookie
            and when we find it we change the selected option to this value
         */
         $(this).children().each(function() {
             if($(this).val() == qte) {
-                console.log($(this).attr("selected","selected"));
+                $(this).attr("selected","selected");
             }
         })
     });
+
+    $("#total-qte").val(number_of_items);
+    $("#total-price").val(totalPrice);
 }
 
 fillCartProducts();

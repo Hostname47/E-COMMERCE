@@ -45,13 +45,15 @@
                         </div>
                         <div class="line-underneath" style="margin-bottom: 10px"></div>
                         <div id="products-in-cart">
-                            
+                            <input type="hidden" value="0" id="total-qte">
+                            <input type="hidden" value="0" id="total-price">
+                            <h1 class="shopping-cart-title empty-cart">YOUR CART IS EMPTY</h1>
                         </div>
                     </div>
                     <div class="sub-and-checkout-container">
                         <div class="sub-total-and-checkout">
                             <div>
-                                <p class="cart-sub">Subtotal (<span>39</span> items): <span class="cart-prd-price">$4,238.65<span></p>
+                                <p class="cart-sub">Subtotal (<span class="number-of-items"></span> items): <span class="cart-prd-price sb-total"><span></p>
                                 <a href="#" id="cart-checkout-button">Proceed to checkout</a>
                             </div>
                         </div>
