@@ -13,7 +13,7 @@ try {
 
     $query = $link->prepare("SELECT productID, `SKU`, `productName`, `productDescription`, `supplierID`, 
         products.categoryID, `unitPrice`, `availableSizes`, `availableColors`, `size`, `color`, `discount`, `unitWeight`, 
-        `UnitsInStock`, `UnitsOnOrder`, `productAvailable`, products.picture AS pic, `keywords`, category.categoryID FROM `products`
+        `UnitsInStock`, `UnitsOnOrder`, `productAvailable`, products.picture AS pic, `keywords`, category.categoryID, category.categoryName FROM `products`
         INNER JOIN category ON products.categoryID = category.categoryID WHERE productID = :id");
 
     $query->bindParam(":id", $id[0]);

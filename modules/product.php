@@ -86,9 +86,9 @@ class Product {
                 $prod_name = strlen($product["productName"]) > 45 ? substr($product["productName"], 0, 30) . " .." : $product["productName"];
 
                 // Add comma after every 3 digits into price
-                $price = number_format($product['unitPrice'],2,",",".");
+                $price = number_format($product['unitPrice'],2,".",",");
 
-                $disc = number_format($product['unitPrice'] - (($product['discount'] * $product['unitPrice']) / 100.00),2,",",".");
+                $disc = number_format($product['unitPrice'] - (($product['discount'] * $product['unitPrice']) / 100.00),2,".",",");
 
                 echo "<div class='product-item'>";
                 echo <<<EOS

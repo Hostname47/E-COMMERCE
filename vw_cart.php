@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="css/footer.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+    <script src="javascript/cookie.js" defer></script>
     <script src="javascript/header.js" defer></script>
     <script src="javascript/shop.js" defer></script>
     <script src="javascript/product.js" defer></script>
@@ -43,82 +44,8 @@
                             <p class="shopping-cart-label">Price</p>
                         </div>
                         <div class="line-underneath" style="margin-bottom: 10px"></div>
-                        <div class="products-in-cart">
-                            <div class="cart-product-item">
-                                <div class="cart-product-img-container">
-                                    <a href="#"><img src="http://localhost/E-COMMERCE/images/unnamed1.jpg" alt=""></a>
-                                </div>
-                                <div class="cart-prd-infos-section">
-                                    <p class="cart-prd-name">Octo Finissimo Skeleton In Rose Gold With Strap - <span class="normal-p" style="color: rgb(60, 60, 60)">by Mouad Nassri</span></p>
-                                    <p class="bold-p cart-prd-category">Video Game</p>
-                                    <p class="stock-state">In Stock</p>
-                                    <div style="display: flex; align-items: center; margin-top: 5px">
-                                        <select name="quantity" id="card-prd-quantity" style="background-color: rgb(240, 240, 240)">
-                                            <?php 
-                                                for($i=1;$i<=30;$i++) {
-                                                    echo "<option value='{$i}'>{$i}</option>";
-                                                }
-                                            ?>
-                                        </select>
-                                        <a href="#" id="edit-qte">edit</a>
-                                    </div>
-                                </div>
-                                <div class="price-section">
-                                    <p class="cart-prd-price">$37,500.00</p>
-                                </div>
-                            </div>
-                            <div class="line-underneath" style="margin-bottom: 10px"></div>
-                            <div class="cart-product-item">
-                                <div class="cart-product-img-container">
-                                    <a href="#"><img src="http://localhost/E-COMMERCE/images/unnamed1.jpg" alt=""></a>
-                                </div>
-                                <div class="cart-prd-infos-section">
-                                    <p class="cart-prd-name">Octo Finissimo Skeleton In Rose Gold With Strap - <span class="normal-p">by Mouad Nassri</span></p>
-                                    <p class="bold-p cart-prd-category">Video Game</p>
-                                    <p class="stock-state">In Stock</p>
-                                    <div style="display: flex; align-items: center; margin-top: 5px">
-                                        <select name="quantity" id="card-prd-quantity" style="background-color: rgb(240, 240, 240)">
-                                            <?php 
-                                                for($i=1;$i<=30;$i++) {
-                                                    echo "<option value='{$i}'>{$i}</option>";
-                                                }
-                                            ?>
-                                        </select>
-                                        <a href="#" id="edit-qte">edit</a>
-                                    </div>
-                                </div>
-                                <div class="price-section">
-                                    <p class="cart-prd-price">$37,500.00</p>
-                                </div>
-                            </div>
-                            <div class="line-underneath" style="margin-bottom: 10px"></div>
-                            <div class="cart-product-item">
-                                <div class="cart-product-img-container">
-                                    <a href="#"><img src="http://localhost/E-COMMERCE/images/unnamed1.jpg" alt=""></a>
-                                </div>
-                                <div class="cart-prd-infos-section">
-                                    <p class="cart-prd-name">Octo Finissimo Skeleton In Rose Gold With Strap - <span class="normal-p">by Mouad Nassri</span></p>
-                                    <p class="bold-p cart-prd-category">Video Game</p>
-                                    <p class="stock-state">In Stock</p>
-                                    <div style="display: flex; align-items: center; margin-top: 5px">
-                                        <select name="quantity" id="card-prd-quantity" style="background-color: rgb(240, 240, 240)">
-                                            <?php 
-                                                for($i=1;$i<=30;$i++) {
-                                                    echo "<option value='{$i}'>{$i}</option>";
-                                                }
-                                            ?>
-                                        </select>
-                                        <a href="#" id="edit-qte">edit</a>
-                                    </div>
-                                </div>
-                                <div class="price-section">
-                                    <p class="cart-prd-price">$37,500.00</p>
-                                </div>
-                            </div>
-                            <div class="line-underneath" style="margin-bottom: 10px"></div>
-                            <div style="display: flex">
-                                <p class="cart-sub">Subtotal (<span>39</span> items): <span class="cart-prd-price">$4,238.65<span></p>
-                            </div>
+                        <div id="products-in-cart">
+                            
                         </div>
                     </div>
                     <div class="sub-and-checkout-container">

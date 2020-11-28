@@ -66,8 +66,24 @@ body {
     display: flex;
 }
 
-.cart-product-img-container img {
+.cart-product-img-container {
+    flex: 0 0 190px;
     height: 180px;
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-product-img-container img {
+    height: 150px;
+
+    display: flex;
+    transition: height 0.4s ease;
+}
+
+.cart-product-img-container:hover img {
+    height: 170px;
 }
 
 .cart-prd-infos-section {
@@ -81,7 +97,7 @@ body {
 .price-section {
     flex: 0 0 250px;
     height: 40px;
-    padding-right: 10px;
+    padding-right: 0px;
     display: flex;
 }
 
@@ -113,7 +129,14 @@ body {
     margin: 0;
     font-size: 17px;
     font-weight: bold;
+}
+
+.in-stock {
     color: rgb(35, 139, 35);
+}
+
+.out-of-stock {
+    color: rgb(216, 27, 27);
 }
 
 #card-prd-quantity {
@@ -162,7 +185,7 @@ body {
     color: black;
     background-color: white;
     border: 2px solid rgb(29, 29, 29);
-
+    
     font-size: 15px;
     font-weight: bold;
     transition: background-color 0.4s ease;

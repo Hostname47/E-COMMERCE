@@ -73,6 +73,7 @@
     <link rel="stylesheet" href="css/footer.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+    <script src="javascript/cookie.js" defer></script>
     <script src="javascript/header.js" defer></script>
     <script src="javascript/shop.js" defer></script>
     <script src="javascript/product.js" defer></script>

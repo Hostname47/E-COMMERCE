@@ -64,7 +64,7 @@
                         <div id="sub-total"><span style="color: rgb(40, 40, 40); font-size: 17px">Subtotal:</span> <span id="sub"></span></div>
                         <div class="line-underneath"></div>
                         <div style="margin-top: 6px">
-                            <a href="#" class="cart-button">VIEW CART</a>
+                            <a href="vw_cart.php" class="cart-button">VIEW CART</a>
                         </div>
                         <div>
                             <a href="#" class="cart-button" style="margin-bottom: 0">CHECKOUT</a>
