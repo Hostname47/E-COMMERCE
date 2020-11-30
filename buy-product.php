@@ -121,6 +121,13 @@
                                 }
                             ?>
                         </select>
+                        <a href="" class="edit-button">edit</a>
+                        <div style="position: relative">
+                            <div id="edit-error">
+                                <a href="#" id="hide-hint">✕</a>
+                                <p style="margin: 3px;">Please change the quantity before click edit button</p>
+                            </div>
+                        </div>
                     </div>
                     <div style="margin-top: 14px">
                         <div>

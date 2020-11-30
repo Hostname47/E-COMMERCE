@@ -20,3 +20,15 @@ function getCookie(cname) {
     }
     return "";
 }
+
+function getqteById(id) {
+    let prds_and_qtes = getCookie("cart").split(", ");
+    for(let i=0;i<prds_and_qtes.length;i++) {
+        let pid = prds_and_qtes[i].substr(1, prds_and_qtes[i].length-2).split(",")[0];
+        if(pid == id) {
+            return prds_and_qtes[i].substr(1, prds_and_qtes[i].length-2).split(",")[1];
+        }
+    }
+
+    return -1;
+}

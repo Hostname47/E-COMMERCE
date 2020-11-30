@@ -148,7 +148,7 @@ function addproductToCart(id) {
                                 <select name="quantity" class="card-prd-quantity" style="background-color: rgb(240, 240, 240)" value="${qte}">
                                     
                                 </select>
-                                <a href="#" id="edit-qte">edit</a>
+                                <a href="buy-product.php?id=${product["productID"]}" target="_blank" id="edit-qte">edit</a>
                             </div>
                         </div>
                         <div class="price-section">

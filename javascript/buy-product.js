@@ -75,8 +75,10 @@ function checkProductCartExistence() {
 
     if(found) {
         $("#add-to-crt").text("Already in cart - Check");
-    } else
+    } else {
         $("#add-to-crt").text("Add to cart");
+        $(".edit-button").addClass("inactiveLink");
+    }
 }
 
 checkProductCartExistence();
@@ -102,9 +104,9 @@ function add_product_to_cart() {
         fillCart();
     }
     
-    
     event.preventDefault();
 }
+
 
 setTotalQuantityPrice();
 
@@ -118,3 +120,81 @@ $("#add-to-crt").click(function() {
     event.preventDefault();
     return false;
 });
+
+$(".edit-button").click(function() {
+    /*
+        Here we have to take the edited value and compare it with the old quantity in cart cookie,
+        if the user change it then update the quantity, otherwise print a message to tell th user to change
+        the value before clicking on edit button. First fetch the quantity from cart cookie,
+    */
+    let pid = getParameterByName("id");
+    let qte = getqteById(pid);
+    let quantity = $("#quantity option:selected").text();
+
+    if(qte != -1) {
+        if(qte == quantity) {
+            $("#edit-error").css("display", "block");
+        } else {
+            // HERE CHANGE THE QUANTITY
+            changeQyantity(pid, quantity);
+        }
+    }
+
+    return false;
+});
+
+function changeQyantity(id, newQuantity) {
+    if(newQuantity < 0)
+        return;
+    let newCart = "";
+    let ids_and_qts = getCookie("cart").split(", ");
+
+    for(let i = 0;i<ids_and_qts.length;i++) {
+        let pid = ids_and_qts[i].substr(1, ids_and_qts[i].length - 1).split(",")[0];
+        
+        if(pid == id) {
+            console.log("found");
+            let res = '{' + id + "," + newQuantity + '}';
+            if(newCart == "") {
+                newCart = res;
+            } else {
+                newCart += ", " + res;
+            }
+        } else {
+            if(newCart == "")
+                newCart = ids_and_qts[i];
+            else
+                newCart += ", " + ids_and_qts[i];
+        }
+    }
+
+    setCookie("cart", newCart, 365);
+}
+
+$("#hide-hint").click(function() {
+    $("#edit-error").css("display", "none");
+})
+
+function fillQteIfProductExists() {
+    let productID = getParameterByName("id");
+    let prds_and_qtes = getCookie("cart").split(", ");
+    let found = false;
+    let qte = 1;
+    for(let i=0;i<prds_and_qtes.length;i++) {
+        let id = prds_and_qtes[i].substr(1, prds_and_qtes[i].length-2).split(",")[0];
+        if(id == productID) {
+            qte =  prds_and_qtes[i].substr(1, prds_and_qtes[i].length-2).split(",")[1];
+            found = true;
+            break;
+        }
+    }
+
+    if(found) {
+        $('#quantity option[value=' + qte + ']').attr('selected','selected');
+    } else {
+        $('#quantity option[value=' + 1 + ']').attr('selected','selected');
+    }
+    
+}
+
+fillQteIfProductExists();
