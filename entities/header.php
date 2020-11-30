@@ -54,7 +54,9 @@
                     </div>
                     <div id="cart-products">
                         <input type="hidden" id="products-ids">
-
+                        <div id="c-prds">
+                        
+                        </div>
                         
                     </div>
                     

@@ -37,7 +37,7 @@ $(".product-add-to-cart").click(function() {
 function fillCart() {
     let ids = getCookie("cart");
     
-    if(ids == "-1" || ids == "") {
+    if(ids == "") {
         $("#empty-message-box").css("display","block");
         $("#remaining-cart-info").css("display","none");
         $("#cart-products").css("display","none");
@@ -45,9 +45,9 @@ function fillCart() {
         $("#cart-products").css("display","block");
         $("#remaining-cart-info").css("display","block");
         $("#empty-message-box").css("display","none");
+
         let arrIds = ids.split(", ");
-        $("#hidden-sub-total").val("0");
-        document.getElementById("cart-products").innerHTML = "";
+        document.getElementById("c-prds").innerHTML = "";
         arrIds.forEach(fillProductsToCart);
     }
 }
@@ -62,7 +62,7 @@ function fillProductsToCart(id_and_qte) {
                 let product = JSON.parse(this.responseText);
                 let name = (product["productName"].length > 35) ? product["productName"].substring(0, 25) + " .." : product["productName"];
 
-                document.getElementById("cart-products").innerHTML += `
+                document.getElementById("c-prds").innerHTML += `
                     <div class="cart-product-item">
                         <input type="hidden" value="${product["productID"]}" class="pr-id"/>
                         <input type="hidden" value="${id_and_qte}" class="id_and_qte"/>
@@ -92,7 +92,6 @@ function fillProductsToCart(id_and_qte) {
                     //console.log($(this).parent().parent().find(".id_and_qte").val());
                     prod_id = $(this).parent().parent().find(".pr-id").val();
                     deleteProductFromCart($(this).parent().parent().find(".id_and_qte").val(), prod_id);
-                    console.log(prod_id + " changed to add to text");
 
                 });                
             }
@@ -105,26 +104,27 @@ function fillProductsToCart(id_and_qte) {
 function deleteProductFromCart(id_nd_qte, id) {
     let ids_and_qtes =  getCookie("cart");
     if(ids_and_qtes == "") {
-        setCookie("cart", "-1", 360);
+        setCookie("cart", "", 360);
+    } else {
+        iq = ids_and_qtes.split(", ");
+        iq = removeA(iq, id_nd_qte);
+        iq = iq.join(", ");
+
+        setCookie("cart", iq, 365);
+        $("#hidden-sub-total").val(old);
+        $("#sub").text("$" + old);
+        fillCart();
+
+        /* We have to change the text of add to cart to add to cart to be able to add it again
+        To do that we have to loop over products and find this specific deleted product and 
+        turn its add to cart text to add to cart
+        */
+        $(".product-item").each(function() {
+            if($(this).find(".current-product-id").val() == id) {
+                $(this).find(".product-add-to-cart").text("Add to cart");
+            }
+        });
     }
-    iq = ids_and_qtes.split(", ");
-    iq = removeA(iq, id_nd_qte);
-    iq = iq.join(", ");
-
-    setCookie("cart", iq, 365);
-    $("#hidden-sub-total").val(old);
-    $("#sub").text("$" + old);
-    fillCart();
-
-    /* We have to change the text of add to cart to add to cart to be able to add it again
-       To do that we have to loop over products and find this specific deleted product and 
-       turn its add to cart text to add to cart
-    */
-    $(".product-item").each(function() {
-        if($(this).find(".current-product-id").val() == id) {
-            $(this).find(".product-add-to-cart").text("Add to cart");
-        }
-    });
 }
 
 function removeA(arr) {

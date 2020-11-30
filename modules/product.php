@@ -78,7 +78,10 @@ class Product {
 
             $result_products_number = $statement->rowCount();
 
-            $ids_and_qtes_arr = explode(", ", $_COOKIE["cart"]);
+            if(isset($_COOKIE["cart"]))
+                $ids_and_qtes_arr = explode(", ", $_COOKIE["cart"]);
+            else
+                $ids_and_qtes_arr = "";
 
             $iterator = 0;
             foreach($products as $key => $product) {
