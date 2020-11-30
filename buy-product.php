@@ -2,6 +2,10 @@
 
     $product_id = $_GET["id"];
 
+    include "common/get_product_by_id.php";
+
+    $res = json_decode(getProductById($product_id));
+
 ?>
 
 <!DOCTYPE html>
@@ -21,9 +25,13 @@
     <link rel="stylesheet" href="css/footer.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
+    <script src="javascript/cookie.js" defer></script>
     <script src="javascript/header.js" defer></script>
     <script src="javascript/shop.js" defer></script>
     <script src="javascript/product.js" defer></script>
+    <script src="javascript/buy-product.js" defer></script>
+
+    
 </head>
 <body>
     <?php include "entities/header.php"; ?>
@@ -47,13 +55,10 @@
             <div class="all-info-container">
                 <div class="product-assets-container">
                     <div class="product-asset-container">
-                        <img src="images/bvlgary.png" alt="" class="product-image-info">
+                        <img src="http://localhost/E-COMMERCE/Admin/Products/<?php echo $res->pic ?>" alt="" class="product-image-info">
                     </div>
                     <div class="product-asset-container">
-                        <img src="images/headphone.webp" alt="" class="product-image-info">
-                    </div>
-                    <div class="product-asset-container">
-                        <img src="images/bvlgary.png" alt="" class="product-image-info">
+                        <img src="http://localhost/E-COMMERCE/Admin/Products/<?php echo $res->pic ?>" alt="" class="product-image-info">
                     </div>
                     <div class="product-asset-container">
                         <video class="product-video-asset">
@@ -64,43 +69,42 @@
                     </div>
                 </div>
                 <div id="asset-demo">
-                    <img src="images/bvlgary.png" id="image-demo" alt="">
+                    <img src="http://localhost/E-COMMERCE/Admin/Products/<?php echo $res->pic ?>" id="image-demo" alt="">
                     <video id="video-entity" controls>
-                            <source src="images/THE SEED Inspirational Short Film.mp4" type="video/mp4" class="product-video-asset">
-                            <source src="" type="video/ogg" class="product-video-asset">
-                            Your browser does not support the video tag.
+                        <source src="images/THE SEED Inspirational Short Film.mp4" type="video/mp4" class="product-video-asset">
+                        <source src="" type="video/ogg" class="product-video-asset">
+                        Your browser does not support the video tag.
                     </video>
                 </div>
                 <div class="text-infos">
-                    <p class="text-info-name">BVLGARY - Octo Finissimo Skeleton In Rose Gold With Strap</p>
+                    <p class="text-info-name"><?php echo $res->productName ?></p>
                     <div class="flex-center">
-                        <p class="normal-text" style="margin-right: 10px; font-size: 15px">by <a href="" class="text-info-author">Mouad Nassri</a></p>
-                        <p class="normal-text"><span class="text-label">Category:</span> Watches</p>
+                        <p class="normal-text" style="margin-right: 10px; font-size: 15px">by <a href="" class="text-info-author"><?php echo $res->contactFname . " " . $res->contactLname ?></a></p>
+                        <p class="normal-text"><span class="text-label">Category:</span> <?php echo $res->categoryName ?></p>
                     </div>
                     <div class="rate-section">
                         <div class="rate-color-container">
                             
                         </div>
                         <img src="images/product-assets/rate.png" alt="rate" class="rate-stars-container">
-                        <p class="product-number-of-rates">(32)</p>
+                        <p class="product-number-of-rates">(<?php echo $res->numberOfRates ?>)</p>
                     </div>
 
                     <div>
-                        <p class="normal-text" style="margin-top: 6px"><span class="text-label" style="font-weight: bold;">Price:</span> <span class="text-info-price">$37,700.00</span> <span class="text-label">+$15.55 shipping</span></p>
+                        <p class="normal-text" style="margin-top: 6px"><span class="text-label" style="font-weight: bold;">Price:</span> <span class="text-info-price" id="u-price">$<?php echo $res->unitPrice ?></span> <span class="text-label">+$15.55 shipping</span></p>
                     </div>
                     <div>
-                        <p class="normal-text"><span class="text-label" style="font-weight: bold">Color:</span> Gold</p>
+                        <p class="normal-text"><span class="text-label" style="font-weight: bold">Color:</span> <?php if(isset($res->color) && $res->color != ""){ echo $res->color;} else {echo "unknown";} ?></p>
                     </div>
                     <div>
                         <p class="normal-text" style="margin-top: 8px; line-height: 1.4">
-                        Born to exude understated everyday elegance, the Octo Roma watch is a unique expression of discreet luxury. Focusing on essentials with undeniable style, the timepiece is highly contemporary for the linearity of its contours and its measured aesthetics, offering a soft interpretation of the round and squared shapes. With its unparalleled combination of striking aesthetics and pioneering mechanics, the watch perfectly encapsulates the modern spirit of Octo.
-                        Octo Roma watch with mechanical manufacture movement, automatic winding, date window, 41 mm stainless steel case, 18 kt rose gold octagon, blue dial, 18 kt rose gold crown set with ceramic, blue alligator bracelet and stainless steel folding buckle. Water resistant up to 50 metres.
+                            <?php echo $res->productDescription ?>
                         </p>
                     </div>
                 </div>
                 <div class="cart-section">
                     <div>
-                        <p class="text-info-price" style="margin: 4px; color: rgb(31, 31, 31)">$37,700.00</p>
+                        <p class="text-info-price" id="total-product-qte-price" style="margin: 4px; color: rgb(31, 31, 31)"></p>
                     </div>
                     <div>
                         <p class="normal-text" style="font-weight: bold; font-size: 17px"><span class="text-label">Arrives:</span>  Nov 26 - Dec 14 </p>
@@ -120,15 +124,14 @@
                     </div>
                     <div style="margin-top: 14px">
                         <div>
-                            <a href="#" class="buy-product-button" id="add-to-cart">Add to Cart</a>
+                            <a href="" class="buy-product-button cart-button" id="add-to-cart">Add to Cart</a>
                         </div>
                         <div>
-                            <a href="#" class="buy-product-button" id="buy-now">Buy Now</a>
+                            <a href="#" class="buy-product-button cart-button" id="buy-now">Buy Now</a>
                         </div>
                     </div>
 
                 </div>
-                
             </div>
             <img id="image-bck" src="images/zoom-background.png"/>
             <div id="zoomed-image-container">

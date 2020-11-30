@@ -105,7 +105,6 @@ function getMousePos(e) {
 $(".close-semi-black-section-info").click(function() {
     $(".semi-black-section-infos").css("display","none");
 });*/
-
 // Click somewhere except selected product section to close the section [LATER]
 /*$(function() {
     $(document).on('click', function(e) {

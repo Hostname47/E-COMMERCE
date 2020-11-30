@@ -168,9 +168,7 @@ function addproductToCart(id) {
 
 function fillQuantity() {
     let cookie = getCookie("cart");
-    if(cookie == "" || cookie == "-1") {
-        setCookie("cart", "", 360);
-    } else {
+    if(cookie != "") {
         let iqs = cookie.split(", ");    
         for(let i=0;i<iqs.length;i++) {
             for(let j=1;j<=20;j+=1){
