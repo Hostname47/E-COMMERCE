@@ -178,12 +178,15 @@
 }
 
 .asset-demo {
-    background-color: rgb(228, 228, 228);
+    width: 400px;
+    height: 400px;
+    max-width: 400px;
     margin-left: 12px;
 }
 
 #image-demo {
-    height: 400px;
+    max-width: 400px;
+    display: flex;
 }
 
 #video-entity {
@@ -263,7 +266,6 @@
     background-position: 8px center;
     background-repeat: no-repeat;
     background-size: 20px 20px;
-    background-image: url(../images/white-cart.png);
     margin-bottom: 10px;
 }
 

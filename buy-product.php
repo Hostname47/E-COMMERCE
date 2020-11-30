@@ -124,10 +124,10 @@
                     </div>
                     <div style="margin-top: 14px">
                         <div>
-                            <a href="" class="buy-product-button cart-button" id="add-to-cart">Add to Cart</a>
+                            <a href="#" class="cart-button" id="add-to-crt">Add to Cart</a>
                         </div>
                         <div>
-                            <a href="#" class="buy-product-button cart-button" id="buy-now">Buy Now</a>
+                            <a href="#" class="cart-button" id="buy-now">Buy Now</a>
                         </div>
                     </div>
 

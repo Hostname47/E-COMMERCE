@@ -1,4 +1,13 @@
 
+function getParameterByName(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
+
 function number_format(number, decimals, dec_point, thousands_sep) {
     // http://kevin.vanzonneveld.net
     // +   original by: Jonas Raoni Soares Silva (http://www.jsfromhell.com)
@@ -20,30 +29,6 @@ function number_format(number, decimals, dec_point, thousands_sep) {
     // +     bugfix by: Brett Zamir (http://brett-zamir.me)
     // +   improved by: Theriault
     // +   improved by: Drew Noakes
-    // *     example 1: number_format(1234.56);
-    // *     returns 1: '1,235'
-    // *     example 2: number_format(1234.56, 2, ',', ' ');
-    // *     returns 2: '1 234,56'
-    // *     example 3: number_format(1234.5678, 2, '.', '');
-    // *     returns 3: '1234.57'
-    // *     example 4: number_format(67, 2, ',', '.');
-    // *     returns 4: '67,00'
-    // *     example 5: number_format(1000);
-    // *     returns 5: '1,000'
-    // *     example 6: number_format(67.311, 2);
-    // *     returns 6: '67.31'
-    // *     example 7: number_format(1000.55, 1);
-    // *     returns 7: '1,000.6'
-    // *     example 8: number_format(67000, 5, ',', '.');
-    // *     returns 8: '67.000,00000'
-    // *     example 9: number_format(0.9, 0);
-    // *     returns 9: '1'
-    // *    example 10: number_format('1.20', 2);
-    // *    returns 10: '1.20'
-    // *    example 11: number_format('1.20', 4);
-    // *    returns 11: '1.2000'
-    // *    example 12: number_format('1.2000', 3);
-    // *    returns 12: '1.200'
     var n = !isFinite(+number) ? 0 : +number, 
         prec = !isFinite(+decimals) ? 0 : Math.abs(decimals),
         sep = (typeof thousands_sep === 'undefined') ? ',' : thousands_sep,
@@ -64,6 +49,8 @@ function number_format(number, decimals, dec_point, thousands_sep) {
     return s.join(dec);
 }
 
+
+
 function setTotalQuantityPrice() {
     let unitPrice = $("#u-price").text();
     unitPrice = unitPrice.substr(1, unitPrice.length - 1);
@@ -74,6 +61,51 @@ function setTotalQuantityPrice() {
     $("#total-product-qte-price").text("$" + totalProductPrice);
 }
 
+function checkProductCartExistence() {
+    let productID = getParameterByName("id");
+    let found = false;
+    let prds_and_qtes = getCookie("cart").split(", ");
+    for(let i=0;i<prds_and_qtes.length;i++) {
+        let id = prds_and_qtes[i].substr(1, prds_and_qtes[i].length-2).split(",")[0];
+        if(id == productID) {
+            found = true;
+            break;
+        }
+    }
+
+    if(found) {
+        $("#add-to-crt").text("Already in cart - Check");
+    } else
+        $("#add-to-crt").text("Add to cart");
+}
+
+checkProductCartExistence();
+
+function add_product_to_cart() {
+    if($("#add-to-crt").text() == "Already in cart - Check") {
+        fillCart();
+        $(".cart-container").css("display","flex");
+    } else {
+        let productID = getParameterByName("id");
+        let quantity = $("#quantity option:selected").text();
+
+        let cookie = getCookie("cart");
+        let prd = "{" + productID + "," + quantity + "}";
+
+        if(cookie == "") {
+            setCookie("cart", prd, 365);
+        } else {
+            setCookie("cart", cookie + ", " + prd);
+        }
+
+        $("#add-to-crt").text("Already in cart - Check");
+        fillCart();
+    }
+    
+    
+    event.preventDefault();
+}
+
 setTotalQuantityPrice();
 
 $("#quantity").change(function() {
@@ -81,7 +113,8 @@ $("#quantity").change(function() {
 });
 
 $("#add-to-crt").click(function() {
-    console.log("test");
+    add_product_to_cart();   
     
+    event.preventDefault();
     return false;
-})
+});
