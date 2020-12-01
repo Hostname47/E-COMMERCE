@@ -134,7 +134,34 @@
                             <a href="#" class="cart-button" id="add-to-crt">Add to Cart</a>
                         </div>
                         <div>
-                            <a href="#" class="cart-button" id="buy-now">Buy Now</a>
+                            <!-- PAYPAL BUY NOW BUTTON -->
+                                
+                            <form action="https://www.paypal.com/cgi-bin/webscr" method="post" style="display: flex; align-items: center; justify-content: center; margin-top: 12px">
+                                    <input type="hidden" name="cmd" value="_xclick">
+                                    <input type="hidden" name="business" value="UTMXWJDX6SPRS">
+                                    <input type="hidden" name="lc" value="MA">
+                                    <input type="hidden" name="item_name" value="Product name">
+                                    <input type="hidden" name="item_number" value="productID">
+                                    <input type="hidden" name="amount" value="18.00" id="prc">
+                                    <input type="hidden" name="currency_code" value="USD">
+                                    <input type="hidden" name="button_subtype" value="services">
+                                    <input type="hidden" name="no_note" value="1">
+                                    <input type="hidden" name="no_shipping" value="1">
+                                    <input type="hidden" name="rm" value="1">
+                                    <input type="hidden" name="return" value="https://localhost/E-COMMERCE/common/thank_you.php">
+                                    <input type="hidden" name="cancel_return" value="https://localhost/E-COMMERCE/vw_cart.php">
+                                    <input type="hidden" name="bn" value="PP-BuyNowBF:btn_buynowCC_LG.gif:NonHosted">
+                                    <input type="hidden" name="notify_url" value="https://localhost/E-COMMERCE/common/handle_transaction.php">
+                                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynowCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                                    <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+                                    <script>
+                                        document.getElementById("prc").value = "19.99";
+                                        /* This should be replaced by the sub total value.
+                                           Hint: remove the comma thousands separator before pass sub total to price input!
+                                        */
+                                        /*document.getElementById("prc").value = document.getElementById("st").innerHTML;*/
+                                    </script>
+                                </form>
                         </div>
                     </div>
 
