@@ -92,7 +92,8 @@ body {
     justify-content: center;
     background-color: rgb(228, 228, 228);
     z-index: 10;
-
+    border-radius: 6px;
+    border: 2px solid gray;
     top: 40px;
     padding: 8px;
     transition: opacity 0.4s ease;

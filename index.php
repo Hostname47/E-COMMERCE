@@ -1,12 +1,5 @@
 <?php
-    session_start();
-
-    if(isset($_SESSION["user_id"])) {
-        $isRegistred = 1;
-        $username = $_SESSION["username"];
-    } else {
-        $isRegistred = 0;
-    }
+    
 
 ?>
 

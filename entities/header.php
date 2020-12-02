@@ -1,5 +1,16 @@
 <?php
 
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
+
+    if(isset($_SESSION["user_id"])) {
+        $isRegistred = 1;
+        $username = $_SESSION["username"];
+    } else {
+        $isRegistred = 0;
+    }
+
     if(isset($_POST["search"])) {
         // Sanitize data
         $submitted_category = htmlspecialchars(strip_tags($_POST["category"]));
@@ -31,7 +42,7 @@
                 <a href="#" id="edit-profile-image">▸ Edit profil picture</a>
             </div>
             <a href="#" id="acc-p"><img src="http://localhost/E-COMMERCE/images/account.png" alt="NOT FOUND" id="account-picture"></a>
-            <a href="#" class="account-name"><?php if(isset($username)) echo $username; else echo "Unknown"; ?></a>
+            <a href="#" class="account-name"><?php if(isset($username)) echo $username; else echo "Log In/Sign In"; ?></a>
         </div>
 
         <div id="search-and-menu-container">

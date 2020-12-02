@@ -6,7 +6,6 @@ $("#products-in-cart").innerHTML = "TEST";
 
 function fillCartProducts() {
     let cookie = getCookie("cart");
-
     if(cookie == "") {
         setCookie("cart", "", 360);
     }
@@ -103,6 +102,7 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 }
 
 function addproductToCart(id) {
+    console.log("E");
     if (id == null) {
         return;
     } else {

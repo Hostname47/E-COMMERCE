@@ -101,4 +101,6 @@ $(".account-name").click(function() {
         window.location.href = "http://localhost/E-COMMERCE/login-entities/login.php";
     else
         window.location.href = "http://localhost/E-COMMERCE/account.php";
+
+    return false;
 })

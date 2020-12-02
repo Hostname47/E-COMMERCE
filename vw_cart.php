@@ -20,6 +20,7 @@
     <script src="javascript/cookie.js" defer></script>
     <script src="javascript/header.js" defer></script>
     <script src="javascript/cart.js" defer></script>
+    <script src="javascript/product.js" defer></script>
     
 </head>
 <body>
