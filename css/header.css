@@ -79,8 +79,48 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-
+    position: relative;
     margin-left: 15px;
+}
+
+#account-picture-container {
+    opacity: 0;
+
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: rgb(228, 228, 228);
+    z-index: 10;
+
+    top: 40px;
+    padding: 8px;
+    transition: opacity 0.4s ease;
+}
+
+.close-section {
+    text-decoration: none;
+    color: black;
+    display: flex;
+    margin-left: auto;
+}
+
+#edit-profile-image {
+    text-decoration: none;
+    color: black;
+
+    margin: 0 auto;
+}
+
+#edit-profile-image:hover {
+    text-decoration: underline;
+}
+
+#account-image {
+    height: 140px;
+    width: 140px;
+    border-radius: 50%;
+    background-color: gray
 }
 
 #account-picture {
@@ -91,7 +131,7 @@ body {
     border-radius: 50%;
 }
 
-#account-name {
+.account-name {
     text-decoration: none;
     color: rgb(53, 53, 53);
     padding-left: 8px;

@@ -11,7 +11,7 @@
 ?>
 
 <header>
-
+    <input type="hidden" id="isRegistred" value="<?php echo $isRegistred ?>">
     <div id="top-menu-strip">
         <a href="http://localhost/E-COMMERCE/index.php" id="top-logo"><img src="http://localhost/E-COMMERCE/images/logo.png" class="logo"></a>
         <div class="search-container">
@@ -25,8 +25,13 @@
             </form>
         </div>
         <div id="my-account">
-            <a href=""><img src="http://localhost/E-COMMERCE/images/account.png" alt="NOT FOUND" id="account-picture"></a>
-            <a href="#" id="account-name">My-account</a>
+            <div id="account-picture-container">
+                <a href="#" class="close-section">✖</a>
+                <img id="account-image" src="http://localhost/E-COMMERCE/images/account.png" alt="">
+                <a href="#" id="edit-profile-image">▸ Edit profil picture</a>
+            </div>
+            <a href="#" id="acc-p"><img src="http://localhost/E-COMMERCE/images/account.png" alt="NOT FOUND" id="account-picture"></a>
+            <a href="#" class="account-name"><?php if(isset($username)) echo $username; else echo "Unknown"; ?></a>
         </div>
 
         <div id="search-and-menu-container">
@@ -79,10 +84,10 @@
     <nav id="top-small-device-nav">
         <ul>
             <a href="index.php" class="menu-button-style white-home"><li id="home">Home</li></a>
-            <a href="#" class="menu-button-style white-cart"><li id="home">My Cart</li></a>
-            <a href="#" class="menu-button-style white-shop"><li>Shop</li></a>
-            <a href="#" class="menu-button-style white-account"><li>Account</li></a>
-            <a href="#" class="menu-button-style white-about"><li>About</li></a>
+            <a href="vw_cart.php" class="menu-button-style white-cart"><li id="home">My Cart</li></a>
+            <a href="shop.php" class="menu-button-style white-shop"><li>Shop</li></a>
+            <a href="account.php" class="menu-button-style white-account"><li>Account</li></a>
+            <a href="about.php" class="menu-button-style white-about"><li>About</li></a>
         </ul>
     </nav>
 

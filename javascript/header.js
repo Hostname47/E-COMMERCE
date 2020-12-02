@@ -81,3 +81,24 @@ function displayCartContainer() {
     else
         $(".cart-container").css("display","flex");
 }
+
+$("#account-picture").click(function() {
+    console.log("account picture clicked");
+
+    return false;
+})
+
+$("#acc-p").mouseenter(function(){
+    $("#account-picture-container").css("opacity", "1");
+});
+
+$(".close-section").click(function() {
+    $(this).parent().css("opacity","0")
+})
+
+$(".account-name").click(function() {
+    if($("#isRegistred").val() == "0")
+        window.location.href = "http://localhost/E-COMMERCE/login-entities/login.php";
+    else
+        window.location.href = "http://localhost/E-COMMERCE/account.php";
+})

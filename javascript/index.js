@@ -13,3 +13,21 @@ $(".featured-item-paging").click(function() {
     $(this).addClass("featured-item-selected");
     return false;
 })
+
+let container = $(".paging-container").first();
+
+
+let allPagingItems = container.children();
+let numberOfPagingItems = allPagingItems.length;
+let pagingCounter = 1;
+
+const interval = setInterval(function() {
+    if(pagingCounter == numberOfPagingItems) {
+        pagingCounter = 0;
+    }
+
+    $(".featured-item-paging").removeClass("featured-item-selected");
+    allPagingItems[pagingCounter].classList.add("featured-item-selected");
+
+    pagingCounter++;
+}, 4000);

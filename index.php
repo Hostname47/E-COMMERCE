@@ -1,6 +1,12 @@
 <?php
+    session_start();
 
-    
+    if(isset($_SESSION["user_id"])) {
+        $isRegistred = 1;
+        $username = $_SESSION["username"];
+    } else {
+        $isRegistred = 0;
+    }
 
 ?>
 
@@ -201,7 +207,7 @@
                 <div class="products-by-category-info">
                     <p class="pbc-light-title">Ultra fine watches</p>
                     <p class="pbc-big-title">THE ULTIMATE LUXURY</p>
-                    <a href="#" class="product-by-category-buy">Shop watches</a>
+                    <a href="shop.php" class="product-by-category-buy">Shop watches</a>
                 </div>
             </div>
             <div class="category-products">
@@ -213,7 +219,7 @@
                 <div class="products-by-category-info">
                     <p class="pbc-light-title">Know yourself</p>
                     <p class="pbc-big-title">The more you know, the more you don't know</p>
-                    <a href="#" class="product-by-category-buy">Shop books</a>
+                    <a href="shop.php?category=8" class="product-by-category-buy">Shop books</a>
                 </div>
             </div>
             <div class="category-products">
@@ -225,7 +231,7 @@
                 <div class="products-by-category-info">
                     <p class="pbc-light-title">Ultra performence</p>
                     <p class="pbc-big-title">PRO COMPUTERS</p>
-                    <a href="#" class="product-by-category-buy">Shop computers</a>
+                    <a href="shop.php?category=3" class="product-by-category-buy">Shop computers</a>
                 </div>
             </div>
         </div>
