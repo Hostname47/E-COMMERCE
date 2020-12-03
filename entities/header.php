@@ -37,12 +37,22 @@
         </div>
         <div id="my-account">
             <div id="account-picture-container">
-                <a href="#" class="close-section">✖</a>
+                <a href="" class="close-section">✖</a>
                 <img id="account-image" src="http://localhost/E-COMMERCE/images/account.png" alt="">
                 <a href="#" id="edit-profile-image">▸ Edit profil picture</a>
             </div>
             <a href="#" id="acc-p"><img src="http://localhost/E-COMMERCE/images/account.png" alt="NOT FOUND" id="account-picture"></a>
-            <a href="#" class="account-name"><?php if(isset($username)) echo $username; else echo "Log In/Sign In"; ?></a>
+            <a href="" class="account-name"><?php if(isset($username)) echo $username; else echo "Log In/Sign In"; ?></a>
+            <div style="position: relative">
+                <a href="" id="account-more">⏷</a>
+                <div class="more-section">
+                    <a href="#" class="more-item">TEST</a>
+                    <a href="account.php" class="more-item">Settings</a>
+                    <form action="account.php" method="POST">
+                        <input type="submit" class="more-item" value="Disconnect" name="disconnect">
+                    </form>
+                </div>
+            </div>
         </div>
 
         <div id="search-and-menu-container">

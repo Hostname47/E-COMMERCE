@@ -134,3 +134,12 @@
     display: flex;
     align-items: center;
 }
+
+.mandatory {
+    color: rgb(233, 37, 37);    
+}
+
+.label {
+    display: flex;
+    margin: 6px;
+}

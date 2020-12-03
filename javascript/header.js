@@ -83,17 +83,20 @@ function displayCartContainer() {
 }
 
 $("#account-picture").click(function() {
-    console.log("account picture clicked");
+    if($(this).parent().parent().find(".account-name").text() != "Log In/Sign In")
+        $("#account-picture-container").css("opacity", "1");
 
     return false;
 })
 
-$("#acc-p").mouseenter(function(){
-    $("#account-picture-container").css("opacity", "1");
-});
+if($("#account-picture").parent().parent().find(".account-name").text() != "Log In/Sign In") {
+    $("#account-more").css("display","flex")
+}
 
 $(".close-section").click(function() {
     $(this).parent().css("opacity","0")
+
+    return false;
 })
 
 $(".account-name").click(function() {
@@ -102,5 +105,16 @@ $(".account-name").click(function() {
     else
         window.location.href = "http://localhost/E-COMMERCE/account.php";
 
+    return false;
+})
+
+$("#account-more").click(function() {
+    let display = $(".more-section").css("display");
+    if(display == "none") {
+        $("#account-picture-container").css("opacity", "0");
+        $(".more-section").css("display","block");
+    } else {
+        $(".more-section").css("display","none");
+    }
     return false;
 })
