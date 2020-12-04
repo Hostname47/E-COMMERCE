@@ -1,13 +1,39 @@
 
 <?php
+    // Usually the session i start in header.php so we need to check it out
     if (session_status() == PHP_SESSION_NONE) {
         session_start();
     }
 
+    // if the user is not logged in (because the session user id variable is only set when the user login) we take it to login page
     if(!isset($_SESSION["user_id"])) {
         header("location: login-entities/login.php");
     }
 
+    $userid = $_SESSION["user_id"];
+    $username = $_SESSION["username"];
+    
+    // Use curl to send get request to the api and get the full name by providing the  url with uid query string
+    // To get the user info for that id and use it to fill OLD First and last names
+    $curl = curl_init();
+    curl_setopt($curl, CURLOPT_URL, "http://localhost/E-COMMERCE/api/account/readById.php?uid=5");
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+
+    $result = json_decode(curl_exec($curl));
+    $firstname = trim($result->data[0]->first_name);
+    $lastname = trim($result->data[0]->last_name);
+    $fullname = $firstname . " " . $lastname;
+
+    if($fullname == " ") {
+        $fullname = htmlspecialchars("<empty>");
+    }
+
+    if(isset($_POST["save-name"])) {
+        
+    }
+    
+    // IF The user click disconnect we unset all session data and destroy the session and finally
+    // redirect the user to the index page
     if(isset($_POST["disconnect"])) {
         echo $_SESSION["user_id"];
 
@@ -16,9 +42,6 @@
 
         header("location: index.php");
     }
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -58,14 +81,14 @@
                 <div class="settings">
                     <div class="setting-item"> <!-- Setting item -->
                         <div class="setting-credential-container">
-                            <a href="#" class="setting-name">Full Name</a>
+                            <p href="#" class="setting-name">Full Name</p>
                             <div class="four-pixels-margin-separator"></div>
-                            <a href="#" class="setting-current-data">Mouad Nassri</a>
+                            <p href="#" class="setting-current-data"><?php echo $fullname; ?></p>
                             <a href="" class="edit-setting-data">Edit</a>
                         </div>
                         <div class="setting-section">
-                            <p class="data-style">Old: <span>Mouad</span> <span>Nassri</span></p>
-                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                            <p class="data-style">Old: <span><?php echo $fullname; ?></span></p>
+                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                                 <label for="firstname" class="label">Firstname <span class="mandatory">*</span></label>    
                                 <input type="text" name="firstname" id="firstname" class="user-input" placeholder="Firstname">
                                 <label for="lastname" class="label">Lastname <span class="mandatory">*</span></label>    
@@ -80,9 +103,9 @@
                     <div class="setting-items-separator"></div>
                     <div class="setting-item">
                         <div class="setting-credential-container">
-                            <a href="#" class="setting-name">Username</a>
+                            <p href="#" class="setting-name">Username</p>
                             <div class="four-pixels-margin-separator"></div>
-                            <a href="#" class="setting-current-data">Hostname47</a>
+                            <p href="#" class="setting-current-data">Hostname47</p>
                             <a href="" class="edit-setting-data">Edit</a>
                         </div>
                         <div class="setting-section">
@@ -93,9 +116,9 @@
                     <div class="setting-items-separator"></div>
                     <div class="setting-item">
                         <div class="setting-credential-container">
-                            <a href="#" class="setting-name">Add email</a>
+                            <p href="#" class="setting-name">Add email</p>
                             <div class="four-pixels-margin-separator"></div>
-                            <a href="#" class="setting-current-data">Used: <span>mouadstev1@gmail.com</span></a>
+                            <p class="setting-current-data">Used: <span>mouadstev1@gmail.com</span></p>
                             <a href="" class="edit-setting-data">Edit</a>
                         </div>
                         <div class="setting-section">
@@ -106,9 +129,9 @@
                     <div class="setting-items-separator"></div>
                     <div class="setting-item">
                         <div class="setting-credential-container">
-                            <a href="#" class="setting-name">Add email</a>
+                            <p href="#" class="setting-name">Add email</p>
                             <div class="four-pixels-margin-separator"></div>
-                            <a href="#" class="setting-current-data">Used: <span>mouadstev1@gmail.com</span></a>
+                            <p href="#" class="setting-current-data">Used: <span>mouadstev1@gmail.com</span></p>
                             <a href="" class="edit-setting-data">Edit</a>
                         </div>
                         <div class="setting-section">

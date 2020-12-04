@@ -39,6 +39,7 @@ body {
     font-weight: bold;
     text-decoration: none;
     width: 200px;
+    margin: 0;
 }
 
 .setting-current-data {
@@ -66,6 +67,7 @@ body {
     display: flex;
     flex-direction: column;
     display: none;
+    margin-top: 6px;
     padding: 20px;
     border-radius: 6px;
     border: 1px solid rgb(216, 216, 216);
