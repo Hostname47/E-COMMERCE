@@ -106,6 +106,7 @@ body {
 }
 
 .normal-button {
+    
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -115,9 +116,6 @@ body {
     color: black;
     background-color: rgb(231, 231, 231);
     border: 1px solid rgb(184, 184, 184);
-}
-
-.setting-item {
 }
 
 .setting-items-separator {
