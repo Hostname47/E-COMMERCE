@@ -16,20 +16,17 @@
     // Use curl to send get request to the api and get the full name by providing the  url with uid query string
     // To get the user info for that id and use it to fill OLD First and last names
     $curl = curl_init();
-    curl_setopt($curl, CURLOPT_URL, "http://localhost/E-COMMERCE/api/account/readById.php?uid=5");
+    curl_setopt($curl, CURLOPT_URL, "http://localhost/E-COMMERCE/api/account/readById.php?uid=$userid");
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
 
     $result = json_decode(curl_exec($curl));
+    curl_close($curl);
     $firstname = trim($result->data[0]->first_name);
     $lastname = trim($result->data[0]->last_name);
     $fullname = $firstname . " " . $lastname;
 
     if($fullname == " ") {
         $fullname = htmlspecialchars("<empty>");
-    }
-
-    if(isset($_POST["save-name"])) {
-        
     }
     
     // IF The user click disconnect we unset all session data and destroy the session and finally
@@ -88,14 +85,16 @@
                         </div>
                         <div class="setting-section">
                             <p class="data-style">Old: <span><?php echo $fullname; ?></span></p>
-                            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+                            <form action="http://localhost/E-COMMERCE/api/account/EditFullName.php" method="POST">
+                                <input type="hidden" name="userid" id="userid" value="<?php echo $userid ?>">
                                 <label for="firstname" class="label">Firstname <span class="mandatory">*</span></label>    
-                                <input type="text" name="firstname" id="firstname" class="user-input" placeholder="Firstname">
+                                <input type="text" name="firstname" id="firstname" class="user-input" placeholder="Firstname" value="<?php echo $firstname; ?>">
                                 <label for="lastname" class="label">Lastname <span class="mandatory">*</span></label>    
-                                <input type="text" name="lastname" id="lastname" class="user-input" placeholder="Lastname">
+                                <input type="text" name="lastname" id="lastname" class="user-input" placeholder="Lastname" value="<?php echo $lastname; ?>">
                                 <div id="buttons-container">
-                                    <input type="submit" name="save-name" class="setting-button" value="Save">
-                                    <a href="#" class="setting-button cancel-button">cancel</a>
+                                    <input type="submit" name="save-name" class="setting-button" id="sv-account" value="Save">
+                                    <a href="" class="setting-button cancel-button">cancel</a>
+                                    <p id="account-save-message"></p>
                                 </div>
                             </form>
                         </div>

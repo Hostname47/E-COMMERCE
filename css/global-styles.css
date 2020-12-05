@@ -143,3 +143,41 @@
     display: flex;
     margin: 6px;
 }
+
+.correct-message {
+    font-size: 15px;
+
+    margin: 8px 0;
+    padding: 8px;
+    padding-left: 36px;
+    background-color: rgb(209, 255, 209);
+    color: #004000;
+    border: 1px solid #96ea96;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 4px;
+
+    background-image: url(../images/green-correct-check.png);
+    background-size: 26px 26px;
+    background-repeat: no-repeat;
+    background-position: 6px center;
+}
+
+.invalid-message {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 15px;
+
+    margin: 8px 0;
+    padding: 8px 8px 8px 36px;
+    
+    color: #600000;
+    border: 1px solid #ff9191;
+    border-radius: 4px;
+    
+    background-color: rgb(255, 214, 214);
+    background-image: url(../images/invalid.png);
+    background-size: 25px 24px;
+    background-repeat: no-repeat;
+    background-position: 6px center;
+}

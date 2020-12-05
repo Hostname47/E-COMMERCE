@@ -55,17 +55,17 @@ class Account {
         return false;
     }
 
-    public function EditUsername($id, $firstname, $lastname) {
-        $query = "UPDATE " . $this->table . " SET firstname = :firstname, lastname = :lastname WHERE user_id = :id";
+    public function EditUsername($id, $username) {
+        $query = "UPDATE " . $this->table . " SET username = :username WHERE user_id = :id";
 
         $stmt = $this->link->prepare($query);
         $stmt->bindParam(":id", $id);
-        $stmt->bindParam(":firstname", $firstname);
-        $stmt->bindParam(":lastname", $lastname);
+        $stmt->bindParam(":username", $username);
 
         if($stmt->execute()) {
             return true;
         }
+        
         printf("Error: %s\n",$stmt->error);
         return false;
     }

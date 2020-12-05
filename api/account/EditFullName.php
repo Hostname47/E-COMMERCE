@@ -8,25 +8,25 @@
     include "../../modules/account.php";
 
     header("Access-Control-Allow-Origin: *");
-    header("Control-Type: Application/json");
-    header("Access-Control-allow-Methods: PUT");
+    header("Content-Type: application/JSON");
+    header("Access-Control-allow-Methods: POST");
     header("Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-Type, Access-Control-allow-Methods, Authorization, X-Requested-Width");
 
     $database = new Database();
     $db = $database->connect();
 
     $account = new Account($db);
-
+    
     $data = json_decode(file_get_contents("php://input"));
 
-    $account->userid = $data->user_id;
-    $account->firstname = $data->first_name;
-    $account->lastname = $data->last_name;
+    $account->userid = $data->userid;
+    $account->firstname = $data->firstname;
+    $account->lastname = $data->lastname;
 
     if($account->EditFullName()) {
-        echo "Account edited successfully.";
+        return "Account edited successfully.";
     } else {
-        echo "Account not edited.";
+        return "Account not edited.";
     }
-    
+
 ?>
