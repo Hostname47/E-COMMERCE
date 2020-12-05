@@ -11,7 +11,6 @@
     }
 
     $userid = $_SESSION["user_id"];
-    $username = $_SESSION["username"];
     
     // Use curl to send get request to the api and get the full name by providing the  url with uid query string
     // To get the user info for that id and use it to fill OLD First and last names
@@ -23,6 +22,9 @@
     curl_close($curl);
     $firstname = trim($result->data[0]->first_name);
     $lastname = trim($result->data[0]->last_name);
+    $username = trim($result->data[0]->last_name);
+    $email = trim($result->data[0]->email);
+    $password = trim($result->data[0]->password);
     $fullname = $firstname . " " . $lastname;
 
     if($fullname == " ") {
@@ -73,6 +75,7 @@
         <div style="margin: 12px">
             <div>
                 <p class="title">GENERAL ACCOUNT SETTINGS</p>
+                <input type="hidden" name="userid" id="userid" value="<?php echo $userid ?>">
             </div>
             <div style="display: flex; font-size: 15px">
                 <div class="settings">
@@ -84,9 +87,8 @@
                             <a href="" class="edit-setting-data">Edit</a>
                         </div>
                         <div class="setting-section">
-                            <p class="data-style">Old: <span><?php echo $fullname; ?></span></p>
-                            <form action="http://localhost/E-COMMERCE/api/account/EditFullName.php" method="POST">
-                                <input type="hidden" name="userid" id="userid" value="<?php echo $userid ?>">
+                            <p class="data-style">Old: <span style="font-weight: bold"><?php echo $fullname; ?></span></p>
+                            <form action="" method="POST">
                                 <label for="firstname" class="label">Firstname <span class="mandatory">*</span></label>    
                                 <input type="text" name="firstname" id="firstname" class="user-input" placeholder="Firstname" value="<?php echo $firstname; ?>">
                                 <label for="lastname" class="label">Lastname <span class="mandatory">*</span></label>    
@@ -94,7 +96,7 @@
                                 <div id="buttons-container">
                                     <input type="submit" name="save-name" class="setting-button" id="sv-account" value="Save">
                                     <a href="" class="setting-button cancel-button">cancel</a>
-                                    <p id="account-save-message"></p>
+                                    <p class="account-save-message"></p>
                                 </div>
                             </form>
                         </div>
@@ -104,38 +106,66 @@
                         <div class="setting-credential-container">
                             <p href="#" class="setting-name">Username</p>
                             <div class="four-pixels-margin-separator"></div>
-                            <p href="#" class="setting-current-data">Hostname47</p>
+                            <p href="#" class="setting-current-data"><?php echo $username; ?></p>
                             <a href="" class="edit-setting-data">Edit</a>
                         </div>
                         <div class="setting-section">
-                            <p>This is username section data</p>
-                            <p>This is username section data</p>
+                            <p class="data-style">Old Username: <span style="font-weight: bold"><?php echo $username; ?></span></p>
+                            <form action="" method="POST">
+                                <label for="username" class="label">Enter a new username <span class="mandatory">*</span></label>    
+                                <input type="text" name="firstname" id="username" class="user-input" placeholder="Username" value="<?php echo $username; ?>">
+                                <div id="buttons-container">
+                                    <input type="submit" name="save-name" class="setting-button" id="sv-username" value="Save">
+                                    <a href="" class="setting-button cancel-button">cancel</a>
+                                    <p class="account-save-message"></p>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <div class="setting-items-separator"></div>
                     <div class="setting-item">
                         <div class="setting-credential-container">
-                            <p href="#" class="setting-name">Add email</p>
+                            <p href="#" class="setting-name">Email</p>
                             <div class="four-pixels-margin-separator"></div>
-                            <p class="setting-current-data">Used: <span>mouadstev1@gmail.com</span></p>
+                            <p class="setting-current-data">Used: <span><?php echo $email ?></span></p>
                             <a href="" class="edit-setting-data">Edit</a>
                         </div>
                         <div class="setting-section">
-                            <p>This is username section data</p>
-                            <p>This is username section data</p>
+                            <p class="data-style">Old email: <span style="font-weight: bold"><?php echo $email; ?></span></p>
+                            <form action="" method="POST">
+                                <label for="username" class="label">Edit email <span class="mandatory">*</span></label>    
+                                <input type="text" name="firstname" id="username" class="user-input" placeholder="Username" value="<?php echo $email; ?>">
+                                <div id="buttons-container">
+                                    <input type="submit" name="save-name" class="setting-button" id="sv-email" value="Save">
+                                    <a href="" class="setting-button cancel-button">cancel</a>
+                                    <p class="account-save-message"></p>
+                                </div>
+                            </form>
                         </div>
                     </div>
                     <div class="setting-items-separator"></div>
                     <div class="setting-item">
                         <div class="setting-credential-container">
-                            <p href="#" class="setting-name">Add email</p>
+                            <input type="hidden" id="hidden-psw" value="<?php echo $password ?>">
+                            <p href="#" class="setting-name">Password</p>
                             <div class="four-pixels-margin-separator"></div>
-                            <p href="#" class="setting-current-data">Used: <span>mouadstev1@gmail.com</span></p>
+                            <p href="#" class="setting-current-data"><span class="psw"></span></p>
                             <a href="" class="edit-setting-data">Edit</a>
                         </div>
                         <div class="setting-section">
-                            <p>This is username section data</p>
-                            <p>This is username section data</p>
+                            <div style="display: flex; align-items: center">
+                                <p class="data-style">Your password: <span class="psw"></span></p>
+                                <a href="" class="normal-button" id="see-psw" style="margin-left: 12px">See your password</a>
+                            </div>
+                            <form action="" method="POST">
+                                <label for="username" class="label">Edit email <span class="mandatory">*</span></label>    
+                                <input type="text" name="firstname" id="username" class="user-input" placeholder="Username" value="<?php echo $email; ?>">
+                                <div id="buttons-container">
+                                    <input type="submit" name="save-name" class="setting-button" id="sv-email" value="Save">
+                                    <a href="" class="setting-button cancel-button">cancel</a>
+                                    <p class="account-save-message"></p>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

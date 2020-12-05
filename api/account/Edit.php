@@ -22,8 +22,9 @@
     $account->userid = $data->userid;
     $account->firstname = $data->firstname;
     $account->lastname = $data->lastname;
+    $account->username = $data->username;
 
-    if($account->EditFullName()) {
+    if($account->EditAccount()) {
         return "Account edited successfully.";
     } else {
         return "Account not edited.";
