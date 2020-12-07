@@ -49,8 +49,6 @@ function number_format(number, decimals, dec_point, thousands_sep) {
     return s.join(dec);
 }
 
-
-
 function setTotalQuantityPrice() {
     let unitPrice = $("#u-price").text();
     unitPrice = unitPrice.substr(1, unitPrice.length - 1);
@@ -173,6 +171,8 @@ function changeQyantity(id, newQuantity) {
 
 $("#hide-hint").click(function() {
     $("#edit-error").css("display", "none");
+
+    return false;
 })
 
 function fillQteIfProductExists() {
@@ -198,3 +198,116 @@ function fillQteIfProductExists() {
 }
 
 fillQteIfProductExists();
+
+var imageDemoCanvas = document.getElementById("img-demo");
+
+var ctx = imageDemoCanvas.getContext("2d");
+var prdImg = document.getElementById("image-demo");
+// Draw the image inside the canvas
+function fillCanvas(src) {
+    let prdImg = new Image();
+    prdImg.src = src;
+    //var prdImg = document.getElementById("image-demo");
+
+    let imgWidth = prdImg.width;
+    let imgHeight = prdImg.height;
+    let canvasWidth = 400;
+    let canvasHeight = canvasWidth * imgHeight / imgWidth;
+
+    ctx.canvas.width = canvasWidth;
+    ctx.canvas.height = canvasHeight;
+
+    ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+    console.log("image width:" + prdImg.width + ", image height: " + prdImg.height);
+    console.log("canvas width: " + ctx.canvas.width + ", height: " + ctx.canvas.height)
+    ctx.drawImage(prdImg, 0, 0, ctx.canvas.width, ctx.canvas.height);
+}
+
+$("#img-demo").on({
+    mouseenter: function() {
+        $("#zoomed-image-container").css("display", "flex");
+        // Show the image into the absolut container in zoomed form
+        $("#image-bck").css("display","flex");
+    },
+    mouseleave: function() {
+        $("#image-bck").css("display","none");
+        $("#zoomed-image-container").css("display", "none");
+    }
+});
+
+$(".product-asset-container").on("mouseenter", function() {
+    $(".product-asset-container").removeClass("product-image-style");
+    $(this).addClass("product-image-style");
+    
+    fillCanvas($(this).find(".product-image-info").attr("src"));
+    
+    if($(this).find(".product-video-asset").length > 0) {
+        $("#video-entity").css("display", "block");
+        $("#img-demo").css("display", "none");
+    } else {
+        $("#video-entity").css("display", "none");
+        $("#img-demo").css("display", "block");
+    }
+});
+
+
+
+/*$("#image-demo").on("mousemove", function(e) {
+    
+    var x = e.pageX;     // Get the horizontal coordinate
+    var y = e.pageY;
+
+    $("#image-bck").css({left:x, top:y});
+});*/
+
+
+
+
+
+function getMousePos(e) {
+    return {x:e.clientX,y:e.clientY};
+}
+
+/*$(".product-asset-container").on("mouseenter", function() {
+    if($(this).find(".product-video-asset")) {
+        console.log("It's a video");
+    }
+
+    console.log($(this).find(".product-video-asset").length);
+});*/
+
+
+
+/*$(".product-see-more").click(function() {
+    // Get product id when user click on products image
+    let productId = $(this).parent().parent().find(".current-product-id").val();
+    
+    // First put the css properties of the selected product to default values
+    $("#selected").css("margin-top","auto");
+
+    $(".semi-black-section-infos").css("display","flex");
+
+    $("#selected").animate({width: "50%"}, 150, "linear");
+    $("#selected").animate({marginTop: ""}, 200, "linear");
+
+    return false;
+});
+
+$(".close-semi-black-section-info").click(function() {
+    $(".semi-black-section-infos").css("display","none");
+});*/
+// Click somewhere except selected product section to close the section [LATER]
+/*$(function() {
+    $(document).on('click', function(e) {
+        
+        if (e.target.id == "selected") {
+            console.log(e.target);
+        } else {
+            console.log("outside");
+            
+            $('.semi-black-section-infos').css("display","none");
+        }
+    })
+})*/
+
+

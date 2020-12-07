@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="css/product-style.css">
     <link rel="stylesheet" href="css/shop.css">
     <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/buy-product.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" defer></script>
     <script src="javascript/cookie.js" defer></script>
@@ -68,14 +69,18 @@
                         </video>
                     </div>
                 </div>
-                <div id="asset-demo">
-                    <img src="http://localhost/E-COMMERCE/Admin/Products/<?php echo $res->pic ?>" id="image-demo" alt="">
+                <img src="http://localhost/E-COMMERCE/Admin/Products/<?php echo $res->pic ?>" id="image-demo" style="display: none" alt="">
+                <canvas id="img-demo">
+                    
+                </canvas>
+                <div id="asset-demo" style="">
                     <video id="video-entity" controls>
                         <source src="images/THE SEED Inspirational Short Film.mp4" type="video/mp4" class="product-video-asset">
                         <source src="" type="video/ogg" class="product-video-asset">
                         Your browser does not support the video tag.
                     </video>
                 </div>
+
                 <div class="text-infos">
                     <p class="text-info-name"><?php echo $res->productName ?></p>
                     <div class="flex-center">
@@ -124,7 +129,7 @@
                         <a href="" class="edit-button">edit</a>
                         <div style="position: relative">
                             <div id="edit-error">
-                                <a href="#" id="hide-hint">✕</a>
+                                <a href="" id="hide-hint">✕</a>
                                 <p style="margin: 3px;">Please change the quantity before click edit button</p>
                             </div>
                         </div>

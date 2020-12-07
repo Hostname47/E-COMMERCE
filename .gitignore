@@ -1,8 +1,7 @@
 # this is a folder of list of tasks I should complete
+crash.txt
 config
 todo
-PHPMailer-master
-vendor
 composer.json
 composer.lock
-crash.txt
+vendor

@@ -83,8 +83,10 @@ function displayCartContainer() {
 }
 
 $("#account-picture").click(function() {
-    if($(this).parent().parent().find(".account-name").text() != "Log In/Sign In")
+    if($(this).parent().parent().find(".account-name").text() != "Log In/Sign In"){
         $("#account-picture-container").css("opacity", "1");
+        $("#account-picture-container").css("display", "flex");
+    }
 
     return false;
 })
@@ -94,7 +96,8 @@ if($("#account-picture").parent().parent().find(".account-name").text() != "Log 
 }
 
 $(".close-section").click(function() {
-    $(this).parent().css("opacity","0")
+    $(this).parent().css("opacity","0");
+    $(this).parent().css("display","none");
 
     return false;
 })

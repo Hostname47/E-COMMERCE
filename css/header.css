@@ -87,7 +87,7 @@ body {
     opacity: 0;
 
     position: absolute;
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     background-color: rgb(228, 228, 228);

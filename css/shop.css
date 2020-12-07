@@ -269,32 +269,6 @@
     margin-bottom: 10px;
 }
 
-#zoomed-image-container {
-    display: none;
-    justify-content: center;
-    height: 450px;
-    width: 650px;
-    position: absolute;
-    bottom: 16px;
-    right: 16px;
-    background-color: rgb(189, 189, 189);
-    border-radius: 6px;
-}
-
-#zoomed-image {
-    display: block;
-    height: 450px;
-    width: 450px;
-    background-color: darkgoldenrod;
-}
-
-#image-bck{
-    position:absolute;
-    display: none;
-    height: 100px;
-    width: 100px;
-}
-
 .edit-button {
     color: black;
     background-color: rgb(214, 214, 214);
