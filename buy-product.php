@@ -71,8 +71,10 @@
                 </div>
                 <img src="http://localhost/E-COMMERCE/Admin/Products/<?php echo $res->pic ?>" id="image-demo" style="display: none" alt="">
                 <canvas id="img-demo">
-                    
+
                 </canvas>
+                <img src="images/zoom-background.png" alt="Cursor" class="cursor"/>
+                
                 <div id="asset-demo" style="">
                     <video id="video-entity" controls>
                         <source src="images/THE SEED Inspirational Short Film.mp4" type="video/mp4" class="product-video-asset">

@@ -25,7 +25,19 @@
 }
 
 #img-demo {
+    border: 1px solid rgb(187, 187, 187);
     box-sizing: border-box;
     max-height: 540px;
+    cursor: none;
+    cursor: url(../images/zoom-background.cur);
 }
 
+.cursor {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    /* here we set it absolute with -80px left to hide it */
+    left: -80px;
+    cursor: none;
+    pointer-events: none;
+}

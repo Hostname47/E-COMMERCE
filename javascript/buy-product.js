@@ -223,11 +223,13 @@ function fillCanvas(src) {
     ctx.drawImage(prdImg, 0, 0, ctx.canvas.width, ctx.canvas.height);
 }
 
+fillCanvas($("#image-demo").attr("src"));
+
 $("#img-demo").on({
     mouseenter: function() {
         $("#zoomed-image-container").css("display", "flex");
         // Show the image into the absolut container in zoomed form
-        $("#image-bck").css("display","flex");
+
     },
     mouseleave: function() {
         $("#image-bck").css("display","none");
@@ -248,6 +250,99 @@ $(".product-asset-container").on("mouseenter", function() {
         $("#video-entity").css("display", "none");
         $("#img-demo").css("display", "block");
     }
+});
+
+$("#img-demo").mousemove(function (e) {
+    let containerHeight = $(this).attr("height");
+    // TOP, LEFT EDGE
+    if(e.pageX - $('#img-demo').offset().left <= 40 && e.pageY - $('#img-demo').offset().top <= 40) {
+        $(".cursor").show().css({
+            "left": 95,
+            "top": 138
+        });
+    }
+    // RIGHT, BOTTOM EDGE
+    else if(e.pageX - $('#img-demo').offset().left >=360 &&  containerHeight -(e.pageY - $('#img-demo').offset().top) <= 40 ) {
+        $(".cursor").show().css({
+            "left": 95 + 320,
+            "top": 138 + parseInt(containerHeight) - 80
+        });
+    }
+    // LEFT, BOTTOM EDGE
+    else if(e.pageX - $('#img-demo').offset().left <=40 &&  containerHeight -(e.pageY - $('#img-demo').offset().top) <= 40 ) {
+        $(".cursor").show().css({
+            "left": 95,
+            "top": 138 + parseInt(containerHeight) - 80
+        });
+    }
+    // LEFT LINE
+    else if(e.pageX - $('#img-demo').offset().left < 40 && e.pageY - $('#img-demo').offset().top >= 40) {
+        $(".cursor").show().css({
+            "left": 95,
+            "top": 138 + (e.pageY - $('#img-demo').offset().top) - 40
+        });
+    }
+    // TOP, RIGHT EDGE
+    else if(e.pageX - $('#img-demo').offset().left >= 360 && e.pageY - $('#img-demo').offset().top < 40) {
+        $(".cursor").show().css({
+            /* 95 width before container, 360 to get to most left - 40 because pointer is in middle of cursor (80px of cursor) */
+            "left": 95 + 360 - 40 + 2,
+            "top": 138
+        });
+    }
+    // TOP LINE
+    else if(e.pageX - $('#img-demo').offset().left > 40 && e.pageY - $('#img-demo').offset().top < 40) {
+        $(".cursor").show().css({
+            "left": 55 + e.pageX - $('#img-demo').offset().left,
+            "top": 138 + e.pageY - $('#img-demo').offset().top < 40
+        });
+    }
+    // LEFT LINE
+    else if(e.pageX - $('#img-demo').offset().left < 40 && e.pageY - $('#img-demo').offset().top >= 40) {
+        $(".cursor").show().css({
+            "left": 95,
+            "top": 138 + (e.pageY - $('#img-demo').offset().top) - 40
+        });
+    }
+    // RIGHT LINE
+    else if(e.pageX - $('#img-demo').offset().left >= 360 && e.pageY - $('#img-demo').offset().top >= 40) {
+        $(".cursor").show().css({
+            "left": 95 + 360 - 40 + 2,
+            "top": 138 + e.pageY - $('#img-demo').offset().top - 40
+        });
+    }
+    // BOTTOM LINE
+    else if(e.pageX - $('#img-demo').offset().left >= 40 && e.pageY - $('#img-demo').offset().top >= containerHeight - 40) {
+        $(".cursor").show().css({
+            "left": 95 + e.pageX - $('#img-demo').offset().left - 40,
+            "top": 138 + parseInt(containerHeight) - 79
+        });
+    }
+     /*
+    else if(e.pageX - $('#img-demo').offset().left >= 40 && e.pageY - $('#img-demo').offset().top < 40) {
+        $(".cursor").show().css({
+            "left": 95 + e.pageX - $('#img-demo').offset().left,
+            "top": 138
+        });
+    } else if(e.pageX - $('#img-demo').offset().left >= 360 && e.pageY - $('#img-demo').offset().top < 360) {
+        $(".cursor").show().css({
+            "left": 416,
+            "top": 98 + e.pageY - $('#img-demo').offset().top
+        });
+    } else if(e.pageX - $('#img-demo').offset().left >= 360 && e.pageY - $('#img-demo').offset().top > 360) {
+        $(".cursor").show().css({
+            "left": 416,
+            "top": e.pageY - $('#img-demo').offset().top + 40
+        });
+    }*/
+    else {
+        $(".cursor").show().css({
+            "left": 95 + e.pageX - $('#img-demo').offset().left - 40,
+            "top": 138 + e.pageY - $('#img-demo').offset().top - 40
+        });
+    }
+}).mouseout(function () {
+    $(".cursor").hide();
 });
 
 
