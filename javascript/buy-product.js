@@ -199,10 +199,11 @@ function fillQteIfProductExists() {
 
 fillQteIfProductExists();
 
+let blueSquareZoomDim = 80;
+
 var imageDemoCanvas = document.getElementById("img-demo");
 
 var ctx = imageDemoCanvas.getContext("2d");
-var prdImg = document.getElementById("image-demo");
 // Draw the image inside the canvas
 function fillCanvas(src) {
     let prdImg = new Image();
@@ -218,9 +219,26 @@ function fillCanvas(src) {
     ctx.canvas.height = canvasHeight;
 
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    console.log("image width:" + prdImg.width + ", image height: " + prdImg.height);
-    console.log("canvas width: " + ctx.canvas.width + ", height: " + ctx.canvas.height)
     ctx.drawImage(prdImg, 0, 0, ctx.canvas.width, ctx.canvas.height);
+}
+
+function drawZoomedPart(posX, posY) {
+    // Here we need to take the image part that is behind the blue square and past it to the zoomed section
+    let zoomCanvas = document.getElementById("zoomed-image");
+    let context = zoomCanvas.getContext("2d");
+
+    let zoomedImage = new Image();
+    zoomedImage.src = $("#image-demo").attr("src");
+
+    let zoomUnit = (zoomedImage.width * 80 / imageDemoCanvas.width);
+
+    let oX = zoomedImage.width * posX / imageDemoCanvas.width;
+    let oY = zoomedImage.height * posY / imageDemoCanvas.height;
+
+    zoomedImage.onload = function() {
+        context.clearRect(0, 0, zoomCanvas.width, zoomCanvas.height);
+        context.drawImage(zoomedImage, oX, oY, zoomUnit, zoomUnit, 0, 0, zoomCanvas.width, zoomCanvas.height);
+    }
 }
 
 fillCanvas($("#image-demo").attr("src"));
@@ -237,6 +255,9 @@ $("#img-demo").on({
     }
 });
 
+// When hover on product assets we drow the asset image into the demo canvas
+// If the assets that we hover over is a video we hide the canvas and show the video tag
+// Video container and canvas have the same dimensions
 $(".product-asset-container").on("mouseenter", function() {
     $(".product-asset-container").removeClass("product-image-style");
     $(this).addClass("product-image-style");
@@ -260,6 +281,13 @@ $("#img-demo").mousemove(function (e) {
             "left": 95,
             "top": 138
         });
+
+        /* Now I need to pass x and y and width of image as well as dimension of the blue square (height is same as width)
+           to this function to draw the image at this coordinnates into the zoom canvas
+        */
+       
+       drawZoomedPart($(".cursor").position().left - 95, $(".cursor").position().top - 138, blueSquareZoomDim);
+        
     }
     // RIGHT, BOTTOM EDGE
     else if(e.pageX - $('#img-demo').offset().left >=360 &&  containerHeight -(e.pageY - $('#img-demo').offset().top) <= 40 ) {
@@ -267,6 +295,7 @@ $("#img-demo").mousemove(function (e) {
             "left": 95 + 320,
             "top": 138 + parseInt(containerHeight) - 80
         });
+        drawZoomedPart($(".cursor").position().left - 95, $(".cursor").position().top - 138);
     }
     // LEFT, BOTTOM EDGE
     else if(e.pageX - $('#img-demo').offset().left <=40 &&  containerHeight -(e.pageY - $('#img-demo').offset().top) <= 40 ) {
@@ -274,6 +303,7 @@ $("#img-demo").mousemove(function (e) {
             "left": 95,
             "top": 138 + parseInt(containerHeight) - 80
         });
+        drawZoomedPart($(".cursor").position().left - 95, $(".cursor").position().top - 138);
     }
     // LEFT LINE
     else if(e.pageX - $('#img-demo').offset().left < 40 && e.pageY - $('#img-demo').offset().top >= 40) {
@@ -281,6 +311,7 @@ $("#img-demo").mousemove(function (e) {
             "left": 95,
             "top": 138 + (e.pageY - $('#img-demo').offset().top) - 40
         });
+        drawZoomedPart($(".cursor").position().left - 95, $(".cursor").position().top - 138);
     }
     // TOP, RIGHT EDGE
     else if(e.pageX - $('#img-demo').offset().left >= 360 && e.pageY - $('#img-demo').offset().top < 40) {
@@ -289,6 +320,7 @@ $("#img-demo").mousemove(function (e) {
             "left": 95 + 360 - 40 + 2,
             "top": 138
         });
+        drawZoomedPart($(".cursor").position().left - 95, $(".cursor").position().top - 138);
     }
     // TOP LINE
     else if(e.pageX - $('#img-demo').offset().left > 40 && e.pageY - $('#img-demo').offset().top < 40) {
@@ -296,6 +328,7 @@ $("#img-demo").mousemove(function (e) {
             "left": 55 + e.pageX - $('#img-demo').offset().left,
             "top": 138 + e.pageY - $('#img-demo').offset().top < 40
         });
+        drawZoomedPart($(".cursor").position().left - 95, $(".cursor").position().top - 138);
     }
     // LEFT LINE
     else if(e.pageX - $('#img-demo').offset().left < 40 && e.pageY - $('#img-demo').offset().top >= 40) {
@@ -303,6 +336,7 @@ $("#img-demo").mousemove(function (e) {
             "left": 95,
             "top": 138 + (e.pageY - $('#img-demo').offset().top) - 40
         });
+        drawZoomedPart($(".cursor").position().left - 95, $(".cursor").position().top - 138);
     }
     // RIGHT LINE
     else if(e.pageX - $('#img-demo').offset().left >= 360 && e.pageY - $('#img-demo').offset().top >= 40) {
@@ -310,6 +344,7 @@ $("#img-demo").mousemove(function (e) {
             "left": 95 + 360 - 40 + 2,
             "top": 138 + e.pageY - $('#img-demo').offset().top - 40
         });
+        drawZoomedPart($(".cursor").position().left - 95, $(".cursor").position().top - 138);
     }
     // BOTTOM LINE
     else if(e.pageX - $('#img-demo').offset().left >= 40 && e.pageY - $('#img-demo').offset().top >= containerHeight - 40) {
@@ -317,92 +352,17 @@ $("#img-demo").mousemove(function (e) {
             "left": 95 + e.pageX - $('#img-demo').offset().left - 40,
             "top": 138 + parseInt(containerHeight) - 79
         });
+        drawZoomedPart($(".cursor").position().left - 95, $(".cursor").position().top - 138);
     }
-     /*
-    else if(e.pageX - $('#img-demo').offset().left >= 40 && e.pageY - $('#img-demo').offset().top < 40) {
-        $(".cursor").show().css({
-            "left": 95 + e.pageX - $('#img-demo').offset().left,
-            "top": 138
-        });
-    } else if(e.pageX - $('#img-demo').offset().left >= 360 && e.pageY - $('#img-demo').offset().top < 360) {
-        $(".cursor").show().css({
-            "left": 416,
-            "top": 98 + e.pageY - $('#img-demo').offset().top
-        });
-    } else if(e.pageX - $('#img-demo').offset().left >= 360 && e.pageY - $('#img-demo').offset().top > 360) {
-        $(".cursor").show().css({
-            "left": 416,
-            "top": e.pageY - $('#img-demo').offset().top + 40
-        });
-    }*/
+    // IN THE MIDDLE
     else {
         $(".cursor").show().css({
             "left": 95 + e.pageX - $('#img-demo').offset().left - 40,
             "top": 138 + e.pageY - $('#img-demo').offset().top - 40
         });
+
+        drawZoomedPart($(".cursor").position().left - 95, $(".cursor").position().top - 138);
     }
 }).mouseout(function () {
     $(".cursor").hide();
 });
-
-
-
-/*$("#image-demo").on("mousemove", function(e) {
-    
-    var x = e.pageX;     // Get the horizontal coordinate
-    var y = e.pageY;
-
-    $("#image-bck").css({left:x, top:y});
-});*/
-
-
-
-
-
-function getMousePos(e) {
-    return {x:e.clientX,y:e.clientY};
-}
-
-/*$(".product-asset-container").on("mouseenter", function() {
-    if($(this).find(".product-video-asset")) {
-        console.log("It's a video");
-    }
-
-    console.log($(this).find(".product-video-asset").length);
-});*/
-
-
-
-/*$(".product-see-more").click(function() {
-    // Get product id when user click on products image
-    let productId = $(this).parent().parent().find(".current-product-id").val();
-    
-    // First put the css properties of the selected product to default values
-    $("#selected").css("margin-top","auto");
-
-    $(".semi-black-section-infos").css("display","flex");
-
-    $("#selected").animate({width: "50%"}, 150, "linear");
-    $("#selected").animate({marginTop: ""}, 200, "linear");
-
-    return false;
-});
-
-$(".close-semi-black-section-info").click(function() {
-    $(".semi-black-section-infos").css("display","none");
-});*/
-// Click somewhere except selected product section to close the section [LATER]
-/*$(function() {
-    $(document).on('click', function(e) {
-        
-        if (e.target.id == "selected") {
-            console.log(e.target);
-        } else {
-            console.log("outside");
-            
-            $('.semi-black-section-infos').css("display","none");
-        }
-    })
-})*/
-
-

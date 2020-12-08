@@ -176,7 +176,10 @@
             </div>
             <img id="image-bck" src="images/zoom-background.png"/>
             <div id="zoomed-image-container">
-                <img src="" id="zoomed-image" />
+                <canvas id="zoomed-image">
+                    
+                </canvas>
+                <p class="pwr-message">Powered by ECOM-EASE - MOUAD NASSRI</p>
             </div>
         </div>
 
